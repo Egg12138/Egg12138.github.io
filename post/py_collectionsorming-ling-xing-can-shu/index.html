@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+<title>Py_collections||命令行参数 - Gridea</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+  <div class="layout theme-dark">
+    <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://Egg12138.github.io">
+								<img class="logo"
+									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614617184948"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="https://https://github.com/Egg12138">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
+
+
+
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1614617184948" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+    <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <div class="container">
+          <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+              <div class="layout-post">
+                <div class="layout-post-body">
+                  <div class="row">
+
+                    <div class="col-12 col-lg-10">
+                      <div class="layout-post-main m-right m-md-right">
+                        <div class="layout-post-header">
+                          <h1 class="layout-post-title">Py_collections||命令行参数</h1>
+                          <div class="layout-post-meta">
+                            <div class="item">
+                              
+                            </div>
+                            <div class="item">
+                              <span>2020-12-29</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layout-post-content">
+                          <div class="layout-post-item">
+                            
+                            <p>'''python<br>
+#!/user/Shaw/Python38 python3<br>
+import argparse<br>
+'''<br>
+'import argparse'</p>
+<hr>
+<h3 id="命令行参数复习">命令行参数复习</h3>
+<pre><code>* positional arguments
+* optional arguments 
+</code></pre>
+<h3 id="argparse模块">ARGPARSE模块</h3>
+<p>先讨论 'argparse'<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>库，这个词是解析器的意思，顾名思义</p>
+<h4 id="框架">框架</h4>
+<pre><code>'''python3
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                    help='an integer for the accumulator')
+parser.add_argument('--sum', dest='accumulate', action='store_const',
+                    const=sum, default=max,
+                    help='sum the integers (default: find the max)')
+
+args = parser.parse_args()
+print(args.accumulate(args.integers))'''
+</code></pre>
+<p>如上示例，argparse模块的基本使用包含5个步骤：</p>
+<p>import模块：import argparse<br>
+获解析器对象：argparse.ArgumentParser<br>
+利用解析器对象内建方法，添加参数解析规则：add_argument<br>
+利用解析器对象内建方法，开始解析参数，获取解析结果对象：parse_args<br>
+从解析结果对象中，获取参数值：parse_args</p>
+<p>在命令行中可以愉快有玩耍parse_args，可以及时获得反馈，<br>
+比如我创建一个parse:<br>
+Namespace(Love='siqilin', foo='a')为初始，现在可以直接，在命令行中parse.parse_args('-Love agirl',split())  此处的method是str数据类型的属性mathod<br>
+<br></br><br>
+usage: PROG [-h] [--foo [FOO]] bar [bar ...]  #prog程序名 and usage</p>
+<pre><code>bar help                                    #description功能描述
+
+positional arguments:              #required
+bar          bar help
+
+optional arguments:                 #optional 
+-h, --help   show this help message and exit
+--foo [FOO]  foo help
+
+And that's how you'd foo a bar #epilog补充描述字段，拿来收尾也很好
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>解析器对象的属性</th>
+<th>默认值</th>
+<th>功能</th>
+<th>大致方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prog</td>
+<td>sys.argv[0]</td>
+<td>'-h' 时显示程序名称</td>
+<td>...</td>
+</tr>
+<tr>
+<td>usage</td>
+<td>-</td>
+<td>usage字段描述</td>
+<td>...</td>
+</tr>
+<tr>
+<td>description</td>
+<td>None</td>
+<td>des描述</td>
+<td>...</td>
+</tr>
+<tr>
+<td>epilog</td>
+<td>None</td>
+<td>补充字段描述</td>
+<td>...</td>
+</tr>
+<tr>
+<td>parents</td>
+<td>None</td>
+<td>从父解析器中继承所有参数选项</td>
+<td>...</td>
+</tr>
+<tr>
+<td>formatter_class</td>
+<td>None</td>
+<td>定制说明文本的显示风格</td>
+<td>...</td>
+</tr>
+<tr>
+<td>prefix_class</td>
+<td>-</td>
+<td>定制前缀字符，例如前缀&quot;-b&quot;改为“+b&quot;</td>
+<td>...</td>
+</tr>
+<tr>
+<td>add_help</td>
+<td>True</td>
+<td>是否使能显示参数 -h --help</td>
+<td>...</td>
+</tr>
+<tr>
+<td>allow_abbrev</td>
+<td>True</td>
+<td>是否支持长参数</td>
+<td>...</td>
+</tr>
+<tr>
+<td>fromfile_prefix_chars</td>
+<td>None</td>
+<td>略</td>
+<td>...</td>
+</tr>
+<tr>
+<td>argument_default</td>
+<td>None</td>
+<td>略</td>
+<td>...</td>
+</tr>
+<tr>
+<td>conflict_handler</td>
+<td>None</td>
+<td>略</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h5 id="代码部分">代码部分</h5>
+<ul>
+<li>构建解析器实例对象
+<ul>
+<li>`parser = argparse.ArugumentParser(description='Optional参数')<br>生成这个对象之后就可以给parser对象添加参数属性</br></li>
+<li>class argparse.ArgumentParser(prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=argparse.HelpFormatter, prefix_chars='-', fromfile_prefix_chars=None, argument_default=None, conflict_handler='error', add_help=True, allow_abbrev=True)</li>
+<li>自带的可选形参列表：<br>创建实例部分</br>
+<ul>
+<li>description&amp;epilog<br>epilog搞additional descriptions，在’HELP之尾部</br><br>
+#实例创建的这几个参数不是位置参数，但是习惯上prog&gt;usage&gt;des&gt;epilog,因为help呈现的顺序就是这样</li>
+<li>prog=... ，默认是用sys.argv[0]，但是可以自定义，为-h显示时的程序名。</li>
+<li>usage=...,默认呈现-,但是可以自定义，<br>
+<br>  可以用filename.py -h来调出这个des，也可以用' parser.print_help()'<br></li>
+<li>parents会提取ArgumeentParser的所有参数列表，并且获取其中所有的positional and optional actions 然后让其他的解析器可以继承参数。</li>
+<li>
+<pre><code>  `parser = argpaarse.ArugumentParser(description='Des',epilog='Additional words')
+</code></pre>
+</li>
+</ul>
+</li>
+<li>metavar</li>
+<li>name or flags：也就是在使用参数的时候使用的符号，--foo 或者 -f这样的预定为optional argument。 解析器会自行完成这份工作。bar,+bar则自动成为positional aruguments,</li>
+<li>action：根据我的理解，这个属性可以选择参数在只提供符号而不输入实际的值的时候给予一个默认的值<br>action的default action是 'Store'</li>
+<li>nargs：这个属性规定了参数可以输入的个数,nargs默认为1，所以默认值为1的时候输入的量不能带空格（那样的话，会杯视为下一个参数命令） narg=+会类似*kargs</li>
+</ul>
+</li>
+</ul>
+<p><code>parser = argparse.ArgumentParser(prog='PROG')</code><br>
+<code>parser.add_argument('foo', nargs='+')</code><br>
+<code>parser.parse_args(['a', 'b'])</code><br>
+<code>Namespace(foo=['a', 'b'])</code><br>
+<code>parser.parse_args([])</code><br>
+<code>usage: PROG [-h] foo [foo ...]</code><br>
+<code>PROG: error: the following arguments are required: foo</code><br>
+* const：这属性跟 action 属性一起使用<br>
+* default：这属性就是给参数设置一个默认值<br>
+* type：这个属性规定了参数的数据类型<br>
+* choices：这个属性给参数限定了一个选择的迭代，参数只能在这个范围内选择参数的值，否则报错<br>
+* required：参数的值为必填</p>
+<ul>
+<li>filling 一个parser
+<ul>
+<li>making calls to add_argument():</li>
+</ul>
+</li>
+<li>基本info的存储和使用的调用
+<ul>
+<li>making calls to parse_args()</li>
+<li>args=parer.parse_args()</li>
+</ul>
+</li>
+<li>prefix_chars
+<ul>
+<li>+a: add_argument('+a')会出现在positional arguments一栏，</li>
+<li>++a:同+a理</li>
+</ul>
+</li>
+</ul>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>argparse是一个多数py版本都会自带的一个命令行参数解析库 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+                          </div>
+                        </div>
+                        <div class="layout-post-social">
+                          <div class="item reader">
+                            <div id="/post/py_collectionsorming-ling-xing-can-shu/" class="leancloud-visitors view"
+                              data-flag-title="Py_collections||命令行参数">
+                              <span class="post-meta-item-text">阅读 </span>
+                              <span class="leancloud-visitors-count"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="layout-post-navigation">
+                          <div class="navigation-list">
+                            
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/li-xue-orjian-dan-hui-bian-yi-xia-zu-ni-zhen-dong-de-wei-fen-fang-cheng-de-ji-chong-jie/" class="title">
+                                      <h4>力学||简单汇编一下振动的微分方程的几种解</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>上一篇</span></div>
+                                  <div class="item">2020-12-29</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/bian-or-guan-lun/" class="title">
+                                      <h4>辩|| 灌论</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>下一篇</span></div>
+                                  <div class="item">2020-12-29</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            
+                          </div>
+                        </div>
+
+                        <div class="layout-comments"></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-none d-lg-block">
+                      <div class="layout-post-sidebar">
+                        <div class="layout-sidebar-item">
+                          <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E5%A4%8D%E4%B9%A0">命令行参数复习</a></li>
+<li><a href="#argparse%E6%A8%A1%E5%9D%97">ARGPARSE模块</a>
+<ul>
+<li><a href="#%E6%A1%86%E6%9E%B6">框架</a>
+<ul>
+<li><a href="#%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86">代码部分</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+    	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Egg12138" target="_blank">
+											<i class="fa fa-github" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="491061236" target="_blank">
+											<i class="fa fa-qq" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Ayden_egg" target="_blank">
+											<i class="fa fa-weixin" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
+	
+
+  </div>
+</body>
+
+</html>

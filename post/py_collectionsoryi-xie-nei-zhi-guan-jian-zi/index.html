@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+<title>Py_collections|一些内置关键字 模块 - Gridea</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+  <div class="layout theme-dark">
+    <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://Egg12138.github.io">
+								<img class="logo"
+									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614617184948"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="https://https://github.com/Egg12138">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
+
+
+
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1614617184948" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+    <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <div class="container">
+          <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+              <div class="layout-post">
+                <div class="layout-post-body">
+                  <div class="row">
+
+                    <div class="col-12 col-lg-10">
+                      <div class="layout-post-main m-right m-md-right">
+                        <div class="layout-post-header">
+                          <h1 class="layout-post-title">Py_collections|一些内置关键字 模块</h1>
+                          <div class="layout-post-meta">
+                            <div class="item">
+                              
+                            </div>
+                            <div class="item">
+                              <span>2020-12-11</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layout-post-content">
+                          <div class="layout-post-item">
+                            
+                            <h2 id="yield与生成器">yield与生成器</h2>
+<blockquote>
+<pre><code>  “不执行函数代码，而是返回一个generator对象，这个对象是可迭代对象，
+      具有next()方法，调用一次next方法执行到yield那里的时候暂停一下，返回一次计算的值(用法类似return)，
+      当再次调用next()方法时，接着yield下面代码循环执行知直到又碰到yield，
+      返回下一个循环计算的值从而实现动态生成值。
+</code></pre>
+</blockquote>
+<p>在Pythoncookbook4.3中，作者给出了比较好的机制展示：</p>
+<p><code>def c(n):</code>while n &gt; 0:<br>
+<code>print(&quot;Count from:&quot;,n)</code>n -= 1<br>
+<code>print('Done')</code>c(5)<br>
+这是定义一个常规的函数，当然用for最快，此处是为了对比<br>
+现在：</p>
+<p><code>def countdown(n):</code>        print(&quot;Countfrom:&quot;, n)<br>
+<code>while n&gt;0:</code>            yield n<br>
+<code>n -= 1</code>        print('Done')</p>
+<h2 id="sys-module">sys module</h2>
+<p>常用单元<br>
+sys.argv：以列表的方式获取运行 Python 程序的命令行参数存放其中。其中 sys.argv[0] 通常就是指该 Python程序本身，sys.argv[1] 代表第一个参数，sys.argv[2] 代表第二个参数，以此类推。类似于 Shell 中的 $0、$1、$2</p>
+<p>import sys<br>
+print('程序名称为：{}，第一个参数为：{}，第二个参数为：{}'.format(sys.argv[0], sys.argv[1], sys.argv[2]))<br>
+sys.byteorder：显示本地字节序的指示符。如果本地字节序的大端模式，则该属性返回big，否则返回little</p>
+<p>sys.copyright：该属性返回与 Python 解释器有关的版权信息</p>
+<p>sys.executable：该属性返回 Python 解释器在磁盘上的存储路径</p>
+<p>sys.exit()：通过引发SystemExit异常来退出程序，将其放在try块中不能阻止finally块的执行。</p>
+<p>sys.flags：该只读属性返回运行Python命令时指定的旗标</p>
+<p>sys.getfilesystemencodiing()：返回在当前系统中保存文件所用的字符集</p>
+<p>sys.getrefcount()：返回指定对象的引用计数。</p>
+<p>sys.getrecursionlimit()：返回Python解释器当前支持的递归深度。该属性可通过setrecursionlimit()方法重新设置</p>
+<p>sys.getswitchinterval()：返回在当前Python解释器中线程切换的时间间隔。该属性可通过setswitchinterval()函数改变</p>
+<p>sys.implementation：返回当前Python解释器的实现</p>
+<p>sys.maxsize：返回Python整数支持的最大值。在32位平台上，该属性值为 2 ×× 31-1；在64位平台上，该属性值为 2 ×× 63-1</p>
+<p>sys.path：该属性指定Python查找模块的路径列表。程序可通过修改该属性来动态增加Python加载模块的路径</p>
+<p>sys.platfrom：返回Python解释器所在的平台的标识符</p>
+<p>sys.stdin：返回系统的标准输入流——一个类文件对象</p>
+<p>sys.stdout：返回系统的标准输出流——一个类文件对象</p>
+<p>sys.stderr：返回系统的错误输出流——一个类文件对象</p>
+<p>sys.version：返回当前Python解释器的版本信息</p>
+<p>sys.winver：返回当前Python解释器的主版本号</p>
+<p>sys.copyright：返回当前Python解释器的版权信息</p>
+
+                          </div>
+                        </div>
+                        <div class="layout-post-social">
+                          <div class="item reader">
+                            <div id="/post/py_collectionsoryi-xie-nei-zhi-guan-jian-zi/" class="leancloud-visitors view"
+                              data-flag-title="Py_collections|一些内置关键字 模块">
+                              <span class="post-meta-item-text">阅读 </span>
+                              <span class="leancloud-visitors-count"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="layout-post-navigation">
+                          <div class="navigation-list">
+                            
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/bian-or-guan-lun/" class="title">
+                                      <h4>辩|| 灌论</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>上一篇</span></div>
+                                  <div class="item">2020-12-29</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/ban-ding-liang-wu-li-orliang-gang/" class="title">
+                                      <h4>半定量物理|量纲</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>下一篇</span></div>
+                                  <div class="item">2020-12-10</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            
+                          </div>
+                        </div>
+
+                        <div class="layout-comments"></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-none d-lg-block">
+                      <div class="layout-post-sidebar">
+                        <div class="layout-sidebar-item">
+                          <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#yield%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8">yield与生成器</a></li>
+<li><a href="#sys-module">sys module</a></li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+    	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Egg12138" target="_blank">
+											<i class="fa fa-github" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="491061236" target="_blank">
+											<i class="fa fa-qq" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Ayden_egg" target="_blank">
+											<i class="fa fa-weixin" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
+	
+
+  </div>
+</body>
+
+</html>

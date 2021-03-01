@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+<title>Regular Expression - Gridea</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+  <div class="layout theme-dark">
+    <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://Egg12138.github.io">
+								<img class="logo"
+									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614617184948"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="https://https://github.com/Egg12138">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
+
+
+
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1614617184948" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+    <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <div class="container">
+          <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+              <div class="layout-post">
+                <div class="layout-post-body">
+                  <div class="row">
+
+                    <div class="col-12 col-lg-10">
+                      <div class="layout-post-main m-right m-md-right">
+                        <div class="layout-post-header">
+                          <h1 class="layout-post-title">Regular Expression</h1>
+                          <div class="layout-post-meta">
+                            <div class="item">
+                              
+                            </div>
+                            <div class="item">
+                              <span>2021-03-02</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layout-post-content">
+                          <div class="layout-post-item">
+                            
+                            <p><s>正点表达式</s><br>
+先测试几个markdown语法，我还不经常用的语法</p>
+<pre><code>Markdown里面的四个\~是啥？好像是一种比引号引用看起来更舒服的引用
+</code></pre>
+<p>三个`代码块</p>
+<pre><code class="language-python3">from time import time
+import hash
+print(&quot;Indran Mi Fans!&quot;)
+</code></pre>
+<p>在Gridea里面似乎和选中后tab效果一样……？</p>
+<pre><code>from time import time
+import hash
+print(&quot;Indran Mi Fans!&quot;)
+</code></pre>
+<p>以下主要是在我装的WSLubuntu18.04上面运行<br>
+root在C:\Users\Shaw\下</p>
+<h3 id="search-in-files">Search In Files.</h3>
+<h4 id="qgrepq"><q>grep</q></h4>
+<p><code>~ $ grep python *</code><br>
+输出<br>
+...<br>
+grep: Nutstore: Is a directory<br>
+grep: OneDrive: Is a directory<br>
+grep: PCManger: Is a directory<br>
+grep: Pictures: Is a directory<br>
+grep: PrintHood: Is a directory<br>
+grep: Python38: Is a directory<br>
+grep: Recent: Is a directory<br>
+...<br>
+empty.py:print(&quot;This is my first python prog edited in Vim!&quot;)<br>
+linux_empty_1py.py:print(&quot;This is my first python prog edited in Vim!&quot;)  // 可以很清晰地看到这能够访问到文件内容<br>
+grep: ntuser.dat.LOG1: Permission denied<br>
+grep: ntuser.dat.LOG2: Permission denied<br>
+grep: source: Is a directory</p>
+<p>直接点，输入grep print *</p>
+<p>grep: UIDowner: Is a directory<br>
+Untitled-1.c:    printf(&quot;Hellp World&quot;);<br>
+grep: Videos: Is a directory<br>
+grep: WordfastPro: Is a directory<br>
+empty.py:print(&quot;This is my first python prog edited in Vim!&quot;)<br>
+empty.py:print(&quot;Type in vim is so comfortable...&quot;)<br>
+empty.py:print(emd-start)<br>
+empty.py:print(&quot;You will find this prog runs faster than it did in Windows platform!&quot;)<br>
+Binary file ex_5.11.1.o matches<br>
+ex_5.11.1.s:    call    <strong>print</strong>f<br>
+ex_5.11.1.s:    call    <strong>print</strong>f<br>
+ex_5.11.1.s:    .def    <strong>print</strong>f; .scl    2;      .type   32;     .endef<br>
+linux_empty_1py.py:print(&quot;This is my first python prog edited in Vim!&quot;)<br>
+linux_empty_1py.py:print(&quot;Type in vim is so comfortable...&quot;)<br>
+linux_empty_1py.py:print(emd-start)<br>
+grep: ntuser.dat.LOG1: Permission denied</p>
+<hr>
+<p>man grep有大量的参数说明，测试常用的：</p>
+<ul>
+<li>-c 计算匹配的行数</li>
+</ul>
+
+                          </div>
+                        </div>
+                        <div class="layout-post-social">
+                          <div class="item reader">
+                            <div id="/post/regular-expression/" class="leancloud-visitors view"
+                              data-flag-title="Regular Expression">
+                              <span class="post-meta-item-text">阅读 </span>
+                              <span class="leancloud-visitors-count"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="layout-post-navigation">
+                          <div class="navigation-list">
+                            
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/" class="title">
+                                      <h4>汇编python相关</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>下一篇</span></div>
+                                  <div class="item">2021-02-27</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+
+                        <div class="layout-comments"></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-none d-lg-block">
+                      <div class="layout-post-sidebar">
+                        <div class="layout-sidebar-item">
+                          <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#search-in-files">Search In Files.</a>
+<ul>
+<li><a href="#qgrepq"><q>grep</q></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+    	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Egg12138" target="_blank">
+											<i class="fa fa-github" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="491061236" target="_blank">
+											<i class="fa fa-qq" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Ayden_egg" target="_blank">
+											<i class="fa fa-weixin" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
+	
+
+  </div>
+</body>
+
+</html>

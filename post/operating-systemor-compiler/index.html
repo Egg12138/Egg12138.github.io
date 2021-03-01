@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+<title>Operating System|| Interpreter, Parser, Lexer and Compiler - Gridea</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+  <div class="layout theme-dark">
+    <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://Egg12138.github.io">
+								<img class="logo"
+									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614617184948"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="https://https://github.com/Egg12138">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
+
+
+
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1614617184948" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+    <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <div class="container">
+          <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+              <div class="layout-post">
+                <div class="layout-post-body">
+                  <div class="row">
+
+                    <div class="col-12 col-lg-10">
+                      <div class="layout-post-main m-right m-md-right">
+                        <div class="layout-post-header">
+                          <h1 class="layout-post-title">Operating System|| Interpreter, Parser, Lexer and Compiler</h1>
+                          <div class="layout-post-meta">
+                            <div class="item">
+                               <a href="https://Egg12138.github.io/tag/cs/" class="post--keyword"
+                                data-title="CS" data-type="post_tag" data-term-id="39">CS</a>
+                               <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/" class="post--keyword"
+                                data-title="操作系统" data-type="post_tag" data-term-id="39">操作系统</a>
+                               <a href="https://Egg12138.github.io/tag/linux/" class="post--keyword"
+                                data-title="linux" data-type="post_tag" data-term-id="39">linux</a>
+                               <a href="https://Egg12138.github.io/tag/unix/" class="post--keyword"
+                                data-title="unix" data-type="post_tag" data-term-id="39">unix</a>
+                               <a href="https://Egg12138.github.io/tag/windows/" class="post--keyword"
+                                data-title="windows" data-type="post_tag" data-term-id="39">windows</a>
+                               <a href="https://Egg12138.github.io/tag/python/" class="post--keyword"
+                                data-title="python" data-type="post_tag" data-term-id="39">python</a>
+                               <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="post--keyword"
+                                data-title="转述" data-type="post_tag" data-term-id="39">转述</a>
+                               <a href="https://Egg12138.github.io/tag/ji-lu/" class="post--keyword"
+                                data-title="记录" data-type="post_tag" data-term-id="39">记录</a>
+                              
+                            </div>
+                            <div class="item">
+                              <span>2021-02-24</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layout-post-content">
+                          <div class="layout-post-item">
+                            
+                            <h4 id="centera-little-section-qdynamic-languageqcenter"><center>A little section: <q>Dynamic Language</q>.</center></h4>
+<blockquote> <br />The Python compiler knows relatively little about the effect the bytecode will have. It's up to the interpreter to determine the type of the object that BINARY_MODULO is operating on and do the right thing for that type. <br />This is why Python is described as dynamically typed: you don't know the types of the arguments to this function until you actually run it.  By contrast, in a language that's statically typed, the programmer tells the compiler up front what type the arguments will be (or the compiler figures them out for itself).</blockquote>
+<p>Before the interpreter takes over,Python performs three other steps:</p>
+<ul>
+<li>Lexing</li>
+<li>Parsing</li>
+<li>Compiling</li>
+</ul>
+<blockquote><br />Python is often called an "interpreted" language like Ruby or Perl, as opposed to a "compiled" language like C or Rust. However, this terminology isn't as precise as it may seem. Most interpreted languages, including Python, do involve a compilation step. The reason Python is called "interpreted" is that the compilation step does relatively less work (and the interpreter does relatively more) than in a compiled language. As we'll see later, the Python compiler has much less information about the behavior of a program than a C compiler does.</blockquote>
+<h4 id="a-tiny-python-interpreter-in-python-500-lines-or-less">A Tiny Python Interpreter in Python (500 lines or less)</h4>
+<p>three instructions:<br>
+<code>LOAD_VALUE</code><br>
+<code>ADD_TWO_VALUES</code><br>
+<code>PRINT_ANSWER</code><br>
+It's a <em>stack</em> machine, which must manipulate stacks to add two numbers</p>
+<p>看到class Interpreter中<br>
+（用基于stack的方式来构建interpreter：这里我们喜欢用pop，<br>
+比如我们在stack中存储了a,b我们现在要调用a+b，就必须先弹出a，让b<br>
+成为顶部，再弹出b。pop的运算效率本身也比较高，而且每次都能清除用过的对象）<br>
+to-execute{<br>
+instructions[ (load value, 0and1 , load name a and b, add vlauels,]<br>
+numbers[7,5]就是七次+1，五次+1<br>
+names一一对应<br>
+}</p>
+<p>To keep track of what names are bound to what values, we'll add an environment dictionary to the <strong>init</strong><br>
+** def <strong>init</strong>(self)😗*<br>
+<code>self.stack = []</code><br>
+<code>self.environment = {}</code><br>
+** def LOAD_VALUE（接收参数value）**<br>
+<code>将参数append倒stack去</code><br>
+确实是个stack结构呢！<br>
+** def ADD_TWO_VALUES**<br>
+<code>依次弹出读取stack的值，</code><br>
+然后，<br>
+<code>把运算结棍return 回 stack的顶部</code><br>
+** def PRINT_ANSWER **<br>
+运算完成并且在stakc中完成存储后，现在再把答案弹出即可！ print answer可以作用其他很多运算的结果输出method，所以独立出来</p>
+<p>** def STORE_NAME（接收self，以及name）**<br>
+stack弹出——所以要先有LOAD value！，stack存储的也多是value</p>
+<p><code>stack弹出赋给var</code>， 于是name对应的值就应该是var，<br>
+正好<code>作为dictionary存储到环境变量</code><br>
+<code>self.environment[name] = var</code></p>
+<p>** def LOAD_NAME(self, name)**<br>
+是store的逆过程，把env里的键值对的value存储到stack中<br>
+<code>var = self.enr[name]</code><br>
+<code>self.stack.append(var)</code></p>
+<p>** def parser(待解析的命令和参数以及参数命令dic)**<br>
+&quot;&quot;&quot; Understand what the argument to each instruction means.&quot;&quot;&quot;<br>
+有关value的：<br>
+<code>numbers = [&quot;LOAD_VALUE&quot;]</code><br>
+<code>names = [&quot;LOAD_NAME&quot;, &quot;STORE_NAME&quot;]</code></p>
+<pre><code>    进行parsing，将输入的命令instruction分配到位
+        if i in numbers
+            argument = to-exe[&quot;numbers][argument]如果命令是属于数字录入的，那就将argument赋成to-exe字典中的&quot;numbers&quot;列表对应的数字
+        elif i in names:
+            对变量名操作，就可以再tp-exe[&quot;names][argument]里面搞
+            比如：
+</code></pre>
+<p>to-exe:<br>
+{ &quot;numbers&quot;: [7, 5, 8],<br>
+&quot;names&quot;: [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]   }<br>
+我们传递参数parser(&quot;LOAD_VALUE&quot;, arg=9，to-exe)参数解析后发现instruction对应于&quot;numbers&quot;,那么arg就被赋值为to-exe中的&quot;numbers&quot;:[arg]总觉得很奇怪……应该index回out of the range！</p>
+
+                          </div>
+                        </div>
+                        <div class="layout-post-social">
+                          <div class="item reader">
+                            <div id="/post/operating-systemor-compiler/" class="leancloud-visitors view"
+                              data-flag-title="Operating System|| Interpreter, Parser, Lexer and Compiler">
+                              <span class="post-meta-item-text">阅读 </span>
+                              <span class="leancloud-visitors-count"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="layout-post-navigation">
+                          <div class="navigation-list">
+                            
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/" class="title">
+                                      <h4>Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>上一篇</span></div>
+                                  <div class="item">2021-02-25</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/" class="title">
+                                      <h4>Parity-Time-symmetric与WPT</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>下一篇</span></div>
+                                  <div class="item">2021-02-12</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            
+                          </div>
+                        </div>
+
+                        <div class="layout-comments"></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-none d-lg-block">
+                      <div class="layout-post-sidebar">
+                        <div class="layout-sidebar-item">
+                          <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#centera-little-section-qdynamic-languageqcenter"><center>A little section: <q>Dynamic Language</q>.</center></a></li>
+<li><a href="#a-tiny-python-interpreter-in-python-500-lines-or-less">A Tiny Python Interpreter in Python (500 lines or less)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+    	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Egg12138" target="_blank">
+											<i class="fa fa-github" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="491061236" target="_blank">
+											<i class="fa fa-qq" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Ayden_egg" target="_blank">
+											<i class="fa fa-weixin" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
+	
+
+  </div>
+</body>
+
+</html>

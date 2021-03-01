@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+<title>C||simple-and-requently-used header files - Gridea</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+  <div class="layout theme-dark">
+    <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://Egg12138.github.io">
+								<img class="logo"
+									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614617184948"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="https://https://github.com/Egg12138">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
+
+
+
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1614617184948" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+    <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <div class="container">
+          <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+              <div class="layout-post">
+                <div class="layout-post-body">
+                  <div class="row">
+
+                    <div class="col-12 col-lg-10">
+                      <div class="layout-post-main m-right m-md-right">
+                        <div class="layout-post-header">
+                          <h1 class="layout-post-title">C||simple-and-requently-used header files</h1>
+                          <div class="layout-post-meta">
+                            <div class="item">
+                               <a href="https://Egg12138.github.io/tag/c/" class="post--keyword"
+                                data-title="c" data-type="post_tag" data-term-id="39">c</a>
+                               <a href="https://Egg12138.github.io/tag/cpp/" class="post--keyword"
+                                data-title="cpp" data-type="post_tag" data-term-id="39">cpp</a>
+                               <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="post--keyword"
+                                data-title="总结类" data-type="post_tag" data-term-id="39">总结类</a>
+                               <a href="https://Egg12138.github.io/tag/xue-xi/" class="post--keyword"
+                                data-title="学习" data-type="post_tag" data-term-id="39">学习</a>
+                               <a href="https://Egg12138.github.io/tag/ji-lu/" class="post--keyword"
+                                data-title="记录" data-type="post_tag" data-term-id="39">记录</a>
+                              
+                            </div>
+                            <div class="item">
+                              <span>2021-01-10</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layout-post-content">
+                          <div class="layout-post-item">
+                            
+                            <p>std=standard</p>
+<p>###<center> FILE: stdio.h     standard I/O</center></p>
+<pre><code>int printf(const char *,...);
+int scanf(const char *,...);
+int getchar();  // read an charactor from the terminal
+void putchar(char ch);  //output ch to the terminal
+</code></pre>
+<p>FILE *fopen(const char *file_path,const char *format);  open'file_path' as format format.</p>
+<h3 id="centerfilestdlibh-standard-librarycenter"><center>FILE:stdlib.h    standard library</center></h3>
+<p>void <em>calloc(size_t n,size_t size);<br>
+/</em><br>
+<em>在内存中连续分配n个长度为size的空间，并且return分配空间 首地址的指针<br>
+**e.g.</em>: int *iList = (int *)alloc(10,sizeof(int)):<br>
+<em>申请了大小为10 * sizeof(int)字节的连续空间</em>/</p>
+<p>void <em>malloc(size_t size);<br>
+/</em> 申请大小为size的连续空间 返回void    指针指向这段内存的初始地址，<br>
+e.g: double <em>dList = (double</em>)malloce(sizeof(double) * 12);<br>
+申请到大小为12 * sizeof(double)字节的空间</p>
+<p>void free(void *ptr);<br>
+/*释放pointer ,ptr所指向的内存空间<br>
+<em>free(ptr);  ..使用calloc/malloc 申请的内存要free掉，否则会堆积</em>/</p>
+<h3 id="file-stringh-stringstr">FILE:  string.h     string=str</h3>
+<p>size_t strlen(const char *str);  return str pointD string长度，通过暴力遍历计数</p>
+<p>bool strcmp(const char *strl,const char *str2);</p>
+<p>char *strcat(char *str1, const char *str2); 这里的cat感觉功能上和bash shell的cat好像，应该是一个玩意儿，add。但是在terminal shell中cat还可以直接打开看单个文本文件。</p>
+<p>char *strcpy(char *src,const char *dst)  //copy the data in dst(dest) to src</p>
+<h3 id="ps">PS</h3>
+<p>碎片的东西，放一点进来；</p>
+<p>函数名前的 “ * ” 号，表示函数返回一个地址值；</p>
+<pre><code>int *locate(){  //函数locate（）返回值保存在指针变量return中
+    ......
+}
+</code></pre>
+<p>c++的标准在98年确定，在那之前已经有一些库大量使用。<br>
+新标准中，推出了名称空间的概念，既是为了方便人们使用新标准的同时，不用大量修改之前的代码，对之前的代码兼容，同时可以有效的避免名称冲突。<br>
+旧标准中以.h结尾<br>
+新标准没有.h<br>
+旧标准中可以直接包含c的库文件，编译器会附带c的兼容库实现<br>
+新标准中有一样的c库子模块支持，命名方式变更为：原stdio.h，新cstdio，即前面+c，后面去掉.h</p>
+<p>C++语言也没有原生的字符串类型。C++语言通过C++标准库提供的string类型实现对字符串类型的支持。string类的特性如下：<br>
+A、string直接支持字符串连接<br>
+B、string直接支持字符串的大小比较<br>
+C、string直接支持子串查找和提取<br>
+D、string直接支持字符串的插入和替换</p>
+<p>extern int i; //声明，不是定义<br>
+int i; //声明，也是定义<br>
+定义只能出现在一处。也就是说，不管是 int a 还是 int a=0 都只能出现一次，而 extern int a 可以出现很多次。<br>
+当你要引用一个全局变量的时候，你就要声明 extern int a 这时候 extern 不能省略，因为省略了，就变成 int a 这是一个定义，不是声明。</p>
+<p>下次做一个基础符号作用，是时候开始重新学C 了。<br>
+<a href="https://en.cppreference.com/w/c/header">CPPreference-C standard library header</a></p>
+
+                          </div>
+                        </div>
+                        <div class="layout-post-social">
+                          <div class="item reader">
+                            <div id="/post/corsimple-and-requently-used-header-files/" class="leancloud-visitors view"
+                              data-flag-title="C||simple-and-requently-used header files">
+                              <span class="post-meta-item-text">阅读 </span>
+                              <span class="leancloud-visitors-count"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="layout-post-navigation">
+                          <div class="navigation-list">
+                            
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/wo-de-da-yi-shang/" class="title">
+                                      <h4>我的大一上</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>上一篇</span></div>
+                                  <div class="item">2021-01-10</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/li-xue-orjian-dan-hui-bian-yi-xia-zu-ni-zhen-dong-de-wei-fen-fang-cheng-de-ji-chong-jie/" class="title">
+                                      <h4>力学||简单汇编一下振动的微分方程的几种解</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>下一篇</span></div>
+                                  <div class="item">2020-12-29</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            
+                          </div>
+                        </div>
+
+                        <div class="layout-comments"></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-none d-lg-block">
+                      <div class="layout-post-sidebar">
+                        <div class="layout-sidebar-item">
+                          <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#centerfilestdlibh-standard-librarycenter"><center>FILE:stdlib.h    standard library</center></a></li>
+<li><a href="#file-stringh-stringstr">FILE:  string.h     string=str</a></li>
+<li><a href="#ps">PS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+    	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Egg12138" target="_blank">
+											<i class="fa fa-github" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="491061236" target="_blank">
+											<i class="fa fa-qq" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Ayden_egg" target="_blank">
+											<i class="fa fa-weixin" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
+	
+
+  </div>
+</body>
+
+</html>

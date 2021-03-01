@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+<title>汇编python相关 - Gridea</title>
+<meta name="description" content="温故而知新">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+
+<body>
+  <div class="layout theme-dark">
+    <div class="layout-header">
+
+	<div class="layout-header-main">
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+
+					<div class="navbar">
+
+						<div class="logo">
+							<a href="https://Egg12138.github.io">
+								<img class="logo"
+									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614617184948"
+									alt="">
+							</a>
+						</div>
+
+						<div class="menu d-md-inline-block d-none">
+							<ul class="layout-navigation-list">
+								
+								<li class="layout-navigation-item"><a title="首页"
+										href="https://https://github.com/Egg12138">首页</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="归档"
+										href="/archives">归档</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="标签"
+										href="/tags">标签</a>
+								</li>
+								
+								<li class="layout-navigation-item"><a title="关于"
+										href="/post/about">关于</a>
+								</li>
+								
+							</ul>
+						</div>
+
+						<div class="item d-md-inline-block d-none">
+							<div class="search-icon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+						</div>
+
+
+
+						<div class="d-md-inline-block d-none">
+							<div class="search-lightbox">
+								<div class="search-body">
+
+									<form id="gridea-search-form" data-update="1614617184948" action="/search/" class="search-form">
+										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
+										<button type="submit" class="submit" aria-label="Submit">
+											<i class="fa fa-search" aria-hidden="true"></i>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="nav d-md-none d-inline-block">
+							<div class="trigger">
+								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</div>
+    <div class="layout-collapse d-md-none">
+	<div class="layout-collapse-main">
+		<ul class="layout-collapse-list">
+			
+			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
+			
+			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
+			
+			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
+			
+			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
+			
+
+		</ul>
+	</div>
+</div>
+
+    <div class="layout-content">
+      <div class="layout-content-main">
+        <div class="container">
+          <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+              <div class="layout-post">
+                <div class="layout-post-body">
+                  <div class="row">
+
+                    <div class="col-12 col-lg-10">
+                      <div class="layout-post-main m-right m-md-right">
+                        <div class="layout-post-header">
+                          <h1 class="layout-post-title">汇编python相关</h1>
+                          <div class="layout-post-meta">
+                            <div class="item">
+                              
+                            </div>
+                            <div class="item">
+                              <span>2021-02-27</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layout-post-content">
+                          <div class="layout-post-item">
+                            
+                            <p>CONTENTs<br>
+<ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%BA%93%E8%B5%84%E6%96%99">库资料</a>
+<ul>
+<li><a href="#python-standard-library">Python Standard Library</a></li>
+<li><a href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%93matplotlib">可视化的经典库matplotlib</a></li>
+<li><a href="#numpy">Numpy</a></li>
+<li><a href="#pandas">pandas</a></li>
+<li><a href="#tensorflow">tensorflow</a></li>
+<li><a href="#%E7%88%AC">爬</a></li>
+<li><a href="#scipy">scipy</a></li>
+<li></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+<ul>
+<li><a href="#%E5%85%A5%E9%97%A8">入门</a></li>
+<li><a href="#%E6%95%99%E6%9D%90">教材</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AE%97%E6%B3%95">算法</a>
+<ul>
+<li><a href="#%E6%95%99%E6%9D%90-2">教材</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E9%A2%98">算法题</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%B8%B8%E6%88%8F">算法游戏</a></li>
+</ul>
+</li>
+<li><a href="#%E5%81%8F%E5%BA%95%E5%B1%82%E8%B7%9Fpy%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E5%85%B3%E7%B3%BB">偏底层（跟py有一点点关系）</a>
+<ul>
+<li><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a></li>
+<li><a href="#%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">组成原理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<blockquote>          <br />
+因为个人兴趣问题，matplotlib,numpy还有数据分析这些我不是很想搞，<br />但是这些又是py的很有特点的第三方库，所以我放一点官方的资源。 <br />在这些方面，大家应该是把py定位在一个“应用软件”的层次，所以，看看文档也基本都会了的。<br/></blockquote>
+<blockquote>        <br />
+我分享的多数都是我用过之中，感觉还可以的资料。当然我是没有什么能力去鉴别一份资料的好坏的，所以以下对资料的评价都是基于个人经验而非严谨分析。希望大家能给这份单子添加一些更优质资源。
+</blockquote>
+### 基础资料
+#### 蟒蛇飞机封面的那本。。。
+<h3 id="库资料">库资料</h3>
+<p>(没有放链接的都是官网文档最好)</p>
+<h4 id="python-standard-library">Python Standard Library</h4>
+<p><a href="https://www.python.org/">Python Document才是坠吼的</a></p>
+<p>可以关注一下PEP8，官网搜索就有</p>
+<blockquote>
+<pre><code>       我不懂这个library怎么翻译...
+</code></pre>
+</blockquote>
+<p><a href="https://pymotw.com/3/index.html">Py3 Module of the week</a>这个比较赞，每周学习一个标准库的用法</p>
+<h4 id="可视化的经典库matplotlib">可视化的经典库matplotlib</h4>
+<p>其实，省事点直接上matlab就行了。不过用python写自由度会更高一点。</p>
+<h4 id="numpy">Numpy</h4>
+<pre><code>* 中文文档
+* 官网
+</code></pre>
+<h4 id="pandas">pandas</h4>
+<h4 id="tensorflow">tensorflow</h4>
+<p>不了解。现在机器学习这么火了吗？</p>
+<h4 id="爬">爬</h4>
+<p>这个以后放。</p>
+<h4 id="scipy">scipy</h4>
+<p>这玩意儿还是蛮强的。</p>
+<h4 id=""></h4>
+<p>官网提供很多例子，</p>
+<h3 id="数据结构">数据结构</h3>
+<h4 id="入门">入门</h4>
+<p><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">Data Structure Visualizations</a></p>
+<h4 id="教材">教材</h4>
+<p>《数据结构与算法(Python和C++语言描述)》本书较早，python用的是2.6，但是不影响学习</p>
+<h3 id="算法">算法</h3>
+<h4 id="教材-2">教材</h4>
+<p>《数据结构与算法(Python和C++语言描述）》，不是说此书很好，只是我当时被卖家广告砸中了。又恰好描述语言比较合我意（狗头）<br>
+但可读性还是很强的，很易读的一本书。<br>
+《算法导论》图书馆看到的……</p>
+<h4 id="算法题">算法题</h4>
+<p>[Acwing]<br>
+[Leetcode]</p>
+<h4 id="算法游戏">算法游戏</h4>
+<p>模型和关卡网站都已经设置好了，每一关要想办法让程序变快以及让程序能运行来完成任务。<br>
+还可以自己出关卡？我就玩了一两次，体验还行。支持几门常见的语言，包括python3.<br>
+<a href="https://www.codingame.com/start">Codingame</a></p>
+<h3 id="偏底层跟py有一点点关系">偏底层（跟py有一点点关系）</h3>
+<h4 id="操作系统">操作系统</h4>
+<blockquote>
+<pre><code>  不同芯片的指令集对py的性能有影响。同一个逻辑的表达，用for和用while在py上面运行效率的差别也很大，这些原因都会在这些书里面找到答案。当然学C接触这个会更多一点。
+</code></pre>
+</blockquote>
+<ul>
+<li>乱推荐《编码》（我没看过，以前知乎上面看到的推荐书）</li>
+<li>《鸟哥的Linux私房菜》此书有泛谈一些这方面的内容，图书馆常年不在架上……</li>
+<li>深入理解计算机系统， 深入浅出</li>
+<li>Operating system: Three easy pieces...一点都不easy...，比”深入“更”深入“，我被骗了，但是大概翻了一下，讲得很好，纸质很不错，印刷清晰，准备还图书馆了……</li>
+</ul>
+<h4 id="组成原理">组成原理</h4>
+<blockquote></blockquote>
+
+                          </div>
+                        </div>
+                        <div class="layout-post-social">
+                          <div class="item reader">
+                            <div id="/post/hui-bian-python-xiang-guan/" class="leancloud-visitors view"
+                              data-flag-title="汇编python相关">
+                              <span class="post-meta-item-text">阅读 </span>
+                              <span class="leancloud-visitors-count"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="layout-post-navigation">
+                          <div class="navigation-list">
+                            
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/regular-expression/" class="title">
+                                      <h4>Regular Expression</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>上一篇</span></div>
+                                  <div class="item">2021-03-02</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            <div class="post-card row">
+                              
+                              <div class="card-content col-12">
+                                <div class="card-body">
+                                  <div class="header">
+                                    <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/" class="title">
+                                      <h4>计算机组成原理||一篇选择性精要（坑，暑假填）</h4>
+                                    </a>
+                                  </div>
+                                  <div class="inner">
+                                    <div class="abstract">
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-footer">
+                                  <div class="item"><span>下一篇</span></div>
+                                  <div class="item">2021-02-27</div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            
+                          </div>
+                        </div>
+
+                        <div class="layout-comments"></div>
+                        
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-lg-2 d-none d-lg-block">
+                      <div class="layout-post-sidebar">
+                        <div class="layout-sidebar-item">
+                          <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%BA%93%E8%B5%84%E6%96%99">库资料</a>
+<ul>
+<li><a href="#python-standard-library">Python Standard Library</a></li>
+<li><a href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%93matplotlib">可视化的经典库matplotlib</a></li>
+<li><a href="#numpy">Numpy</a></li>
+<li><a href="#pandas">pandas</a></li>
+<li><a href="#tensorflow">tensorflow</a></li>
+<li><a href="#%E7%88%AC">爬</a></li>
+<li><a href="#scipy">scipy</a></li>
+<li></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+<ul>
+<li><a href="#%E5%85%A5%E9%97%A8">入门</a></li>
+<li><a href="#%E6%95%99%E6%9D%90">教材</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AE%97%E6%B3%95">算法</a>
+<ul>
+<li><a href="#%E6%95%99%E6%9D%90-2">教材</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E9%A2%98">算法题</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%B8%B8%E6%88%8F">算法游戏</a></li>
+</ul>
+</li>
+<li><a href="#%E5%81%8F%E5%BA%95%E5%B1%82%E8%B7%9Fpy%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E5%85%B3%E7%B3%BB">偏底层（跟py有一点点关系）</a>
+<ul>
+<li><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a></li>
+<li><a href="#%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">组成原理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+
+    	<div class="layout-footer">
+
+		<div class="container">
+			<div class="row justify-content-lg-center">
+				<div class="col-12 col-lg-9">
+					<div class="footer">
+						<div class="row">
+							<div class="col-12 col-md-9">
+								<div class="footer-copy">
+									
+									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+									<div class="footer-icp d-none d-sm-inline-block">
+										<span class="px-2">⋅</span>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 d-none d-md-block">
+								<div class="footer-links">
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Egg12138" target="_blank">
+											<i class="fa fa-github" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="491061236" target="_blank">
+											<i class="fa fa-qq" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+									
+									
+									
+									<span class="footer-links-item">
+										<a href="Ayden_egg" target="_blank">
+											<i class="fa fa-weixin" aria-hidden="true"></i>
+										</a>
+									</span>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
+	
+
+  </div>
+</body>
+
+</html>

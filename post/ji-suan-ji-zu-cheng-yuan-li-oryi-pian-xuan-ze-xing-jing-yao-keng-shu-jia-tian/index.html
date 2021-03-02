@@ -1,149 +1,94 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-  <meta charset="UTF-8" />
-<title>计算机组成原理||一篇选择性精要（坑，暑假填） - Gridea</title>
+<title>计算机组成原理||一篇选择性精要（坑，暑假填） | Gridea</title>
 <meta name="description" content="温故而知新">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614673909822">
 
-<link type='text/css' rel='stylesheet' href='https://Egg12138.github.io/styles/main.css' media='screen' />
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/jquery.js'></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
-</head>
-
-<body>
-  <div class="layout theme-dark">
-    <div class="layout-header">
-
-	<div class="layout-header-main">
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-
-					<div class="navbar">
-
-						<div class="logo">
-							<a href="https://Egg12138.github.io">
-								<img class="logo"
-									src="https://Egg12138.github.io/media/images/site_avatar.png?v=1614673585164"
-									alt="">
-							</a>
-						</div>
-
-						<div class="menu d-md-inline-block d-none">
-							<ul class="layout-navigation-list">
-								
-								<li class="layout-navigation-item"><a title="首页"
-										href="https://https://github.com/Egg12138">首页</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="归档"
-										href="/archives">归档</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="标签"
-										href="/tags">标签</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="关于"
-										href="/post/about">关于</a>
-								</li>
-								
-							</ul>
-						</div>
-
-						<div class="item d-md-inline-block d-none">
-							<div class="search-icon">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</div>
-						</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
 
-
-						<div class="d-md-inline-block d-none">
-							<div class="search-lightbox">
-								<div class="search-body">
-
-									<form id="gridea-search-form" data-update="1614673585164" action="/search/" class="search-form">
-										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
-										<button type="submit" class="submit" aria-label="Submit">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</button>
-									</form>
-
-								</div>
-							</div>
-						</div>
-
-						<div class="nav d-md-none d-inline-block">
-							<div class="trigger">
-								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
-		</div>
-	</div>
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://Egg12138.github.io">Gridea</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://https://github.com/Egg12138" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-</div>
-    <div class="layout-collapse d-md-none">
-	<div class="layout-collapse-main">
-		<ul class="layout-collapse-list">
-			
-			<li class="layout-collapse-item"><a title="首页" href="https://https://github.com/Egg12138">首页</a></li>
-			
-			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
-			
-			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
-			
-			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
-			
-
-		</ul>
-	</div>
-</div>
-
-    <div class="layout-content">
-      <div class="layout-content-main">
-        <div class="container">
-          <div class="row justify-content-lg-center">
-            <div class="col-12 col-lg-9">
-              <div class="layout-post">
-                <div class="layout-post-body">
-                  <div class="row">
-
-                    <div class="col-12 col-lg-10">
-                      <div class="layout-post-main m-right m-md-right">
-                        <div class="layout-post-header">
-                          <h1 class="layout-post-title">计算机组成原理||一篇选择性精要（坑，暑假填）</h1>
-                          <div class="layout-post-meta">
-                            <div class="item">
-                              
-                            </div>
-                            <div class="item">
-                              <span>2021-02-27</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="layout-post-content">
-                          <div class="layout-post-item">
-                            
-                            <h2 id="基于冯诺依曼机的计算机">基于冯诺依曼机的计算机</h2>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>计算机组成原理||一篇选择性精要（坑，暑假填）</h1>
+            <p class="article-meta">
+              2021-02-27
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="基于冯诺依曼机的计算机">基于冯诺依曼机的计算机</h2>
 <blockquote>
 <pre><code>  因为难度有点大，东西有点多，所以我只是略学一个大概
 </code></pre>
@@ -171,175 +116,362 @@
 </ul>
 <h3 id="性能测试">性能测试</h3>
 
-                          </div>
-                        </div>
-                        <div class="layout-post-social">
-                          <div class="item reader">
-                            <div id="/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/" class="leancloud-visitors view"
-                              data-flag-title="计算机组成原理||一篇选择性精要（坑，暑假填）">
-                              <span class="post-meta-item-text">阅读 </span>
-                              <span class="leancloud-visitors-count"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="layout-post-navigation">
-                          <div class="navigation-list">
-                            
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-12">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/" class="title">
-                                      <h4>汇编python相关</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner">
-                                    <div class="abstract">
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>上一篇</span></div>
-                                  <div class="item">2021-02-27</div>
-                                </div>
-                              </div>
-                              
-                            </div>
-
-                            <div class="post-card row">
-                              
-                              <div class="card-content col-12">
-                                <div class="card-body">
-                                  <div class="header">
-                                    <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/" class="title">
-                                      <h4>计算机组成原理||一篇选择性精要</h4>
-                                    </a>
-                                  </div>
-                                  <div class="inner">
-                                    <div class="abstract">
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="card-footer">
-                                  <div class="item"><span>下一篇</span></div>
-                                  <div class="item">2021-02-27</div>
-                                </div>
-                              </div>
-                              
-                            </div>
-
-                            
-                          </div>
-                        </div>
-
-                        <div class="layout-comments"></div>
-                        
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-lg-2 d-none d-lg-block">
-                      <div class="layout-post-sidebar">
-                        <div class="layout-sidebar-item">
-                          <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%9F%BA%E4%BA%8E%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9C%BA%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA">基于冯诺依曼机的计算机</a>
-<ul>
-<li><a href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84">层次结构</a></li>
-<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E8%AF%84%E4%BB%B7">计算机系统性能评价</a></li>
-<li><a href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">性能测试</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">
+                <h3 class="post-title">
+                  计算机组成原理||一篇选择性精要
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://Egg12138.github.io/images/avatar.png?v=1614673909822" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/regular-expression/">Regular Expression</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">汇编python相关</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">计算机组成原理||一篇选择性精要（坑，暑假填）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">计算机组成原理||一篇选择性精要</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/">Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/operating-systemor-compiler/">Operating System|| Interpreter, Parser, Lexer and Compiler</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/">Parity-Time-symmetric与WPT</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/">系统搭建记录</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">一些英语注释用的词，组，句</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">C语法基础表达和语句|常新常复习</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://Egg12138.github.io/tag/gai-lu-lun/" class="badge ">
+          概率论
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/wu-chai-fen-xi/" class="badge secondary">
+          误差分析
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="badge secondary">
+          总结类
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge warning">
+          学习
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/wu-li/" class="badge secondary">
+          物理
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/you-hua/" class="badge warning">
+          优化
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="badge secondary">
+          转述
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge warning">
+          记录
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/cs/" class="badge secondary">
+          CS
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/" class="badge success">
+          操作系统
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/linux/" class="badge secondary">
+          linux
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/unix/" class="badge secondary">
+          unix
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/windows/" class="badge secondary">
+          windows
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/python/" class="badge success">
+          python
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/shi-jian/" class="badge secondary">
+          实践
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/wai-yu/" class="badge warning">
+          外语
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/c/" class="badge secondary">
+          c
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/shu-ju-jie-gou/" class="badge ">
+          数据结构
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/zhuo-you/" class="badge ">
+          桌游
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/diy/" class="badge warning">
+          DIY
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/cpp/" class="badge secondary">
+          cpp
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/bian-lun/" class="badge warning">
+          辩论
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/zhai/" class="badge secondary">
+          摘
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/li-xue/" class="badge success">
+          力学
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/zhuan-dong-guan-liang/" class="badge warning">
+          转动惯量
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/liang-gang/" class="badge warning">
+          量纲
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/ban-ding-liang/" class="badge warning">
+          半定量
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/suan-fa/" class="badge success">
+          算法
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/ha-xi-zi-dian/" class="badge warning">
+          哈希字典
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/shu-he/" class="badge secondary">
+          数和
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/jia-mou/" class="badge secondary">
+          加缪
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/wen-xue/" class="badge ">
+          文学
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/ren-xing/" class="badge secondary">
+          人性
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/fan-si/" class="badge ">
+          反思
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/gao-xiao/" class="badge success">
+          高校
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/she-hui-guan-xi/" class="badge ">
+          社会关系
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/ce-shi-wen-zhang/" class="badge secondary">
+          测试文章
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/sci/" class="badge secondary">
+          SCI
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/hu-shuo-ba-dao-xi-lie/" class="badge warning">
+          胡说八道系列
+        </a>
+      
+        <a href="https://Egg12138.github.io/tag/YtlzZo6yJ/" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
     </div>
 
-    <div class="layout-totop d-none"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    	<div class="layout-footer">
+<script type="application/javascript">
 
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-					<div class="footer">
-						<div class="row">
-							<div class="col-12 col-md-9">
-								<div class="footer-copy">
-									
-									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-									<div class="footer-icp d-none d-sm-inline-block">
-										<span class="px-2">⋅</span>
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3 d-none d-md-block">
-								<div class="footer-links">
-									
-									
-									
-									
-									<span class="footer-links-item">
-										<a href="Egg12138" target="_blank">
-											<i class="fa fa-github" aria-hidden="true"></i>
-										</a>
-									</span>
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									<span class="footer-links-item">
-										<a href="491061236" target="_blank">
-											<i class="fa fa-qq" aria-hidden="true"></i>
-										</a>
-									</span>
-									
-									
-									
-									
-									
-									<span class="footer-links-item">
-										<a href="Ayden_egg" target="_blank">
-											<i class="fa fa-weixin" aria-hidden="true"></i>
-										</a>
-									</span>
-									
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+AOS.init();
 
-	</div>
+hljs.initHighlightingOnLoad()
 
-	<script type="text/javascript" src='https://Egg12138.github.io/media/scripts/main.js'></script>
-	
+</script>
 
-  </div>
-</body>
 
+
+
+  </body>
 </html>

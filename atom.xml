@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Egg12138.github.io</id>
     <title>Gridea</title>
-    <updated>2021-03-01T17:04:19.049Z</updated>
+    <updated>2021-03-02T07:07:59.306Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Egg12138.github.io"/>
     <link rel="self" href="https://Egg12138.github.io/atom.xml"/>
@@ -693,7 +693,7 @@ return to the beginning of the loop,一般略去定冠词:return to beginning of
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[C语法基础表达和语句|]]></title>
+        <title type="html"><![CDATA[C语法基础表达和语句|常新常复习]]></title>
         <id>https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/</id>
         <link href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">
         </link>

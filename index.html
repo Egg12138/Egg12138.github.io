@@ -1,845 +1,420 @@
-<!DOCTYPE html>
+
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Gridea</title>
-<meta name="description" content="温故而知新  &amp;&amp; Practice makes perfect">
+<meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614678922480">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614915376501">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://Egg12138.github.io">Gridea</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="https://https://github.com/Egg12138" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1614915376501" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
   </div>
-</nav>
+</div>
 
-
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/regular-expression/">Regular Expression</a>
-    </h2>
-    <p class="article-meta">
-      2021-03-02
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/regular-expression/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">汇编python相关</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-27
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">计算机组成原理||一篇选择性精要（坑，暑假填）</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-27
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">计算机组成原理||一篇选择性精要</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-27
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/">Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-25
-      
-        <a href="https://Egg12138.github.io/tag/gai-lu-lun/" class="badge success">
-          概率论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-chai-fen-xi/" class="badge secondary">
-          误差分析
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="badge secondary">
-          总结类
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge ">
-          学习
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-li/" class="badge warning">
-          物理
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/you-hua/" class="badge secondary">
-          优化
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="badge warning">
-          转述
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge secondary">
-          记录
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/operating-systemor-compiler/">Operating System|| Interpreter, Parser, Lexer and Compiler</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-24
-      
-        <a href="https://Egg12138.github.io/tag/cs/" class="badge success">
-          CS
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/" class="badge ">
-          操作系统
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/linux/" class="badge secondary">
-          linux
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/unix/" class="badge secondary">
-          unix
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/windows/" class="badge ">
-          windows
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/python/" class="badge secondary">
-          python
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="badge warning">
-          转述
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge secondary">
-          记录
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/operating-systemor-compiler/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/">Parity-Time-symmetric与WPT</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-12
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/">系统搭建记录</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-12
-      
-        <a href="https://Egg12138.github.io/tag/linux/" class="badge secondary">
-          linux
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/unix/" class="badge success">
-          unix
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/windows/" class="badge secondary">
-          windows
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge secondary">
-          学习
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shi-jian/" class="badge secondary">
-          实践
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge secondary">
-          记录
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">一些英语注释用的词，组，句</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-06
-      
-        <a href="https://Egg12138.github.io/tag/wai-yu/" class="badge warning">
-          外语
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="badge ">
-          总结类
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge secondary">
-          记录
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">C语法基础表达和语句|常新常复习</a>
-    </h2>
-    <p class="article-meta">
-      2021-02-06
-      
-        <a href="https://Egg12138.github.io/tag/c/" class="badge warning">
-          c
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge secondary">
-          学习
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge ">
-          记录
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E9%9B%B6%E6%95%A3%E8%AE%B0%E5%BD%95%E5%B0%8F%E4%B8%BB%E9%A2%98">零散记录小主题</a>
-<ul>
-<li><a href="#%E5%AF%B9%E9%BD%90%E5%AE%BD%E5%BA%A6">对齐宽度</a></li>
-<li><a href="#%E6%88%AA%E6%96%ADtruncation">截断truncation</a></li>
-<li><a href="#%E7%81%B5%E6%B4%BB%E4%B9%8B%E5%A4%84">灵活之处</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</p>
-<h3 id="零散记录小主题">零散记录小主题</h3>
-<p>data object</p>
-<p>lvalue, a label, some are modifiable, some are not.<br>
-modifiable left-value = object locator value. C11suggested.<br>
-rvalue, a real obj in the memories</p>
-<p>C标准const限定：</p>
-<blockquote>
-<pre><code>         关键字const对变量的类型加以限定，使它的值不能被改变。
-          const对象一旦创建后其值就不能再改变，所以const对象必须初始化，如下：
-  const int i = get_size();  //正确，在运行时初始化
-  const int j = 42;  //正确，在编译时初始化
-  const int k;  //不正确，k是一个未经初始化的常量
-</code></pre>
-</blockquote>
-<p>运算，操作的对象oper-and,operand称为项，<br>
-可以多重赋值:<br>
-int j, t, c;<br>
-c=t=j=68;  OK,赋值顺序是68--&gt;j,t,c右至左<br>
-left-value = operate(l-value0,l-value1,...,l-valueN) ,operate(...)整体依然是个r-value;</p>
-<h4 id="对齐宽度">对齐宽度</h4>
-<p>abc<br>
-1 对齐到C，宽度应该市%3而不是%2<br>
-1       $xx此处'&amp;'显然作为字符，1，2，3，4可以为循环体中的算子，%4d ---count是可以的，<br>
-2       $xx<br>
-3       $xx<br>
-4       $xx</p>
-<h4 id="截断truncation">截断truncation</h4>
-<pre><code>int:5/4 =&gt; 1; 6/3 = &gt; 2, 7/4 =&gt; 1;
-float: 7./4 值上= 7./4. =&gt; 1.75(%.2f)
-%d \n&quot;,7./4.);报错
-%d\n&quot;,7./4);则不报错
-</code></pre>
-<h4 id="灵活之处">灵活之处</h4>
-<p>相比python，C语法更灵活，感觉很棒~</p>
-<ul>
-<li>递增运算符<br>
-<code>while (++shoe &lt; 42)，</code><br>
-<code>&lt;=&gt; while (shoe &lt; 42) {........++shoe}</code>//根据下面的，这里判断的是递增后的shoe是否&lt; 42，即鞋码41为最后一个判断。 shoe++ &lt; 42则shoe达到42码时为最后一次循环。</li>
-</ul>
- <center> >       即，shoe++会让shoe在与42比较之后再+1  </center>
-        **递增、比较与使用的顺序**
-        while shoe++ < 45
-            printf(shoe)
-        ** 此时先比较，(值优先)，再递增==>did第一个完整语句，再传递给printf**
-        while shoe < 45
-        shoe++
-        printf...
-<pre><code>    post_incresment
-    ``a_post = a++: a_post = previous a and a += 1``,可以保留旧a，有时候返回旧a挺有用的。
-    ``pre_b = ++b: pre_b = new_b =b =previous b +1``
-    pre_incresment;
-</code></pre>
-<p>decrement operator同理</p>
-<ul>
-<li>for语句灵活<br>
-for的initialize不一定是赋值语句<br>
-for (printf(&quot;xxxx&quot;);test;update)   <strong>update一定是在循环体执行完之后才进行的</strong><br>
-<code>for (printf(&quot;A!\n&quot;);ch!='2';)</code><br>
-<code>scanf(&quot;%c&quot;,&amp;ch);</code><br>
-<code>printf(&quot;I like it!\n&quot;);</code><br>
-还可以写成：<br>
-<code>for (printf....;ch!=...;scanf(&quot;%c&quot;,&amp;ch))</code> printf(i like it!)<code></code> printf(Label)``<br>
-发现输出有问题:</li>
-</ul>
-<p>A!<br>
-Ilike it<br>
-[two figures]<br>
-I like it!<br>
-I like it!<br>
-[three figures]<br>
-I like it!<br>
-I like it<br>
-I like it<br>
-[fours figs: 1324]<br>
-则输出2个Ilikt it，然后输出Label，<br>
-可见，这里的sacnf会将输入转化成n个fig<br>
-发现bug，是忘了给循环体加入{}:<br>
-加入后：<br>
-A!<br>
-[sacnf   abcs]<br>
-I like it!<br>
-Current cn is:a I like it!<br>
-Current cn is:b I like it!<br>
-Current cn is:c I like it!<br>
-Current cn is:s I like it!<br>
-Current cn is:</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
-        </div>
         
-        <div class="row flex-edges">
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        
+        
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/gei-pei-zhi-c-bian-yi-huan-jing-de-tong-zhi-men/">
+        <h2 class="post-title">给配置c编译环境的同志们</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-03-05</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/regularexpressions-practice/">
+        <h2 class="post-title">RegularExpressions Practice</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-03-05</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/c-yi-xie-shao-jian-de-yi-chang/">
+        <h2 class="post-title">C一些少见的异常</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-03-03</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/regular-expression/">
+        <h2 class="post-title">Regular Expression</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-03-02</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">
+        <h2 class="post-title">汇编python相关</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-02-27</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Egg12138.github.io/tag/python/">
+                python
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/zong-jie-lei/">
+                总结类
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">
+        <h2 class="post-title">计算机组成原理||一篇选择性精要（坑，暑假填）</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-02-27</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">
+        <h2 class="post-title">计算机组成原理||一篇选择性精要</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-02-27</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/">
+        <h2 class="post-title">Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-02-25</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Egg12138.github.io/tag/gai-lu-lun/">
+                概率论
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/wu-chai-fen-xi/">
+                误差分析
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/zong-jie-lei/">
+                总结类
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/xue-xi/">
+                学习
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/wu-li/">
+                物理
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/you-hua/">
+                优化
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/zhuan-shu/">
+                转述
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/ji-lu/">
+                记录
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/operating-systemor-compiler/">
+        <h2 class="post-title">Operating System|| Interpreter, Parser, Lexer and Compiler</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-02-24</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Egg12138.github.io/tag/cs/">
+                CS
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/">
+                操作系统
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/linux/">
+                linux
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/unix/">
+                unix
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/windows/">
+                windows
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/python/">
+                python
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/zhuan-shu/">
+                转述
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Egg12138.github.io/tag/ji-lu/">
+                记录
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/">
+        <h2 class="post-title">Parity-Time-symmetric与WPT</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2021-02-12</span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+
+<div class="pagination-container">
   
   
-    <a href="https://Egg12138.github.io/page/2" class="paper-btn">
-      下一页
-    </a>
+    <a href="https://Egg12138.github.io/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
   
 </div>
+
 
       </div>
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
       
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://Egg12138.github.io/images/avatar.png?v=1614678922480" class="no-responsive avatar">
-    <div class="text-muted">温故而知新  && Practice makes perfect</div>
-    <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
-      
-        
-      
-    </div>
+    
   </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/regular-expression/">Regular Expression</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">汇编python相关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">计算机组成原理||一篇选择性精要（坑，暑假填）</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">计算机组成原理||一篇选择性精要</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/">Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/operating-systemor-compiler/">Operating System|| Interpreter, Parser, Lexer and Compiler</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/">Parity-Time-symmetric与WPT</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/">系统搭建记录</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">一些英语注释用的词，组，句</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">C语法基础表达和语句|常新常复习</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://Egg12138.github.io/tag/gai-lu-lun/" class="badge ">
-          概率论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-chai-fen-xi/" class="badge warning">
-          误差分析
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="badge warning">
-          总结类
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge ">
-          学习
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-li/" class="badge warning">
-          物理
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/you-hua/" class="badge secondary">
-          优化
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="badge ">
-          转述
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge warning">
-          记录
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cs/" class="badge ">
-          CS
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/" class="badge secondary">
-          操作系统
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/linux/" class="badge ">
-          linux
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/unix/" class="badge ">
-          unix
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/windows/" class="badge secondary">
-          windows
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/python/" class="badge success">
-          python
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shi-jian/" class="badge success">
-          实践
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wai-yu/" class="badge success">
-          外语
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/c/" class="badge success">
-          c
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shu-ju-jie-gou/" class="badge ">
-          数据结构
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuo-you/" class="badge success">
-          桌游
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/diy/" class="badge secondary">
-          DIY
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cpp/" class="badge ">
-          cpp
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/bian-lun/" class="badge ">
-          辩论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhai/" class="badge ">
-          摘
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/li-xue/" class="badge secondary">
-          力学
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-dong-guan-liang/" class="badge success">
-          转动惯量
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/liang-gang/" class="badge secondary">
-          量纲
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ban-ding-liang/" class="badge success">
-          半定量
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/suan-fa/" class="badge secondary">
-          算法
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ha-xi-zi-dian/" class="badge warning">
-          哈希字典
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shu-he/" class="badge success">
-          数和
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/jia-mou/" class="badge warning">
-          加缪
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wen-xue/" class="badge success">
-          文学
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ren-xing/" class="badge success">
-          人性
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/fan-si/" class="badge warning">
-          反思
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/gao-xiao/" class="badge secondary">
-          高校
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/she-hui-guan-xi/" class="badge ">
-          社会关系
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ce-shi-wen-zhang/" class="badge warning">
-          测试文章
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/sci/" class="badge secondary">
-          SCI
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/hu-shuo-ba-dao-xi-lie/" class="badge secondary">
-          胡说八道系列
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/YtlzZo6yJ/" class="badge success">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
+
     </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
+    <script type="application/javascript">
 
 hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 

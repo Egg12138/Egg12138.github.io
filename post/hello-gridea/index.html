@@ -1,100 +1,105 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Hello Gridea | Gridea</title>
-<meta name="description" content="温故而知新  &amp;&amp; Practice makes perfect">
+<meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614678922480">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614915376501">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://Egg12138.github.io">Gridea</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="https://https://github.com/Egg12138" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1614915376501" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>Hello Gridea</h1>
-            <p class="article-meta">
-              2018-12-12
-              
-                <a href="https://Egg12138.github.io/tag/YtlzZo6yJ/" class="badge warning">
-                  Gridea
-                </a>
-              
-            </p>
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://Egg12138.github.io/post-images/hello-gridea.png')">
+            </div>
+          
+          <h2 class="post-title">Hello Gridea</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-12-12</span>
             
-              <img src="https://Egg12138.github.io/post-images/hello-gridea.png" alt="Hello Gridea">
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Egg12138.github.io/tag/YtlzZo6yJ/">
+                    Gridea
+                    
+                  </a>
+                
+              </span>
             
-            <div class="post-content">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 <!-- more -->
 <p><a href="https://github.com/getgridea/gridea">Github</a><br>
@@ -116,346 +121,44 @@
 <p>尽情发挥你的才华吧！</p>
 <p>😘 Enjoy~</p>
 
-            </div>
-          </article>
+          </div>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-        </div>
+
         
       </div>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://Egg12138.github.io/images/avatar.png?v=1614678922480" class="no-responsive avatar">
-    <div class="text-muted">温故而知新  && Practice makes perfect</div>
-    <div class="social-container">
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
+    
   </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/regular-expression/">Regular Expression</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">汇编python相关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">计算机组成原理||一篇选择性精要（坑，暑假填）</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">计算机组成原理||一篇选择性精要</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/">Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/operating-systemor-compiler/">Operating System|| Interpreter, Parser, Lexer and Compiler</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/">Parity-Time-symmetric与WPT</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/">系统搭建记录</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">一些英语注释用的词，组，句</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">C语法基础表达和语句|常新常复习</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://Egg12138.github.io/tag/gai-lu-lun/" class="badge ">
-          概率论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-chai-fen-xi/" class="badge success">
-          误差分析
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="badge warning">
-          总结类
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge ">
-          学习
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-li/" class="badge success">
-          物理
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/you-hua/" class="badge secondary">
-          优化
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="badge ">
-          转述
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge success">
-          记录
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cs/" class="badge ">
-          CS
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/" class="badge success">
-          操作系统
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/linux/" class="badge success">
-          linux
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/unix/" class="badge ">
-          unix
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/windows/" class="badge warning">
-          windows
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/python/" class="badge success">
-          python
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shi-jian/" class="badge ">
-          实践
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wai-yu/" class="badge secondary">
-          外语
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/c/" class="badge success">
-          c
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shu-ju-jie-gou/" class="badge secondary">
-          数据结构
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuo-you/" class="badge secondary">
-          桌游
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/diy/" class="badge warning">
-          DIY
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cpp/" class="badge success">
-          cpp
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/bian-lun/" class="badge ">
-          辩论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhai/" class="badge secondary">
-          摘
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/li-xue/" class="badge secondary">
-          力学
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-dong-guan-liang/" class="badge secondary">
-          转动惯量
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/liang-gang/" class="badge secondary">
-          量纲
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ban-ding-liang/" class="badge secondary">
-          半定量
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/suan-fa/" class="badge warning">
-          算法
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ha-xi-zi-dian/" class="badge ">
-          哈希字典
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shu-he/" class="badge secondary">
-          数和
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/jia-mou/" class="badge ">
-          加缪
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wen-xue/" class="badge ">
-          文学
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ren-xing/" class="badge warning">
-          人性
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/fan-si/" class="badge ">
-          反思
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/gao-xiao/" class="badge warning">
-          高校
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/she-hui-guan-xi/" class="badge warning">
-          社会关系
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ce-shi-wen-zhang/" class="badge ">
-          测试文章
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/sci/" class="badge ">
-          SCI
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/hu-shuo-ba-dao-xi-lie/" class="badge success">
-          胡说八道系列
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/YtlzZo6yJ/" class="badge success">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 
     </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
+    <script type="application/javascript">
 
 hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 

@@ -1,109 +1,128 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>汇编python相关 | Gridea</title>
-<meta name="description" content="温故而知新  &amp;&amp; Practice makes perfect">
+<meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614678922480">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614915376501">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://Egg12138.github.io">Gridea</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="https://https://github.com/Egg12138" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1614915376501" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>汇编python相关</h1>
-            <p class="article-meta">
-              2021-02-27
-              
-            </p>
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">汇编python相关</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-02-27</span>
             
-            <div class="post-content">
-              <p>CONTENTs<br>
-<ul class="markdownIt-TOC">
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Egg12138.github.io/tag/python/">
+                    python
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Egg12138.github.io/tag/zong-jie-lei/">
+                    总结类
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p><ul class="markdownIt-TOC">
 <li>
 <ul>
 <li>
 <ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E4%B9%A6">基础书</a>
+<ul>
+<li><a href="#%E8%9F%92%E8%9B%87%E9%A3%9E%E6%9C%BA%E5%B0%81%E9%9D%A2%E7%9A%84%E9%82%A3%E6%9C%AC">蟒蛇飞机封面的那本。</a></li>
+</ul>
+</li>
 <li><a href="#%E5%BA%93%E8%B5%84%E6%96%99">库资料</a>
 <ul>
 <li><a href="#python-standard-library">Python Standard Library</a></li>
 <li><a href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%93matplotlib">可视化的经典库matplotlib</a></li>
 <li><a href="#numpy">Numpy</a></li>
 <li><a href="#pandas">pandas</a></li>
-<li><a href="#tensorflow">tensorflow</a></li>
-<li><a href="#%E7%88%AC">爬</a></li>
-<li><a href="#scipy">scipy</a></li>
-<li></li>
+<li><a href="#astropy%E5%A4%A9%E6%96%87">astropy天文</a></li>
+<li><a href="#scipy%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97">scipy科学计算</a></li>
+<li><a href="#py%E4%B8%AD%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7">py中输入数学符号</a></li>
+<li><a href="#%E9%AB%98%E6%80%A7%E8%83%BD">高性能</a></li>
 </ul>
 </li>
 <li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
@@ -122,7 +141,7 @@
 <li><a href="#%E5%81%8F%E5%BA%95%E5%B1%82%E8%B7%9Fpy%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E5%85%B3%E7%B3%BB">偏底层（跟py有一点点关系）</a>
 <ul>
 <li><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a></li>
-<li><a href="#%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">组成原理</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%B4%A8%E9%87%8F%E6%8F%90%E9%AB%98">程序的质量提高</a></li>
 </ul>
 </li>
 </ul>
@@ -130,39 +149,47 @@
 </ul>
 </li>
 </ul>
-</p>
+<br>
+<q>临时整理一点。 希望各位也能补充一点进来</q></p>
 <blockquote>          <br />
-因为个人兴趣问题，matplotlib,numpy还有数据分析这些我不是很想搞，<br />但是这些又是py的很有特点的第三方库，所以我放一点官方的资源。 <br />在这些方面，大家应该是把py定位在一个“应用软件”的层次，所以，看看文档也基本都会了的。<br/></blockquote>
+因为个人兴趣问题，matplotlib,numpy还有数据分析这些我不搞，<br />但是这些又是py的很有特点的第三方库，所以我放一点官方的资源。 <br />在这些方面，大家应该是把py定位在一个“应用软件”的层次，所以，看看文档也基本都会了的。<br/></blockquote>
 <blockquote>        <br />
 我分享的多数都是我用过之中，感觉还可以的资料。当然我是没有什么能力去鉴别一份资料的好坏的，所以以下对资料的评价都是基于个人经验而非严谨分析。希望大家能给这份单子添加一些更优质资源。
 </blockquote>
-### 基础资料
-#### 蟒蛇飞机封面的那本。。。
+<h3 id="基础书">基础书</h3>
+<h4 id="蟒蛇飞机封面的那本">蟒蛇飞机封面的那本。</h4>
+<p>语言直白，不太讲底层，适合0基础的。</p>
 <h3 id="库资料">库资料</h3>
-<p>(没有放链接的都是官网文档最好)</p>
+<p>这些库的网站的url一般都是.org，因为这些库多数是不准备搞商业用途的py社区爱好者建的</p>
 <h4 id="python-standard-library">Python Standard Library</h4>
 <p><a href="https://www.python.org/">Python Document才是坠吼的</a></p>
 <p>可以关注一下PEP8，官网搜索就有</p>
 <blockquote>
-<pre><code>       我不懂这个library怎么翻译...
+<pre><code>       我不懂这个library怎么翻译...好像是“库”吧
 </code></pre>
 </blockquote>
-<p><a href="https://pymotw.com/3/index.html">Py3 Module of the week</a>这个比较赞，每周学习一个标准库的用法</p>
+<p><a href="https://pymotw.com/3/index.html">Py3 Module of the week</a>这个比较赞，每周学习一个标准库的用法， 一阵子不重新写就会忘……</p>
 <h4 id="可视化的经典库matplotlib">可视化的经典库matplotlib</h4>
-<p>其实，省事点直接上matlab就行了。不过用python写自由度会更高一点。</p>
+<p><a href="https://matplotlib.org/">py可视化界无人不知</a><br>
+其实，省事点直接上matlab就行了。不过用python写自由度会更高一点。</p>
 <h4 id="numpy">Numpy</h4>
 <pre><code>* 中文文档
 * 官网
 </code></pre>
 <h4 id="pandas">pandas</h4>
-<h4 id="tensorflow">tensorflow</h4>
-<p>不了解。现在机器学习这么火了吗？</p>
-<h4 id="爬">爬</h4>
-<p>这个以后放。</p>
-<h4 id="scipy">scipy</h4>
-<p>这玩意儿还是蛮强的。</p>
-<h4 id=""></h4>
-<p>官网提供很多例子，</p>
+<p><a href="https://pandas.pydata.org/">官网</a></p>
+<h4 id="astropy天文">astropy天文</h4>
+<p><a href="https://www.astropy.org/">官网也是提供example gallery</a></p>
+<h4 id="scipy科学计算">scipy科学计算</h4>
+<p><a href="httlps://scipy.org">这玩意儿蛮强的。</a></p>
+<h4 id="py中输入数学符号">py中输入数学符号</h4>
+<p><a href="sympy.org">sympy</a><br>
+这个库有点不一样，它能对&quot;&quot;&quot;被引文本也作一点操作，支持 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord text"><span class="mord textrm sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord text"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span><br>
+而且它的效果不是直接显示的，需要引用适当的类和定义函数。可以在sympy.org查看详情，它有提供在线运行。<br>
+官网提供很多例子，</p>
+<h4 id="高性能">高性能</h4>
+<p>Cpython是多数python的一个解释器。AMDcpu+windows系统+python语言缺陷 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> 极其缓慢的速度。。。<br>
+Pypy速度比cpython快很多。以前看过测试，有2-4倍速。最近我也准备换这个解释器了。</p>
 <h3 id="数据结构">数据结构</h3>
 <h4 id="入门">入门</h4>
 <p><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">Data Structure Visualizations</a></p>
@@ -172,7 +199,7 @@
 <h4 id="教材-2">教材</h4>
 <p>《数据结构与算法(Python和C++语言描述）》，不是说此书很好，只是我当时被卖家广告砸中了。又恰好描述语言比较合我意（狗头）<br>
 但可读性还是很强的，很易读的一本书。<br>
-《算法导论》图书馆看到的……</p>
+《算法导论》图书馆看到的……没翻过</p>
 <h4 id="算法题">算法题</h4>
 <p>[Acwing]<br>
 [Leetcode]</p>
@@ -187,365 +214,67 @@
 </code></pre>
 </blockquote>
 <ul>
-<li>乱推荐《编码》（我没看过，以前知乎上面看到的推荐书）</li>
-<li>《鸟哥的Linux私房菜》此书有泛谈一些这方面的内容，图书馆常年不在架上……</li>
-<li>深入理解计算机系统， 深入浅出</li>
+<li>《鸟哥的Linux私房菜》此书有泛谈一些这方面的内容，图书馆纸书常年不在架上……</li>
+<li>深入理解计算机系统， 深入浅出。</li>
 <li>Operating system: Three easy pieces...一点都不easy...，比”深入“更”深入“，我被骗了，但是大概翻了一下，讲得很好，纸质很不错，印刷清晰，准备还图书馆了……</li>
 </ul>
-<h4 id="组成原理">组成原理</h4>
-<blockquote></blockquote>
+<h4 id="程序的质量提高">程序的质量提高</h4>
+<p>《高质量程序设计》by林锐</p>
+<p><em>C traps and pitfalls</em><br>
+中文版为《C陷阱与缺陷》</p>
+<p>python,  PEP</p>
+<p>笨方法学python3进阶版， 这个书的入门版没看过。 进阶版很多地方没有讲清楚————但是里面的ex很多是让py和命令行融合。而且主要是用py实现比较多的底层的数据结构。 用的库也不多。<br>
+<em>python cookbook</em><br>
+讲的东西很多，不是工具书，更强是类似 * c traps and pitfalls*那种<s>长者</s>dalao给读者分享一些知识。<br>
+书是好书……一段时间不写，blog不记，就都会忘了。<br>
+不推荐将py用作物理计算的同学用。</p>
 
-            </div>
-          </article>
+          </div>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">
-                <h3 class="post-title">
-                  计算机组成原理||一篇选择性精要（坑，暑假填）
-                </h3>
-              </a>
-            </div>
-          
-        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">
+              <h3 class="post-title">
+                下一篇：计算机组成原理||一篇选择性精要（坑，暑假填）
+              </h3>
+            </a>
+          </div>
+          
       </div>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://Egg12138.github.io/images/avatar.png?v=1614678922480" class="no-responsive avatar">
-    <div class="text-muted">温故而知新  && Practice makes perfect</div>
-    <div class="social-container">
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
+    
   </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/regular-expression/">Regular Expression</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">汇编python相关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao-keng-shu-jia-tian/">计算机组成原理||一篇选择性精要（坑，暑假填）</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/ji-suan-ji-zu-cheng-yuan-li-oryi-pian-xuan-ze-xing-jing-yao/">计算机组成原理||一篇选择性精要</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/error-analysis-and-uncertainties-in-physical-measurementsor-some-questions/">Error Analysis &amp; Uncertainties in Physical Measurements|| Some questions</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/operating-systemor-compiler/">Operating System|| Interpreter, Parser, Lexer and Compiler</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/parity-time-symmetric-yu-wpt/">Parity-Time-symmetric与WPT</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/">系统搭建记录</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">一些英语注释用的词，组，句</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">C语法基础表达和语句|常新常复习</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://Egg12138.github.io/tag/gai-lu-lun/" class="badge secondary">
-          概率论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-chai-fen-xi/" class="badge secondary">
-          误差分析
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zong-jie-lei/" class="badge success">
-          总结类
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/xue-xi/" class="badge secondary">
-          学习
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wu-li/" class="badge success">
-          物理
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/you-hua/" class="badge success">
-          优化
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-shu/" class="badge success">
-          转述
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ji-lu/" class="badge ">
-          记录
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cs/" class="badge success">
-          CS
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cao-zuo-xi-tong/" class="badge secondary">
-          操作系统
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/linux/" class="badge success">
-          linux
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/unix/" class="badge ">
-          unix
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/windows/" class="badge secondary">
-          windows
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/python/" class="badge secondary">
-          python
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shi-jian/" class="badge success">
-          实践
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wai-yu/" class="badge secondary">
-          外语
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/c/" class="badge secondary">
-          c
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shu-ju-jie-gou/" class="badge warning">
-          数据结构
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuo-you/" class="badge warning">
-          桌游
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/diy/" class="badge success">
-          DIY
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/cpp/" class="badge secondary">
-          cpp
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/bian-lun/" class="badge secondary">
-          辩论
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhai/" class="badge secondary">
-          摘
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/li-xue/" class="badge ">
-          力学
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/zhuan-dong-guan-liang/" class="badge warning">
-          转动惯量
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/liang-gang/" class="badge secondary">
-          量纲
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ban-ding-liang/" class="badge success">
-          半定量
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/suan-fa/" class="badge secondary">
-          算法
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ha-xi-zi-dian/" class="badge success">
-          哈希字典
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/shu-he/" class="badge secondary">
-          数和
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/jia-mou/" class="badge secondary">
-          加缪
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/wen-xue/" class="badge success">
-          文学
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ren-xing/" class="badge secondary">
-          人性
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/fan-si/" class="badge warning">
-          反思
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/gao-xiao/" class="badge ">
-          高校
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/she-hui-guan-xi/" class="badge secondary">
-          社会关系
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/ce-shi-wen-zhang/" class="badge secondary">
-          测试文章
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/sci/" class="badge success">
-          SCI
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/hu-shuo-ba-dao-xi-lie/" class="badge success">
-          胡说八道系列
-        </a>
-      
-        <a href="https://Egg12138.github.io/tag/YtlzZo6yJ/" class="badge secondary">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 
     </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
+    <script type="application/javascript">
 
 hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 

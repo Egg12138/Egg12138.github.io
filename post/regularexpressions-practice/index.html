@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>RegularExpressions Practice | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614915376501">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1614915376501" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">RegularExpressions Practice</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-03-05</span>
+            
+          </div>
+          <div class="post-content">
+            <h3 id="作为文本匹配工具的练习">作为文本匹配工具的练习</h3>
+<h4 id="复习">复习，</h4>
+<p><a href="https://www.runoob.com/regexp/regexp-syntax.html">中文教程</a></p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>需要注意的</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>可以匹配0个</td>
+<td><code>bur*st</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> bust, burst, burrrrrrst</td>
+</tr>
+<tr>
+<td>+</td>
+<td>从语义上看很明显 ，必须是x+b，即x必须要匹配到，不能匹配0个</td>
+<td>-</td>
+</tr>
+<tr>
+<td>?</td>
+<td>0 / 1</td>
+<td><code>abcd?e</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> abce, abcde; 用来匹配一些AmE,BrE很有用：meter, metre就会被包含在在mete?re?的结果之中，e.g: <code>meter</code>,<code>metre</code>,<code>metter</code>,<code>mettre</code>,四个文本待匹配，输入mete?re?后结果就是meter and metre</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反转义不总会反转义</td>
+<td>在ubuntu18.04LTS(WSL)下测试，touch test\file与touch testfile都可以创建testfile文件</td>
+</tr>
+<tr>
+<td>|</td>
+<td>OR bool，很经典的写法</td>
+<td>----</td>
+</tr>
+<tr>
+<td>[],{}</td>
+<td>能匹配集内任一</td>
+<td>前面meter,metre,用这个易读易写，met[er][er],但是结果误差比较大。practise和practice就可以这样同时选出了<br/>元字符是可以组合使用的！所以字符集其实可以用来过滤掉某些内容</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>commands</th>
+<th>特性</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>.<br>
+[] |<br>
+^ $<br>
+()</p>
+<h4 id="practice-0-文件名匹配给定输出文本匹配">practice 0 文件名匹配,给定输出文本匹配</h4>
+<p><a href="https://c.runoob.com/front-end/854?optionGlobl=global">可以在菜鸟在线正则测试工具里面测试</a></p>
+<ul>
+<li>浏览当前路径下的文件列表</li>
+<li>在当前列表里面查找.txt文件</li>
+<li>在当前列表里面查找有关键字phy的文件   (如果没有，先用命令行预先创建几个)</li>
+<li>在<q>International donations are gratefully accepted, but we cannot make<br>
+outside the United States. U.S. laws alone swamp our small staff.</q>里面匹配所有的字符，（去除空格（\s，space）</li>
+</ul>
+<h4 id="practice-1文本内操作">practice 1文本内操作</h4>
+<p><a href="http://www.gutenberg.org/">在gutenberg计划里面下载免费的plain txt文件</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/c-yi-xie-shao-jian-de-yi-chang/">
+              <h3 class="post-title">
+                下一篇：C一些少见的异常
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

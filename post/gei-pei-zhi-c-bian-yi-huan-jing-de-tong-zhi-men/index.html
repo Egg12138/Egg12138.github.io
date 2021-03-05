@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>给配置c编译环境的同志们 | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1614915376501">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1614915376501" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">给配置c编译环境的同志们</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-03-05</span>
+            
+          </div>
+          <div class="post-content">
+            <p>以下位最简操作汇总，只罗列了我做过的：<br>
+<ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#wsl%E4%B8%8B%E7%9A%84linux%E7%94%A8gcc">WSL下的Linux用gcc:</a></li>
+<li><a href="#%E5%9C%A8windows%E4%B8%8Bpowershell%E4%B8%AD">在Windows下，Powershell中</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E6%89%8B%E6%84%9F%E6%9C%80%E5%A5%BD%E9%85%8D%E7%BD%AE%E5%A5%BD%E6%9C%80%E5%BF%AB%E7%9A%84%E6%96%B9%E5%BC%8F%E7%94%A8windows%E4%B8%8Bvscodeatom%E7%AD%89%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8">编辑手感最好，配置好最快的方式用windows下vscode，atom等文本编辑器</a>
+<ul>
+<li><a href="#%E7%BA%AF%E7%B2%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F">纯粹配置文件的方式</a></li>
+<li><a href="#code-runner">code runner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="wsl下的linux用gcc">WSL下的Linux用gcc:</h3>
+<p>在shell界面：<br>
+<code>sudo apt-get install gcc</code>等待安装<br>
+vim是自带的，<br>
+写代码和编译和运行<br>
+<code>vim filename.c</code><br>
+按[I]进入insert：<br>
+[Esc]--[:][wq]w保存，q保存更改后退出编辑界面<br>
+<code>gcc 刚刚的filename.c</code>这样会编译位a.out文件，肯定不太方便，所以：<br>
+输这个：<br>
+<code>gcc 刚刚的filename.c -o newname</code>  比如<code>gcc hw.c -o hw</code>就把刚刚写的名为hw.c的源代码编译输出成hw文件，存放在同一个目录下， 也可以放别的地方，所以这个newname,filename其实不仅仅指文件名，更应该路径。<br>
+编译成功就不会报错，失败会报错，然后继续vim filename.c去debug，<br>
+成功后运行：<br>
+如果在当前路径下：<code>./newname</code>即可运行<br>
+<img src="%22D:%5CImages%5CofLearn%5CWSL_Linux_ubuntu_compile_and_run.png%22" alt="截图" loading="lazy"></p>
+<h3 id="在windows下powershell中">在Windows下，Powershell中</h3>
+<p>其实一样用gcc等命令进行，<br>
+需要配置的是环境变量<br>
+MinGW-w64 zip 解压缩，找到<code>bin</code>文件夹的位置，这个是多数windows程序都要有的核心的文件夹，gcc也在此目录下，<br>
+配置正确环境变量（程序位置）之后，处在C盘某位置的cmd/powershell就可以访问到其他路径的命令gcc了。如果不配置这个也是可以运行的，比如gcc在D:\Shaw\gcc\g++.exe，那我再命令行输入D:\Shaw\gcc\g++.exe也可以运行gcc，但是这样太麻烦，而且不像是“命令”。<br>
+赋值\bin位置后，就到环境变量--Path--Edit--Add --[Paste]<br>
+之后再cmd下：<code>gcc -v</code>看一下能否正常。<br>
+结束</p>
+<p>这是我的一个已经有损的<code>&lt;stdio.h&gt;</code>下运行的情况，有gcc的warning，当然这些这些再配置好的vscode中都可以看到</p>
+<h3 id="编辑手感最好配置好最快的方式用windows下vscodeatom等文本编辑器">编辑手感最好，配置好最快的方式用windows下vscode，atom等文本编辑器</h3>
+<p>知乎上有比较全面的本土语言讲解，vscode官方也有提供更为丰富的讲解。<br>
+我再简化以下流程：</p>
+<h4 id="纯粹配置文件的方式">纯粹配置文件的方式</h4>
+<h4 id="code-runner">code runner</h4>
+<p>今天临时装上，</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/regularexpressions-practice/">
+              <h3 class="post-title">
+                下一篇：RegularExpressions Practice
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

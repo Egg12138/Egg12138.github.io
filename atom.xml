@@ -2,14 +2,172 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Egg12138.github.io</id>
     <title>Gridea</title>
-    <updated>2021-03-02T09:55:28.438Z</updated>
+    <updated>2021-03-05T03:36:22.393Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Egg12138.github.io"/>
     <link rel="self" href="https://Egg12138.github.io/atom.xml"/>
-    <subtitle>温故而知新  &amp;&amp; Practice makes perfect</subtitle>
+    <subtitle>&amp;&amp; Practice makes perfect</subtitle>
     <logo>https://Egg12138.github.io/images/avatar.png</logo>
     <icon>https://Egg12138.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[给配置c编译环境的同志们]]></title>
+        <id>https://Egg12138.github.io/post/gei-pei-zhi-c-bian-yi-huan-jing-de-tong-zhi-men/</id>
+        <link href="https://Egg12138.github.io/post/gei-pei-zhi-c-bian-yi-huan-jing-de-tong-zhi-men/">
+        </link>
+        <updated>2021-03-05T02:08:10.000Z</updated>
+        <content type="html"><![CDATA[<p>以下位最简操作汇总，只罗列了我做过的：<br>
+<ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#wsl%E4%B8%8B%E7%9A%84linux%E7%94%A8gcc">WSL下的Linux用gcc:</a></li>
+<li><a href="#%E5%9C%A8windows%E4%B8%8Bpowershell%E4%B8%AD">在Windows下，Powershell中</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E6%89%8B%E6%84%9F%E6%9C%80%E5%A5%BD%E9%85%8D%E7%BD%AE%E5%A5%BD%E6%9C%80%E5%BF%AB%E7%9A%84%E6%96%B9%E5%BC%8F%E7%94%A8windows%E4%B8%8Bvscodeatom%E7%AD%89%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8">编辑手感最好，配置好最快的方式用windows下vscode，atom等文本编辑器</a>
+<ul>
+<li><a href="#%E7%BA%AF%E7%B2%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F">纯粹配置文件的方式</a></li>
+<li><a href="#code-runner">code runner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="wsl下的linux用gcc">WSL下的Linux用gcc:</h3>
+<p>在shell界面：<br>
+<code>sudo apt-get install gcc</code>等待安装<br>
+vim是自带的，<br>
+写代码和编译和运行<br>
+<code>vim filename.c</code><br>
+按[I]进入insert：<br>
+[Esc]--[:][wq]w保存，q保存更改后退出编辑界面<br>
+<code>gcc 刚刚的filename.c</code>这样会编译位a.out文件，肯定不太方便，所以：<br>
+输这个：<br>
+<code>gcc 刚刚的filename.c -o newname</code>  比如<code>gcc hw.c -o hw</code>就把刚刚写的名为hw.c的源代码编译输出成hw文件，存放在同一个目录下， 也可以放别的地方，所以这个newname,filename其实不仅仅指文件名，更应该路径。<br>
+编译成功就不会报错，失败会报错，然后继续vim filename.c去debug，<br>
+成功后运行：<br>
+如果在当前路径下：<code>./newname</code>即可运行<br>
+<img src="%22D:%5CImages%5CofLearn%5CWSL_Linux_ubuntu_compile_and_run.png%22" alt="截图" loading="lazy"></p>
+<h3 id="在windows下powershell中">在Windows下，Powershell中</h3>
+<p>其实一样用gcc等命令进行，<br>
+需要配置的是环境变量<br>
+MinGW-w64 zip 解压缩，找到<code>bin</code>文件夹的位置，这个是多数windows程序都要有的核心的文件夹，gcc也在此目录下，<br>
+配置正确环境变量（程序位置）之后，处在C盘某位置的cmd/powershell就可以访问到其他路径的命令gcc了。如果不配置这个也是可以运行的，比如gcc在D:\Shaw\gcc\g++.exe，那我再命令行输入D:\Shaw\gcc\g++.exe也可以运行gcc，但是这样太麻烦，而且不像是“命令”。<br>
+赋值\bin位置后，就到环境变量--Path--Edit--Add --[Paste]<br>
+之后再cmd下：<code>gcc -v</code>看一下能否正常。<br>
+结束</p>
+<p>这是我的一个已经有损的<code>&lt;stdio.h&gt;</code>下运行的情况，有gcc的warning，当然这些这些再配置好的vscode中都可以看到</p>
+<h3 id="编辑手感最好配置好最快的方式用windows下vscodeatom等文本编辑器">编辑手感最好，配置好最快的方式用windows下vscode，atom等文本编辑器</h3>
+<p>知乎上有比较全面的本土语言讲解，vscode官方也有提供更为丰富的讲解。<br>
+我再简化以下流程：</p>
+<h4 id="纯粹配置文件的方式">纯粹配置文件的方式</h4>
+<h4 id="code-runner">code runner</h4>
+<p>今天临时装上，</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RegularExpressions Practice]]></title>
+        <id>https://Egg12138.github.io/post/regularexpressions-practice/</id>
+        <link href="https://Egg12138.github.io/post/regularexpressions-practice/">
+        </link>
+        <updated>2021-03-05T00:54:41.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="作为文本匹配工具的练习">作为文本匹配工具的练习</h3>
+<h4 id="复习">复习，</h4>
+<p><a href="https://www.runoob.com/regexp/regexp-syntax.html">中文教程</a></p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>需要注意的</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>可以匹配0个</td>
+<td><code>bur*st</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> bust, burst, burrrrrrst</td>
+</tr>
+<tr>
+<td>+</td>
+<td>从语义上看很明显 ，必须是x+b，即x必须要匹配到，不能匹配0个</td>
+<td>-</td>
+</tr>
+<tr>
+<td>?</td>
+<td>0 / 1</td>
+<td><code>abcd?e</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> abce, abcde; 用来匹配一些AmE,BrE很有用：meter, metre就会被包含在在mete?re?的结果之中，e.g: <code>meter</code>,<code>metre</code>,<code>metter</code>,<code>mettre</code>,四个文本待匹配，输入mete?re?后结果就是meter and metre</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反转义不总会反转义</td>
+<td>在ubuntu18.04LTS(WSL)下测试，touch test\file与touch testfile都可以创建testfile文件</td>
+</tr>
+<tr>
+<td>|</td>
+<td>OR bool，很经典的写法</td>
+<td>----</td>
+</tr>
+<tr>
+<td>[],{}</td>
+<td>能匹配集内任一</td>
+<td>前面meter,metre,用这个易读易写，met[er][er],但是结果误差比较大。practise和practice就可以这样同时选出了<br/>元字符是可以组合使用的！所以字符集其实可以用来过滤掉某些内容</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>commands</th>
+<th>特性</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>.<br>
+[] |<br>
+^ $<br>
+()</p>
+<h4 id="practice-0-文件名匹配给定输出文本匹配">practice 0 文件名匹配,给定输出文本匹配</h4>
+<p><a href="https://c.runoob.com/front-end/854?optionGlobl=global">可以在菜鸟在线正则测试工具里面测试</a></p>
+<ul>
+<li>浏览当前路径下的文件列表</li>
+<li>在当前列表里面查找.txt文件</li>
+<li>在当前列表里面查找有关键字phy的文件   (如果没有，先用命令行预先创建几个)</li>
+<li>在<q>International donations are gratefully accepted, but we cannot make<br>
+outside the United States. U.S. laws alone swamp our small staff.</q>里面匹配所有的字符，（去除空格（\s，space）</li>
+</ul>
+<h4 id="practice-1文本内操作">practice 1文本内操作</h4>
+<p><a href="http://www.gutenberg.org/">在gutenberg计划里面下载免费的plain txt文件</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C一些少见的异常]]></title>
+        <id>https://Egg12138.github.io/post/c-yi-xie-shao-jian-de-yi-chang/</id>
+        <link href="https://Egg12138.github.io/post/c-yi-xie-shao-jian-de-yi-chang/">
+        </link>
+        <updated>2021-03-03T06:21:33.000Z</updated>
+        <content type="html"><![CDATA[<p>在预处理了header file之后，仍然报错：<br>
+incompatible implicit declaration of built-in function 'printf'<br>
+那可能是文件损坏，或者没有匹配的位置；</p>
+<figure data-type="image" tabindex="1"><img src="https://Egg12138.github.io/post-images/1614752766884.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Regular Expression]]></title>
         <id>https://Egg12138.github.io/post/regular-expression/</id>
@@ -80,22 +238,26 @@ grep: ntuser.dat.LOG1: Permission denied</p>
         <link href="https://Egg12138.github.io/post/hui-bian-python-xiang-guan/">
         </link>
         <updated>2021-02-27T06:23:19.000Z</updated>
-        <content type="html"><![CDATA[<p>CONTENTs<br>
-<ul class="markdownIt-TOC">
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
 <li>
 <ul>
 <li>
 <ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E4%B9%A6">基础书</a>
+<ul>
+<li><a href="#%E8%9F%92%E8%9B%87%E9%A3%9E%E6%9C%BA%E5%B0%81%E9%9D%A2%E7%9A%84%E9%82%A3%E6%9C%AC">蟒蛇飞机封面的那本。</a></li>
+</ul>
+</li>
 <li><a href="#%E5%BA%93%E8%B5%84%E6%96%99">库资料</a>
 <ul>
 <li><a href="#python-standard-library">Python Standard Library</a></li>
 <li><a href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%93matplotlib">可视化的经典库matplotlib</a></li>
 <li><a href="#numpy">Numpy</a></li>
 <li><a href="#pandas">pandas</a></li>
-<li><a href="#tensorflow">tensorflow</a></li>
-<li><a href="#%E7%88%AC">爬</a></li>
-<li><a href="#scipy">scipy</a></li>
-<li></li>
+<li><a href="#astropy%E5%A4%A9%E6%96%87">astropy天文</a></li>
+<li><a href="#scipy%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97">scipy科学计算</a></li>
+<li><a href="#py%E4%B8%AD%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7">py中输入数学符号</a></li>
+<li><a href="#%E9%AB%98%E6%80%A7%E8%83%BD">高性能</a></li>
 </ul>
 </li>
 <li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
@@ -114,7 +276,7 @@ grep: ntuser.dat.LOG1: Permission denied</p>
 <li><a href="#%E5%81%8F%E5%BA%95%E5%B1%82%E8%B7%9Fpy%E6%9C%89%E4%B8%80%E7%82%B9%E7%82%B9%E5%85%B3%E7%B3%BB">偏底层（跟py有一点点关系）</a>
 <ul>
 <li><a href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a></li>
-<li><a href="#%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">组成原理</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%B4%A8%E9%87%8F%E6%8F%90%E9%AB%98">程序的质量提高</a></li>
 </ul>
 </li>
 </ul>
@@ -122,39 +284,47 @@ grep: ntuser.dat.LOG1: Permission denied</p>
 </ul>
 </li>
 </ul>
-</p>
+<br>
+<q>临时整理一点。 希望各位也能补充一点进来</q></p>
 <blockquote>          <br />
-因为个人兴趣问题，matplotlib,numpy还有数据分析这些我不是很想搞，<br />但是这些又是py的很有特点的第三方库，所以我放一点官方的资源。 <br />在这些方面，大家应该是把py定位在一个“应用软件”的层次，所以，看看文档也基本都会了的。<br/></blockquote>
+因为个人兴趣问题，matplotlib,numpy还有数据分析这些我不搞，<br />但是这些又是py的很有特点的第三方库，所以我放一点官方的资源。 <br />在这些方面，大家应该是把py定位在一个“应用软件”的层次，所以，看看文档也基本都会了的。<br/></blockquote>
 <blockquote>        <br />
 我分享的多数都是我用过之中，感觉还可以的资料。当然我是没有什么能力去鉴别一份资料的好坏的，所以以下对资料的评价都是基于个人经验而非严谨分析。希望大家能给这份单子添加一些更优质资源。
 </blockquote>
-### 基础资料
-#### 蟒蛇飞机封面的那本。。。
+<h3 id="基础书">基础书</h3>
+<h4 id="蟒蛇飞机封面的那本">蟒蛇飞机封面的那本。</h4>
+<p>语言直白，不太讲底层，适合0基础的。</p>
 <h3 id="库资料">库资料</h3>
-<p>(没有放链接的都是官网文档最好)</p>
+<p>这些库的网站的url一般都是.org，因为这些库多数是不准备搞商业用途的py社区爱好者建的</p>
 <h4 id="python-standard-library">Python Standard Library</h4>
 <p><a href="https://www.python.org/">Python Document才是坠吼的</a></p>
 <p>可以关注一下PEP8，官网搜索就有</p>
 <blockquote>
-<pre><code>       我不懂这个library怎么翻译...
+<pre><code>       我不懂这个library怎么翻译...好像是“库”吧
 </code></pre>
 </blockquote>
-<p><a href="https://pymotw.com/3/index.html">Py3 Module of the week</a>这个比较赞，每周学习一个标准库的用法</p>
+<p><a href="https://pymotw.com/3/index.html">Py3 Module of the week</a>这个比较赞，每周学习一个标准库的用法， 一阵子不重新写就会忘……</p>
 <h4 id="可视化的经典库matplotlib">可视化的经典库matplotlib</h4>
-<p>其实，省事点直接上matlab就行了。不过用python写自由度会更高一点。</p>
+<p><a href="https://matplotlib.org/">py可视化界无人不知</a><br>
+其实，省事点直接上matlab就行了。不过用python写自由度会更高一点。</p>
 <h4 id="numpy">Numpy</h4>
 <pre><code>* 中文文档
 * 官网
 </code></pre>
 <h4 id="pandas">pandas</h4>
-<h4 id="tensorflow">tensorflow</h4>
-<p>不了解。现在机器学习这么火了吗？</p>
-<h4 id="爬">爬</h4>
-<p>这个以后放。</p>
-<h4 id="scipy">scipy</h4>
-<p>这玩意儿还是蛮强的。</p>
-<h4 id=""></h4>
-<p>官网提供很多例子，</p>
+<p><a href="https://pandas.pydata.org/">官网</a></p>
+<h4 id="astropy天文">astropy天文</h4>
+<p><a href="https://www.astropy.org/">官网也是提供example gallery</a></p>
+<h4 id="scipy科学计算">scipy科学计算</h4>
+<p><a href="httlps://scipy.org">这玩意儿蛮强的。</a></p>
+<h4 id="py中输入数学符号">py中输入数学符号</h4>
+<p><a href="sympy.org">sympy</a><br>
+这个库有点不一样，它能对&quot;&quot;&quot;被引文本也作一点操作，支持 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord text"><span class="mord textrm sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord text"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span><br>
+而且它的效果不是直接显示的，需要引用适当的类和定义函数。可以在sympy.org查看详情，它有提供在线运行。<br>
+官网提供很多例子，</p>
+<h4 id="高性能">高性能</h4>
+<p>Cpython是多数python的一个解释器。AMDcpu+windows系统+python语言缺陷 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span> 极其缓慢的速度。。。<br>
+Pypy速度比cpython快很多。以前看过测试，有2-4倍速。最近我也准备换这个解释器了。</p>
 <h3 id="数据结构">数据结构</h3>
 <h4 id="入门">入门</h4>
 <p><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">Data Structure Visualizations</a></p>
@@ -164,7 +334,7 @@ grep: ntuser.dat.LOG1: Permission denied</p>
 <h4 id="教材-2">教材</h4>
 <p>《数据结构与算法(Python和C++语言描述）》，不是说此书很好，只是我当时被卖家广告砸中了。又恰好描述语言比较合我意（狗头）<br>
 但可读性还是很强的，很易读的一本书。<br>
-《算法导论》图书馆看到的……</p>
+《算法导论》图书馆看到的……没翻过</p>
 <h4 id="算法题">算法题</h4>
 <p>[Acwing]<br>
 [Leetcode]</p>
@@ -179,13 +349,20 @@ grep: ntuser.dat.LOG1: Permission denied</p>
 </code></pre>
 </blockquote>
 <ul>
-<li>乱推荐《编码》（我没看过，以前知乎上面看到的推荐书）</li>
-<li>《鸟哥的Linux私房菜》此书有泛谈一些这方面的内容，图书馆常年不在架上……</li>
-<li>深入理解计算机系统， 深入浅出</li>
+<li>《鸟哥的Linux私房菜》此书有泛谈一些这方面的内容，图书馆纸书常年不在架上……</li>
+<li>深入理解计算机系统， 深入浅出。</li>
 <li>Operating system: Three easy pieces...一点都不easy...，比”深入“更”深入“，我被骗了，但是大概翻了一下，讲得很好，纸质很不错，印刷清晰，准备还图书馆了……</li>
 </ul>
-<h4 id="组成原理">组成原理</h4>
-<blockquote></blockquote>
+<h4 id="程序的质量提高">程序的质量提高</h4>
+<p>《高质量程序设计》by林锐</p>
+<p><em>C traps and pitfalls</em><br>
+中文版为《C陷阱与缺陷》</p>
+<p>python,  PEP</p>
+<p>笨方法学python3进阶版， 这个书的入门版没看过。 进阶版很多地方没有讲清楚————但是里面的ex很多是让py和命令行融合。而且主要是用py实现比较多的底层的数据结构。 用的库也不多。<br>
+<em>python cookbook</em><br>
+讲的东西很多，不是工具书，更强是类似 * c traps and pitfalls*那种<s>长者</s>dalao给读者分享一些知识。<br>
+书是好书……一段时间不写，blog不记，就都会忘了。<br>
+不推荐将py用作物理计算的同学用。</p>
 ]]></content>
     </entry>
     <entry>
@@ -653,426 +830,6 @@ P_L\,\,=\,\,\left| \frac{\omega k\sqrt{L_TL_R}I_T}{R_R+R_L} \right|^2R_L\,\,\pro
 -221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
 s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.18833500000000003em;"><span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.47398em;"><span style="top:-1.65598em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-2.26198em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-2.86798em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span><span style="top:-3.47398em;"><span class="pstrut" style="height:2.606em;"></span><span class="delimsizinginner delim-size1"><span>∣</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500199999999999em;"><span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.7326730000000001em;"><span style="top:-3.9815650000000007em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.204008em;vertical-align:-0.25em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954008em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mord text"><span class="mord cjk_fallback">为电源角频率，</span></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord text"><span class="mord cjk_fallback">为耦合系数</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord text"><span class="mord cjk_fallback">要达到：</span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">R</span><span class="mord mathrm mtight">e</span></span><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.05035em;vertical-align:-1.69002em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.15em;"></span><span class="mord"><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">[</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">(</span></span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">)</span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44530499999999995em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.5897799999999997em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="minner mtight"><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">(</span></span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">ω</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8574571428571429em;"><span style="top:-2.8971428571428572em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.58522em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">]</span></span></span></span></span><span style="top:-3.38em;"><span class="pstrut" style="height:3.15em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.827em;"><span class="pstrut" style="height:3.15em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.69002em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.679035em;vertical-align:-2.357595em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.517565em;"></span><span class="mord"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8886359999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.410305em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44530499999999995em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5175649999999998em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.720065em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="minner mtight"><span class="mopen sizing reset-size3 size6 mtight delimcenter" style="top:0.07500000000000001em;"><span class="delimsizing size1 mtight"><span class="mtight">(</span></span></span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0534em;"><span style="top:-2.6559999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3447999999999998em;margin-left:-0.00773em;margin-right:0.1em;"><span class="pstrut" style="height:2.6833299999999998em;"></span><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.33853em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.565307142857143em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3447999999999998em;margin-left:-0.00773em;margin-right:0.1em;"><span class="pstrut" style="height:2.6833299999999998em;"></span><span class="mord mathdefault mtight">L</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.33853em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5858071428571429em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mclose sizing reset-size3 size6 mtight delimcenter" style="top:0.07500000000000001em;"><span class="delimsizing size1 mtight"><span class="mtight">)</span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44530499999999995em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.5897799999999997em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="minner mtight"><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">(</span></span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">ω</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8574571428571429em;"><span style="top:-2.8971428571428572em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.58522em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44530499999999995em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span><span style="top:-3.747565em;"><span class="pstrut" style="height:3.517565em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.194565em;"><span class="pstrut" style="height:3.517565em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.357595em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≪</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.6852959999999997em;vertical-align:-1.3638559999999997em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.2213640000000003em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8886359999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.410305em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.00773em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44530499999999995em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.5897799999999997em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="minner mtight"><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">(</span></span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">ω</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8574571428571429em;"><span style="top:-2.8971428571428572em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.58522em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3638559999999997em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.19633em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954008em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="mspace newline"></span><span class="mspace newline"></span></span></span></span></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[系统搭建记录]]></title>
-        <id>https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/</id>
-        <link href="https://Egg12138.github.io/post/xi-tong-da-jian-ji-lu/">
-        </link>
-        <updated>2021-02-12T05:39:52.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="wsl-ubuntu">WSL ubuntu</h2>
-<p>vim editor中：</p>
-<ul>
-<li>.以vi 或者是vim开头编辑文件,输入命令之后,进入到编辑状态了。</li>
-<li>.要退出,但是不保存,按esc先,然后输入【:q】,回车键即可退出,无法退出,则在【:q!...</li>
-<li>.要退出保存的 ,则~                    输入【:wq】,强制保存退出,则输入【:wq!】。</li>
-<li>.看到此时已经退出, 在等待命令状态。</li>
-<li>.以nano开头编辑文件的,则要退出,按【Ctrl+x】,回车键。如要保存的,则先按【Ctrl+o】,再按【x】退出</li>
-</ul>
-<h2 id="关于compiler">关于Compiler</h2>
-<p>再搭建编译环境中，要考虑到不同的标准下的情况<br>
-比如我写了ANSI风格的一个函数<br>
-报错=[Error] ld returned 1 exit status，<br>
-再编译器中勾选ANSI的标准就可以。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一些英语注释用的词，组，句]]></title>
-        <id>https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/</id>
-        <link href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">
-        </link>
-        <updated>2021-02-06T14:39:54.000Z</updated>
-        <content type="html"><![CDATA[<p>do these statements，执行这些语句<br>
-through the loop once执行一次这个循环，  语句千万不要随便用Sentence！<br>
-evaluate X,对X求值<br>
-increment只是递增<br>
-return to the beginning of the loop,一般略去定冠词:return to beginning of loop</p>
-<p>被允许的可用C is not object to ...</p>
-<p>见过语法，情况或者其他，最好用encounter</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C语法基础表达和语句|常新常复习]]></title>
-        <id>https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/</id>
-        <link href="https://Egg12138.github.io/post/c-yu-fa-ji-chu-orbian-liang/">
-        </link>
-        <updated>2021-02-05T16:15:33.000Z</updated>
-        <summary type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E9%9B%B6%E6%95%A3%E8%AE%B0%E5%BD%95%E5%B0%8F%E4%B8%BB%E9%A2%98">零散记录小主题</a>
-<ul>
-<li><a href="#%E5%AF%B9%E9%BD%90%E5%AE%BD%E5%BA%A6">对齐宽度</a></li>
-<li><a href="#%E6%88%AA%E6%96%ADtruncation">截断truncation</a></li>
-<li><a href="#%E7%81%B5%E6%B4%BB%E4%B9%8B%E5%A4%84">灵活之处</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</p>
-<h3 id="零散记录小主题">零散记录小主题</h3>
-<p>data object</p>
-<p>lvalue, a label, some are modifiable, some are not.<br>
-modifiable left-value = object locator value. C11suggested.<br>
-rvalue, a real obj in the memories</p>
-<p>C标准const限定：</p>
-<blockquote>
-<pre><code>         关键字const对变量的类型加以限定，使它的值不能被改变。
-          const对象一旦创建后其值就不能再改变，所以const对象必须初始化，如下：
-  const int i = get_size();  //正确，在运行时初始化
-  const int j = 42;  //正确，在编译时初始化
-  const int k;  //不正确，k是一个未经初始化的常量
-</code></pre>
-</blockquote>
-<p>运算，操作的对象oper-and,operand称为项，<br>
-可以多重赋值:<br>
-int j, t, c;<br>
-c=t=j=68;  OK,赋值顺序是68--&gt;j,t,c右至左<br>
-left-value = operate(l-value0,l-value1,...,l-valueN) ,operate(...)整体依然是个r-value;</p>
-<h4 id="对齐宽度">对齐宽度</h4>
-<p>abc<br>
-1 对齐到C，宽度应该市%3而不是%2<br>
-1       $xx此处'&amp;'显然作为字符，1，2，3，4可以为循环体中的算子，%4d ---count是可以的，<br>
-2       $xx<br>
-3       $xx<br>
-4       $xx</p>
-<h4 id="截断truncation">截断truncation</h4>
-<pre><code>int:5/4 =&gt; 1; 6/3 = &gt; 2, 7/4 =&gt; 1;
-float: 7./4 值上= 7./4. =&gt; 1.75(%.2f)
-%d \n&quot;,7./4.);报错
-%d\n&quot;,7./4);则不报错
-</code></pre>
-<h4 id="灵活之处">灵活之处</h4>
-<p>相比python，C语法更灵活，感觉很棒~</p>
-<ul>
-<li>递增运算符<br>
-<code>while (++shoe &lt; 42)，</code><br>
-<code>&lt;=&gt; while (shoe &lt; 42) {........++shoe}</code>//根据下面的，这里判断的是递增后的shoe是否&lt; 42，即鞋码41为最后一个判断。 shoe++ &lt; 42则shoe达到42码时为最后一次循环。</li>
-</ul>
- <center> >       即，shoe++会让shoe在与42比较之后再+1  </center>
-        **递增、比较与使用的顺序**
-        while shoe++ < 45
-            printf(shoe)
-        ** 此时先比较，(值优先)，再递增==>did第一个完整语句，再传递给printf**
-        while shoe < 45
-        shoe++
-        printf...
-<pre><code>    post_incresment
-    ``a_post = a++: a_post = previous a and a += 1``,可以保留旧a，有时候返回旧a挺有用的。
-    ``pre_b = ++b: pre_b = new_b =b =previous b +1``
-    pre_incresment;
-</code></pre>
-<p>decrement operator同理</p>
-<ul>
-<li>for语句灵活<br>
-for的initialize不一定是赋值语句<br>
-for (printf(&quot;xxxx&quot;);test;update)   <strong>update一定是在循环体执行完之后才进行的</strong><br>
-<code>for (printf(&quot;A!\n&quot;);ch!='2';)</code><br>
-<code>scanf(&quot;%c&quot;,&amp;ch);</code><br>
-<code>printf(&quot;I like it!\n&quot;);</code><br>
-还可以写成：<br>
-<code>for (printf....;ch!=...;scanf(&quot;%c&quot;,&amp;ch))</code> printf(i like it!)<code></code> printf(Label)``<br>
-发现输出有问题:</li>
-</ul>
-<p>A!<br>
-Ilike it<br>
-[two figures]<br>
-I like it!<br>
-I like it!<br>
-[three figures]<br>
-I like it!<br>
-I like it<br>
-I like it<br>
-[fours figs: 1324]<br>
-则输出2个Ilikt it，然后输出Label，<br>
-可见，这里的sacnf会将输入转化成n个fig<br>
-发现bug，是忘了给循环体加入{}:<br>
-加入后：<br>
-A!<br>
-[sacnf   abcs]<br>
-I like it!<br>
-Current cn is:a I like it!<br>
-Current cn is:b I like it!<br>
-Current cn is:c I like it!<br>
-Current cn is:s I like it!<br>
-Current cn is:</p>
-]]></summary>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E9%9B%B6%E6%95%A3%E8%AE%B0%E5%BD%95%E5%B0%8F%E4%B8%BB%E9%A2%98">零散记录小主题</a>
-<ul>
-<li><a href="#%E5%AF%B9%E9%BD%90%E5%AE%BD%E5%BA%A6">对齐宽度</a></li>
-<li><a href="#%E6%88%AA%E6%96%ADtruncation">截断truncation</a></li>
-<li><a href="#%E7%81%B5%E6%B4%BB%E4%B9%8B%E5%A4%84">灵活之处</a></li>
-<li><a href="#%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96">变量初始化</a>
-<ul>
-<li><a href="#io">I/O</a>
-<ul>
-<li><a href="#%E7%BC%93%E5%86%B2">缓冲</a></li>
-</ul>
-</li>
-<li><a href="#%E5%8D%95%E5%AD%97%E7%AC%A6io">单字符I/O</a>
-<ul>
-<li><a href="#%E4%B8%89%E7%B1%BB%E7%BC%93%E5%86%B2%E5%8C%BA%E7%B1%BB%E5%9E%8B">三类缓冲区类型</a></li>
-<li><a href="#%E6%B6%88%E9%99%A4n">消除'\n'</a></li>
-</ul>
-</li>
-<li><a href="#%E6%96%87%E4%BB%B6">文件</a></li>
-</ul>
-</li>
-<li><a href="#%E6%9D%A1%E4%BB%B6">条件</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</p>
-<h3 id="零散记录小主题">零散记录小主题</h3>
-<p>data object</p>
-<p>lvalue, a label, some are modifiable, some are not.<br>
-modifiable left-value = object locator value. C11suggested.<br>
-rvalue, a real obj in the memories</p>
-<p>C标准const限定：</p>
-<blockquote>
-<pre><code>         关键字const对变量的类型加以限定，使它的值不能被改变。
-          const对象一旦创建后其值就不能再改变，所以const对象必须初始化，如下：
-  const int i = get_size();  //正确，在运行时初始化
-  const int j = 42;  //正确，在编译时初始化
-  const int k;  //不正确，k是一个未经初始化的常量
-</code></pre>
-</blockquote>
-<p>运算，操作的对象oper-and,operand称为项，<br>
-可以多重赋值:<br>
-int j, t, c;<br>
-c=t=j=68;  OK,赋值顺序是68--&gt;j,t,c右至左<br>
-left-value = operate(l-value0,l-value1,...,l-valueN) ,operate(...)整体依然是个r-value;</p>
-<h4 id="对齐宽度">对齐宽度</h4>
-<p>abc<br>
-1 对齐到C，宽度应该市%3而不是%2<br>
-1       $xx此处'&amp;'显然作为字符，1，2，3，4可以为循环体中的算子，%4d ---count是可以的，<br>
-2       $xx<br>
-3       $xx<br>
-4       $xx</p>
-<h4 id="截断truncation">截断truncation</h4>
-<pre><code>int:5/4 =&gt; 1; 6/3 = &gt; 2, 7/4 =&gt; 1;
-float: 7./4 值上= 7./4. =&gt; 1.75(%.2f)
-%d \n&quot;,7./4.);报错
-%d\n&quot;,7./4);则不报错
-</code></pre>
-<h4 id="灵活之处">灵活之处</h4>
-<p>相比python，C语法更灵活，感觉很棒~</p>
-<ul>
-<li>递增运算符<br>
-<code>while (++shoe &lt; 42)，</code><br>
-<code>&lt;=&gt; while (shoe &lt; 42) {........++shoe}</code>//根据下面的，这里判断的是递增后的shoe是否&lt; 42，即鞋码41为最后一个判断。 shoe++ &lt; 42则shoe达到42码时为最后一次循环。</li>
-</ul>
- <center> >       即，shoe++会让shoe在与42比较之后再+1  </center>
-        **递增、比较与使用的顺序**
-        while shoe++ < 45
-            printf(shoe)
-        ** 此时先比较，(值优先)，再递增==>did第一个完整语句，再传递给printf**
-        while shoe < 45
-        shoe++
-        printf...
-<pre><code>    post_incresment
-    ``a_post = a++: a_post = previous a and a += 1``,可以保留旧a，有时候返回旧a挺有用的。
-    ``pre_b = ++b: pre_b = new_b =b =previous b +1``
-    pre_incresment;
-</code></pre>
-<p>decrement operator同理</p>
-<ul>
-<li>for语句灵活<br>
-for的initialize不一定是赋值语句<br>
-for (printf(&quot;xxxx&quot;);test;update)   <strong>update一定是在循环体执行完之后才进行的</strong><br>
-<code>for (printf(&quot;A!\n&quot;);ch!='2';)</code><br>
-<code>scanf(&quot;%c&quot;,&amp;ch);</code><br>
-<code>printf(&quot;I like it!\n&quot;);</code><br>
-还可以写成：<br>
-<code>for (printf....;ch!=...;scanf(&quot;%c&quot;,&amp;ch))</code> printf(i like it!)<code></code> printf(Label)``<br>
-发现输出有问题:</li>
-</ul>
-<p>A!<br>
-Ilike it<br>
-[two figures]<br>
-I like it!<br>
-I like it!<br>
-[three figures]<br>
-I like it!<br>
-I like it<br>
-I like it<br>
-[fours figs: 1324]<br>
-则输出2个Ilikt it，然后输出Label，<br>
-可见，这里的sacnf会将输入转化成n个fig<br>
-发现bug，是忘了给循环体加入{}:<br>
-加入后：<br>
-A!<br>
-[sacnf   abcs]<br>
-I like it!<br>
-Current cn is:a I like it!<br>
-Current cn is:b I like it!<br>
-Current cn is:c I like it!<br>
-Current cn is:s I like it!<br>
-Current cn is:</p>
-<!-- more -->
-<p>那么显然是声明时没有声明为数组……<br>
-于是声明修改<br>
-char ch[4]加上scanf(&quot;%s&quot;,ch)在<strong>c的ISO中数组名就代表该数组的起始地址</strong><br>
-混乱：<br>
-dev-c++的TDM-GC 4.9.2下，<br>
-n = 3<br>
-<code>y = n++ + n++;</code><br>
-<code>printf(&quot;Now,y = %d, n = %d&quot;,y,n);</code><br>
-<code>y = n++ + ++n;</code><br>
-<code>printf(&quot;Now,y = %d, n = %d&quot;,y,n);</code><br>
-output:<br>
-y = 7(3+4), n =5<br>
-y=12(5+7),n=7，都是比previous n大了2，<br>
-可以看到再一个地方，编译器递增完立刻使用n，然后继续下一个递增。但是再别的编译器旧不一样了。这个结果C标准没定义，<br>
-<strong>要避开这种混乱，Don't be too clever!</strong><br>
-这就是这种混乱的没有完整表达式的语句的问题4-</p>
-<!-- more -->
-<h4 id="变量初始化">变量初始化</h4>
-<p>int sec; scanf%d==&gt;sec; while(sec &gt;0)[..scanf%d=sec]<br>
-这是很标准的方式，若不对sec进行初始化，int sec后，sec的垃圾值恰好就是0，直接都不会进入循坏！<br>
-所以要么<br>
-* int sec = a number&gt;0<br>
-* 再while前面再添sacnf</p>
-<h5 id="io">I/O</h5>
-<p>回车也是算input<br>
-在一个loop内，scanf--&gt; count++<br>
-但是scanf会读取我两个字符，导致一个loop内，count会递增两次！</p>
-<h6 id="缓冲">缓冲</h6>
-<p>从键盘输入的所有字符被存到一个缓冲区,在调用getchar,getch,getche,scanf等函数时,电脑从这个缓冲区取,而不一定正好是在这个时候键盘输入的.(如果上次从键盘的输入和程序中要求的内容不一致时).清空之后,就是直接从这个时候由键盘输入的字符中读取了.</p>
-<ul>
-<li>fflush(stdin);（放在input之前就行，但是可能有的标准里没有这个语法，但不会报错）</li>
-<li>getchar()单个地读取缓冲区的数据，在input之前插入getchar();或使用while((getchar())!='\n');读取缓冲区字符直到结束后丢弃</li>
-</ul>
-<p>看</p>
-<ul>
-<li>Situation 0直接get &amp; put<br>
-<code>#include &lt;stdio.h&gt;</code><br>
-<code>int main(void)</code><br>
-<code>{</code><br>
-<code>char c;</code><br>
-<code>c = getchar();</code><br>
-<code>putchar(c);</code></li>
-</ul>
-<p><code>system(&quot;pause&quot;);</code></p>
-<p><code>return 0;</code><br>
-<code>}</code><br>
-IO和运行，<br>
-123as<br>
-1请按任意键继续. . .<br>
-这段程序只会从键盘里读取一个字符<br>
-整个过程大概如下：<br>
-keyboard Input&quot;123as+Enter&quot;--&gt; Buffer : &quot;123as+Enter&quot; --getchar() read &quot;1&quot;--&gt;Assignment &quot;1&quot; to c --&gt; Putchar c onto screen  --&gt; release &quot;1&quot;, leaving &quot;23as+Enter&quot; in the Buffer.</p>
-<ul>
-<li>Situation 1在循环体中，看上面一例的细节<br>
-<code>char c;</code><br>
-<code>printf(&quot;The test is beginning&quot;);</code></li>
-</ul>
-<p><code>while ((c = getchar())!='3')</code><br>
-<code>{</code>  putchar(c);<code></code>  }``</p>
-<p><code>system(&quot;pause&quot;);</code></p>
-<p>结果：<br>
-The test is beginning<br>
-2<br>
-&gt;2<br>
-22<br>
-&gt;22<br>
-11<br>
-&gt;11<br>
-1256456<br>
-&gt;1256456<br>
-123<br>
-&gt;12请按任意键继续. . .很显然这里执行的显然是”伪整体读取“，”仍然是<br>
-getchar由宏实现：#define getchar() getc(stdin)。getchar有一个int型的返回值，当程序调用getchar时，程序就等着用户按键。</p>
-<p>用户输入的字符被存放在键盘缓冲区中，直到用户按回车为止，当用户键入回车之后，getchar才开始从stdin流中每次弹出并且读入一个字符。</p>
-<p>另一说法：<br>
-当我们输入txt的时候，不必去考虑如何分割开这些东西<br>
-我们的程序算法是<br>
-while (input != STOP sign)<br>
-{<br>
-words++;/<em>这个是递增符</em>/<br>
-然后判断input这个单字母是否有特殊情况<br>
-}</p>
-<p><strong>getchar()本身就是用来接受单个字符或者数组，要录入多个就输入数组</strong><br>
-现在专门讲一讲</p>
-<h5 id="单字符io">单字符I/O</h5>
-<p>把'\n'之前的一串字符都放到buffer里面，会比较节省时间而且能够修正错误。<br>
-放整块到buffer，然后再单个地处理。<br>
-现在很多时候我们只需要一个，不需要额外的'\n'以及额外的，比如否定答案no way我们只需要n<br>
-行，前面也说到了一些，我们现在再总结以下由什么方法</p>
-<ul>
-<li>纯算法地，用经典`while (getchar()!='\n') continue;逃过剩余输入行，<br>
-while (getchar() != 'y')     /* get response, compare to y <em>/<br>
-{<br>
-printf(&quot;Well, then, is it %d?\n&quot;, ++guess);<br>
-while (getchar() != '\n')<br>
-continue; /</em> skip rest of input line */<br>
-}但是还是会把其他非n非y的当成y</li>
-<li>让识别更加有条理，制造一个筛选空间</li>
-</ul>
-<h6 id="三类缓冲区类型">三类缓冲区类型</h6>
-<p><q>bit为计算机最小记忆体单位，a bit --1/0, 1 byte = 8bits</q><br>
-####### 全缓冲；<br>
-填满再冲(refresh) 512bytes or 4096bytes<br>
-####### 行缓冲；<br>
-####### 无缓冲；<br>
-输入单个字符后立即打印该字符，CPP提到这是老式系统上可能发现的情况。</p>
-<h6 id="消除n">消除'\n'</h6>
-<h5 id="文件">文件</h5>
-<p>结尾：<br>
-CP/M  \ IBM-DOS  \MS-DOS<br>
-\n^z<br>
-End Of File ,EOF 通常在stdio.h中被定义为-1，</p>
-<blockquote>
-<pre><code>  关键要理解EOF是一个值，标志着检测到文件结尾，并不是在文件中找得到的符号
-  如果getchar的返回值不等于EOF，则说明没有到达文件结尾    ------ 
-</code></pre>
-<p><em>C Primer Plus</em><br>
-当然我们用Ctrl + Z可以结束程序<br>
-<code>while ((ch = getchar()) != EOF){continue the prog}</code></p>
-</blockquote>
-<p>数据流<br>
-无论input设备时键盘还是文件，他们都是input stream<br>
-因为他们I/O设备和C文件时在同一层的。<br>
-这一点在文本输入上体现得很好。<br>
-C的文字写入非常方便。<br>
-#include &lt;stdio.h&gt;<br>
-#include &lt;stdlib.h&gt; // for exit()<br>
-int main()<br>
-{<br>
-int ch;<br>
-FILE * fp;<br>
-char fname[50]; // to hold the file name<br>
-printf(&quot;Enter the name of the file: &quot;);<br>
-scanf(&quot;%s&quot;, fname);<br>
-fp = fopen(fname, &quot;r&quot;); // open file for reading<br>
-if (fp == NULL) // attempt failed<br>
-{<br>
-printf(&quot;Failed to open file. Bye\n&quot;);<br>
-exit(1); // quit program<br>
-}<br>
-// getc(fp) gets a character from the open file<br>
-while ((ch = getc(fp)) != EOF)<br>
-putchar(ch);<br>
-fclose(fp); // close the file<br>
-return 0;<br>
-}</p>
-<h4 id="条件">条件</h4>
-<p>switch要注意到，如果没有适当地break或者coninue，各种switch的cases都会被执行……</p>
 ]]></content>
     </entry>
 </feed>

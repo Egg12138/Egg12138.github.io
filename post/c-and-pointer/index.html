@@ -5,14 +5,14 @@
     
 <meta charset="utf-8" >
 
-<title>C and Pointer | Gridea</title>
+<title>C: Var and Pointer | Gridea</title>
 <meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615092100313">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615271214226">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615092100313" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615271214226" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -80,7 +80,7 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">C and Pointer</h2>
+          <h2 class="post-title">C: Var and Pointer</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2021-03-07</span>
             
@@ -89,24 +89,30 @@
             <p><ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9">基础内容</a>
+<li><a href="#%E5%8F%98%E9%87%8F-%E7%B1%BB%E5%9E%8B-%E8%AF%AD%E6%B3%95">变量、类型、语法</a>
 <ul>
 <li><a href="#%E5%BC%95%E5%85%A5">引入</a></li>
-<li><a href="#%E9%94%99%E8%AF%AF%E5%8F%AF%E8%83%BD%E5%87%BA%E9%94%99%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E5%A3%B0%E6%98%8E">错误/可能出错的初始化与声明</a><br>
+<li><a href="#%E9%94%99%E8%AF%AF%E5%8F%AF%E8%83%BD%E5%87%BA%E9%94%99%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-%E5%A3%B0%E6%98%8E%E4%B8%8E%E8%AF%AD%E5%8F%A5">错误/可能出错的初始化、声明与语句</a><br>
 *
 <ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E9%94%99%E8%AF%AF">数组声明错误</a></li>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D%E9%94%99%E8%AF%AF">数组分配错误</a></li>
-<li><a href="#%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">函数声明的优先级</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E7%94%A8%E9%94%99">类型用错</a></li>
+<li><a href="#%E5%A3%B0%E6%98%8E%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">声明的优先级</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+<li><a href="#%E6%8C%87%E9%92%88">指针</a>
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F%E4%BC%A0%E9%80%92">变量传递</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </p>
-<h2 id="基础内容">基础内容</h2>
+<h2 id="变量-类型-语法">变量、类型、语法</h2>
 <h3 id="引入">引入</h3>
 <p>同学分享了一个问题，我顺便写一篇blog<br>
 我们从这个情景开始：</p>
@@ -126,15 +132,29 @@ char c2[10];//做一个对比,  c2这个数组其实是 = [][][][][] [][][][]['\
   scanf_s(&quot;%s&quot;, c2, 10);
   printf(&quot;c1 = %c; c2 = %s&quot;, c1, c2);
 </code></pre>
-<h3 id="错误可能出错的初始化与声明">错误/可能出错的初始化与声明</h3>
-<p>####数组类型错误<br>
-<code>char end = 'x'</code><br>
-prinf%s将报错。%s接受char <em>para这是不兼容的！<br>
-<code>%c</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> %d,由单引号引起的一个字符代表的是一个整数，其值对应于该字符在compiler的字符集中的序列位置</em>* 多数编译器默认是ASCII，但不总是，而且这个可以更改 **<br>
+<h3 id="错误可能出错的初始化-声明与语句">错误/可能出错的初始化、声明与语句</h3>
+<p><strong>声明在C中的语法是：</strong><br>
+<strong>基本类型 生成基本类型的东西</strong><br>
+所以这也是为什么我们不需要专门建一个指针基本类（它确实是一个特殊的类型，但不是声明的基本类型）:<br>
+<code>double *which( double d, int *x)</code> 这个声明表面， which是一个指向（生成）的double类型量内存的指针。which所指的值double类的，至于double是多少，要看函数定义和传入实参。<br>
+如果理解声明为：  基本类型 是该类型的量 ， 那可能就会认为c应该多加一个指针量，pointer which。这就很憨批了。<br>
+####数据类型错误</p>
+<h5 id="数组声明错误">数组声明错误</h5>
+<p><code>char end = 'x'</code><br>
+prinf%s将报错。%s和char *para是不兼容的！<br>
+<code>%c</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> %d,由单引号引起的一个字符代表的是一个整数，其值对应于该字符在compiler的字符集中的序列位置** 多数编译器默认是ASCII，但不总是，而且这个可以更改 **<br>
 ASCII码对不同进制下 编码会兼容： 0o（八进制） 0141 = 97<br>
 <code>char end[1] = 'x'</code><br>
 声明报错<br>
 所以<code>char end = 'x'</code>就得老老实实的</p>
+<p>但是并不是类型不一致就会出错。我们都知道compiler有责任进行<q>隐式转换</q>,程序员可以作合理的<q>显式转换</q></p>
+<pre><code class="language-c">/*隐式转换*/
+double d = 100;
+int i = 100;
+double m = i;
+</code></pre>
+<p>以上三个初始化中的类型转换都是安全的<br>
+<code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
 <h5 id="数组分配错误">数组分配错误</h5>
 <p>这个声明的合法的： <code>char hello\[]={'a','b',0};printf(%s,hello)</code> ==<code>printf(&quot;ab&quot;);</code>这里的hello也是需要加上一个终止符0的，并且两个方式：1.<code>0</code>;2.<code>'\0'</code>;</p>
 <p>在上面及“引入”的数组声明中，我们看到string的尾部有一个终止字符'\0',这主要是跟编译器交互的。没有它会有一场<br>
@@ -155,7 +175,19 @@ b<br>
 c<br>
 其中只有a是异常的，没有终止的。所以a=a+b的两个内容，如果b也没有终止，那就会是a = a+b+c,<br>
 b=b+c。</p>
-<h4 id="函数声明的优先级">函数声明的优先级</h4>
+<h5 id="类型用错">类型用错</h5>
+<pre><code class="language-c">if (expression, or a bool)，
+    do something;
+if (!expression or a bool)
+    do something;
+</code></pre>
+<p>What if:</p>
+<ul>
+<li>这里的expr是一个整型变量！与0比较，最好是写成if//(value == 0)，否则会被误认为是bool变量</li>
+<li>expr是是一个ptr！要防止p被误解为一个整型、bool变量：<s><code>if (p == 0)</code></s>，应该<code>if (p == NULL)</code></li>
+<li>expr是一个float....！精度是一个问题，精度太高，有可能10.222225 = 10.222229了</li>
+</ul>
+<h4 id="声明的优先级">声明的优先级</h4>
 <p>()的优先级高于*<br>
 <code>float *g(), (*h)()</code>中<br>
 *g() == *(g()),  其中<strong>g为一个函数，返回一个指针</strong>，<strong>该ptr指向一个浮点数</strong>。  g()--return--&gt; (g())为返回值，该范围值是一个ptr,于是用*标记。该ptr又指向float.<br>
@@ -177,12 +209,34 @@ b=b+c。</p>
 0呢？<br>
 我们来看(int) a_float可以相知转换类型。0在这里就是被转换成了指针类<br>
 0是一个“指向‘指向返回值为void的函数的指针’的指针”</p>
-<hr>
-<h2 id="参考">参考</h2>
-<div id="refer-anchor-1">
--[1][C traps and pitfall](Andrew Koenig)</div>
-<div id="refer-anchor-2">
--[2][CPP reference](https://en.cppreference.com/w/)</div>
+<blockquote>
+<pre><code>  char *p1, p2如何解析
+</code></pre>
+</blockquote>
+<p>一些人可能会把这个写成char* p1, p2以为*这个一元运算符对p1,p2都生效。但显然不是。p2在这里并不是指针，只有第一个是。</p>
+<h2 id="指针">指针</h2>
+<h3 id="变量传递">变量传递</h3>
+<p>其实在两个作用域中，直接用变量名传递，对传递后的变量名进行操作不会影响原变量的机理很简单：<br>
+在C中，</p>
+<pre><code class="language-c">foo (int x, int y)
+{
+    do something,
+    change x, y 
+    return x+y
+}
+c = foo(a, b)
+</code></pre>
+<p>实参a, b只是把各自的value传递给了foo——因为foo的x, y已经各自构建好了，有不同的位置。</p>
+<pre><code>
+
+***
+## 参考
+
+&lt;div id=&quot;refer-anchor-1&quot;&gt;
+-[1][C traps and pitfall](Andrew Koenig)&lt;/div&gt;
+&lt;div id=&quot;refer-anchor-2&quot;&gt;
+-[2][CPP reference](https://en.cppreference.com/w/)&lt;/div&gt;
+</code></pre>
 
           </div>
         </div>

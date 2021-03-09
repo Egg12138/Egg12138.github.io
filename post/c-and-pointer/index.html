@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615279402100">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615283932253">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615279402100" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615283932253" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -303,6 +303,25 @@ int main(void)
 </code></pre>
 </blockquote>
 <p><img src="https://www.log2base2.com/images/c/array-and-pointer-2.png" alt="比较准确的array,address,pointer关系" loading="lazy">,</p>
+<p>这是一个标准的解释。到了Linked List里面这一切就会更透彻了。<br>
+用一下<em>C Primer Pllus</em>的归纳。</p>
+<ul>
+<li>pointer的值是它所指向对象的地址。地址的表示方式依赖于计算机内部的硬件。<em>多数按照字节编址</em>，在RAM中每个字节都按照顺序编号。较大对象的地址通常是它的第一个字节的地址</li>
+<li>*ptr会得到所指对象的指，</li>
+</ul>
+<p>我们详细看这一行</p>
+<pre><code class="language-c">int billy[4] = {[2] =3 };
+int *pbb = billy;
+...
+printf(&quot;\nTry: pointer billy,bare billy=0x%x=%d,call dilly by %%d, %d,dilly[2]=%d\n&quot;,,&amp;pbb,&amp;billy,billy,billy,*billy,billy[2]);
+</code></pre>
+<p>得到输出：<br>
+Try:<br>
+poiner billy=000000000061fdb0<br>
+bare billy=0x61fdb0  =6421936,<br>
+call dilly by %d,=0<br>
+dilly[2]=3<br>
+详细的可以参看《深入理解计算机系统》</p>
 <hr>
 <h2 id="参考">参考</h2>
 <div id="refer-anchor-1">

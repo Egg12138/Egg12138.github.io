@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>摘|| 加缪的去英雄主义 | Gridea</title>
+<title>Py_collections||Arrow日期时间库 | Gridea</title>
 <meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,68 +80,48 @@
       <div class="content-container">
         <div class="post-detail">
           
-            <div class="feature-container" style="background-image: url('https://Egg12138.github.io/post-images/zhai-or-jia-mou-0.jpg')">
-            </div>
-          
-          <h2 class="post-title">摘|| 加缪的去英雄主义</h2>
+          <h2 class="post-title">Py_collections||Arrow日期时间库</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-09-30</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://Egg12138.github.io/tag/zhai/">
-                    摘
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/jia-mou/">
-                    加缪
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/wen-xue/">
-                    文学
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/ren-xing/">
-                    人性
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/fan-si/">
-                    反思
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2021-03-09</span>
             
           </div>
           <div class="post-content">
-            <blockquote>
-<pre><code>  但是笔者更愿意相信，过分重视高尚行为，结果反而会变成对罪恶简洁而有力的褒扬。因为那样做会让人猜想，高尚行为如此可贵只因它寥若晨星，所以狠心和冷漠才是人类行为更经常的动力。而这种想法正式笔者不能苟同的。人世间的 罪恶几乎总是由愚昧造成，人如果缺乏教育，好心也可能同恶意一样造成损害。好人比恶人多，而实际上那并非症结之所在。人有无知和更无知的区别，着'就叫道德或不道德，最令人厌恶的不道德是愚昧无知，无知的人认为自己无所不知，因而自认有权杀人。杀人凶手的心灵是盲目的，而没有远见卓识就不会有真正的善和高尚的爱—《鼠疫》
+            <p>这个包相当简单，我直接把我的即时交互的结果放上来</p>
+<h3 id="arrownow">arrow.now()</h3>
+<pre><code>&gt;&gt;&gt; arrow.now('Hongkong')
+&lt;Arrow [2021-03-09T17:55:12.578693+08:00]&gt;
 </code></pre>
-</blockquote>
-<p>如果善都需要过分地强调与歌颂，那是很虚伪的、很没有温情的！因为善是我们都应该做的，不是需要克服多少艰难就应该被表现出来的的。里厄医生等人，他们的所作所为是职责之所在，是当下之最优解，不需要捧起来说英雄。</p>
-<p>对抗疫情，医生上前，这就是医生的职责，我们尊重他们，传承善，而不需要将别人高高捧起，这不是冷漠，这是人文情怀</p>
+<h3 id="arrowutcnow">arrow.utcnow()</h3>
+<pre><code>&gt;&gt;&gt; arrow.utcnow().ctime()
+'Tue Mar  9 09:50:18 2021'
+&gt;&gt;&gt; arrow.utcnow().date()
+datetime.date(2021, 3, 9)
+&gt;&gt;&gt; arrow.utcnow().dst()
+datetime.timedelta(0)
+</code></pre>
+<p>它可以被cloned：<br>
+&gt;&gt;&gt; arw = arrow.utcnow()<br>
+&gt;&gt;&gt; arw<br>
+&lt;Arrow [2021-03-09T09:57:25.147040+00:00]&gt;<br>
+&gt;&gt;&gt; arw.clone()<br>
+&lt;Arrow [2021-03-09T09:57:25.147040+00:00]&gt;这里arw.clone可以用receive接收</p>
+<h3 id="arrowarrow-规范化时间表达">arrow.Arrow() 规范化时间表达</h3>
+<pre><code>&gt;&gt;&gt; arrow.Arrow(2020, 1, 7, 09,45,22)
+File &quot;&lt;stdin&gt;&quot;, line 1
+    arrow.Arrow(2020, 1, 7, 09,45,22)
+</code></pre>
+<p>这玩意儿会报错，它不支持0开头。。。<br>
+&gt;&gt;&gt; arrow.Arrow(2020, 1, 7, 9,45,22)<br>
+&lt;Arrow [2020-01-07T09:45:22+00:00]&gt;</p>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://Egg12138.github.io/post/py_collectionornetwork-programmingor0/">
+            <a class="purple-link" href="https://Egg12138.github.io/post/c-and-pointer/">
               <h3 class="post-title">
-                下一篇：Py_Collection||Network Programming||0
+                下一篇：C: Var and Pointer
               </h3>
             </a>
           </div>

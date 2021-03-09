@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615271214226">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615279402100">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615271214226" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615279402100" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -96,7 +96,7 @@
 *
 <ul>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E9%94%99%E8%AF%AF">数组声明错误</a></li>
-<li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D%E9%94%99%E8%AF%AF">数组分配错误</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%94%99%E8%AF%AF">数组分配、初始化错误</a></li>
 <li><a href="#%E7%B1%BB%E5%9E%8B%E7%94%A8%E9%94%99">类型用错</a></li>
 <li><a href="#%E5%A3%B0%E6%98%8E%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">声明的优先级</a></li>
 </ul>
@@ -106,8 +106,10 @@
 <li><a href="#%E6%8C%87%E9%92%88">指针</a>
 <ul>
 <li><a href="#%E5%8F%98%E9%87%8F%E4%BC%A0%E9%80%92">变量传递</a></li>
+<li><a href="#array-and-pointer">Array and Pointer</a></li>
 </ul>
 </li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
 </ul>
 </li>
 </ul>
@@ -138,7 +140,7 @@ char c2[10];//做一个对比,  c2这个数组其实是 = [][][][][] [][][][]['\
 所以这也是为什么我们不需要专门建一个指针基本类（它确实是一个特殊的类型，但不是声明的基本类型）:<br>
 <code>double *which( double d, int *x)</code> 这个声明表面， which是一个指向（生成）的double类型量内存的指针。which所指的值double类的，至于double是多少，要看函数定义和传入实参。<br>
 如果理解声明为：  基本类型 是该类型的量 ， 那可能就会认为c应该多加一个指针量，pointer which。这就很憨批了。<br>
-####数据类型错误</p>
+####数据错误</p>
 <h5 id="数组声明错误">数组声明错误</h5>
 <p><code>char end = 'x'</code><br>
 prinf%s将报错。%s和char *para是不兼容的！<br>
@@ -155,7 +157,7 @@ double m = i;
 </code></pre>
 <p>以上三个初始化中的类型转换都是安全的<br>
 <code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
-<h5 id="数组分配错误">数组分配错误</h5>
+<h5 id="数组分配-初始化错误">数组分配、初始化错误</h5>
 <p>这个声明的合法的： <code>char hello\[]={'a','b',0};printf(%s,hello)</code> ==<code>printf(&quot;ab&quot;);</code>这里的hello也是需要加上一个终止符0的，并且两个方式：1.<code>0</code>;2.<code>'\0'</code>;</p>
 <p>在上面及“引入”的数组声明中，我们看到string的尾部有一个终止字符'\0',这主要是跟编译器交互的。没有它会有一场<br>
 现在看一个ANSI C下合法，但是实际却没有什么意义的声明方式：</p>
@@ -175,6 +177,28 @@ b<br>
 c<br>
 其中只有a是异常的，没有终止的。所以a=a+b的两个内容，如果b也没有终止，那就会是a = a+b+c,<br>
 b=b+c。</p>
+<p>因为二维数组可以省略花括号，所以在方便之余还可能导致混乱：<br>
+初始化一个只读数组：</p>
+<pre><code class="language-c">const float rain[5][12] = 
+{
+    {a1,...,a12},
+    {b2,...,b12},
+...
+}
+写作
+{
+    a1,a2,...a12,
+    b1,b2,...b12,
+    ...
+}//也可以写作一行
+const int lis[2][3]
+{ {1,3,4},{4,1,8}
+/*因为这个是自动匹配的：
+所以可以写成*/
+{1,3,4,4,1,8}
+{1,3,4,4}//这个时候，还有两个位置是0，但是compiler是按顺序的，所以不会平均分配!即便你打了个空格试图表示这两个子数组各是两个非零元素。
+</code></pre>
+<p>总之，数组</p>
 <h5 id="类型用错">类型用错</h5>
 <pre><code class="language-c">if (expression, or a bool)，
     do something;
@@ -227,16 +251,64 @@ if (!expression or a bool)
 c = foo(a, b)
 </code></pre>
 <p>实参a, b只是把各自的value传递给了foo——因为foo的x, y已经各自构建好了，有不同的位置。</p>
-<pre><code>
+<h3 id="array-and-pointer">Array and Pointer</h3>
+<p>用一系列初级的代码，硬检验出来：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+#define SIZE 4
 
-***
-## 参考
 
-&lt;div id=&quot;refer-anchor-1&quot;&gt;
--[1][C traps and pitfall](Andrew Koenig)&lt;/div&gt;
-&lt;div id=&quot;refer-anchor-2&quot;&gt;
--[2][CPP reference](https://en.cppreference.com/w/)&lt;/div&gt;
+int main(void)
+{
+    int dates[SIZE];
+    int *prd;
+    short index;
+    double bills[SIZE];
+    double *ptb;
+    int billy[SIZE] = {[2] = 3};
+    int i, j;
+
+    prd = dates;
+    ptb = bills;
+    /*i = *dates*If dates can be a pointer*/
+
+    /*ptd = billy[2]
+    ptd...try ...billy,if self..*/
+    printf(&quot;%23s %12s\n&quot;, &quot;short&quot;, &quot;double&quot;);
+
+
+    //printf(&quot;\n Directly print the locateion of the var i,j:%p,%p &quot;, i, j);
+    i = 293;
+    j = 19239;
+    printf(&quot;\nLet i = 293,j = 19239,i,j is at:%p %p\n&quot;, i, j);//!
+    printf(&quot;0x61fe00 + 1 :%x\n&quot;, (0x61fe00 + 1));//!
+   /***   //!都是不规范的warning语句。不要那样写，我这下是做实验。***/
 </code></pre>
+<p>很明显的，如果变量没有初始化，它应该是没有被分配地址的,而未初始化的数组却拥有一个地址，和指针本身是一致的<br>
+这里的语句也很危险，因为%p更愿意接受一个 void*ptr，而不是这些返回基本类型的量</p>
+<pre><code class="language-c">   for (index = 0; index &lt; SIZE; index++)
+       printf(&quot;pointers + %d: %10p %10p\n&quot;, index, prd + index, ptb + index);
+   printf(&quot;\nthe empty array dates is located at:%p\n&quot;, &amp;dates);
+   printf(&quot;\nthe empty array dates is located at:%p\n&quot;, &amp;bills);
+   printf(&quot;\nDirectly print the empty arry dates:%d&quot;, dates);//!
+   printf(&quot;\nDirectly print the arry billy{0,0,2,0}:%d&quot;, billy);//!
+</code></pre>
+<p>于是我们可以看到，数组不可以当作基本数据类型int,float,double来引用。完全不可，因为这会在内存里面随意找一个值<br>
+又可以看到，十六进制+1也是正常的，但是在输出prd+index,ptb+index之类的，地址却+2/+8了<br>
+因为指针并不能和机器地址对等。short:[ | ]一个占俩字节，double:[ | | | | | | | ]一个占8字节</p>
+<blockquote>
+<pre><code>  这里又可以复习一下类型转换中的向下地兼容：
+  short dates可以被float ptd正常指向，但是存址+4(float的)。
+  inpompitate总是不好的，要注意！
+</code></pre>
+</blockquote>
+<p><img src="https://www.log2base2.com/images/c/array-and-pointer-2.png" alt="比较准确的array,address,pointer关系" loading="lazy">,</p>
+<hr>
+<h2 id="参考">参考</h2>
+<div id="refer-anchor-1">
+-[1][C traps and pitfall](Andrew Koenig)</div>
+<div id="refer-anchor-2">
+-[2][CPP reference](https://en.cppreference.com/w/)</div>
 
           </div>
         </div>

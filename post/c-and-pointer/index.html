@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615283932253">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615509954326">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615283932253" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615509954326" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -86,7 +86,8 @@
             
           </div>
           <div class="post-content">
-            <p><ul class="markdownIt-TOC">
+            <div id="top"></div>
+<p><ul class="markdownIt-TOC">
 <li>
 <ul>
 <li><a href="#%E5%8F%98%E9%87%8F-%E7%B1%BB%E5%9E%8B-%E8%AF%AD%E6%B3%95">变量、类型、语法</a>
@@ -97,7 +98,7 @@
 <ul>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E9%94%99%E8%AF%AF">数组声明错误</a></li>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%94%99%E8%AF%AF">数组分配、初始化错误</a></li>
-<li><a href="#%E7%B1%BB%E5%9E%8B%E7%94%A8%E9%94%99">类型用错</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E7%94%A8-%E5%8C%B9%E9%85%8D%E9%94%99">类型用、匹配错</a></li>
 <li><a href="#%E5%A3%B0%E6%98%8E%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">声明的优先级</a></li>
 </ul>
 </li>
@@ -106,7 +107,7 @@
 <li><a href="#%E6%8C%87%E9%92%88">指针</a>
 <ul>
 <li><a href="#%E5%8F%98%E9%87%8F%E4%BC%A0%E9%80%92">变量传递</a></li>
-<li><a href="#array-and-pointer">Array and Pointer</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88">数组和指针</a></li>
 </ul>
 </li>
 <li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
@@ -134,6 +135,7 @@ char c2[10];//做一个对比,  c2这个数组其实是 = [][][][][] [][][][]['\
   scanf_s(&quot;%s&quot;, c2, 10);
   printf(&quot;c1 = %c; c2 = %s&quot;, c1, c2);
 </code></pre>
+<p><a href="#top">回到目录</a></p>
 <h3 id="错误可能出错的初始化-声明与语句">错误/可能出错的初始化、声明与语句</h3>
 <p><strong>声明在C中的语法是：</strong><br>
 <strong>基本类型 生成基本类型的东西</strong><br>
@@ -157,6 +159,7 @@ double m = i;
 </code></pre>
 <p>以上三个初始化中的类型转换都是安全的<br>
 <code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
+<p><a href="#top">回到目录</a></p>
 <h5 id="数组分配-初始化错误">数组分配、初始化错误</h5>
 <p>这个声明的合法的： <code>char hello\[]={'a','b',0};printf(%s,hello)</code> ==<code>printf(&quot;ab&quot;);</code>这里的hello也是需要加上一个终止符0的，并且两个方式：1.<code>0</code>;2.<code>'\0'</code>;</p>
 <p>在上面及“引入”的数组声明中，我们看到string的尾部有一个终止字符'\0',这主要是跟编译器交互的。没有它会有一场<br>
@@ -198,8 +201,8 @@ const int lis[2][3]
 {1,3,4,4,1,8}
 {1,3,4,4}//这个时候，还有两个位置是0，但是compiler是按顺序的，所以不会平均分配!即便你打了个空格试图表示这两个子数组各是两个非零元素。
 </code></pre>
-<p>总之，数组</p>
-<h5 id="类型用错">类型用错</h5>
+<p>在声明的时候，可能会有小错误：想要r的字符空间时Strlen(s)+strlen(t)，在声明的时候应该用s(s)+s(t) + 1！1不要漏加了，这是给'\0'的</p>
+<h5 id="类型用-匹配错">类型用、匹配错</h5>
 <pre><code class="language-c">if (expression, or a bool)，
     do something;
 if (!expression or a bool)
@@ -209,7 +212,11 @@ if (!expression or a bool)
 <ul>
 <li>这里的expr是一个整型变量！与0比较，最好是写成if//(value == 0)，否则会被误认为是bool变量</li>
 <li>expr是是一个ptr！要防止p被误解为一个整型、bool变量：<s><code>if (p == 0)</code></s>，应该<code>if (p == NULL)</code></li>
-<li>expr是一个float....！精度是一个问题，精度太高，有可能10.222225 = 10.222229了</li>
+<li>expr是一个float....！精度是一个问题，精度太高，有可能10.222225 = 10.222229了<br>
+下面一个情况，<br>
+再次强调，变量声明 xxx var总是代表var返回/指向xxx类型的值，类型不同，不应该互相赋值。<br>
+<code>int a[3];</code><br>
+<code>p = a</code>合法，<code>p = &amp;a</code>不合法。因为&amp;a是一个指向数组的指针（指向a的地址），而p应该是一个指向整型的指针。按照这个逻辑，我们的标准规定道：p指向array时，p = a即为指向数组，实际为指向a[0],具体见<a href="#footer">指向</a></li>
 </ul>
 <h4 id="声明的优先级">声明的优先级</h4>
 <p>()的优先级高于*<br>
@@ -251,7 +258,7 @@ if (!expression or a bool)
 c = foo(a, b)
 </code></pre>
 <p>实参a, b只是把各自的value传递给了foo——因为foo的x, y已经各自构建好了，有不同的位置。</p>
-<h3 id="array-and-pointer">Array and Pointer</h3>
+<h3 id="数组和指针">数组和指针</h3>
 <p>用一系列初级的代码，硬检验出来：</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;windows.h&gt;
@@ -284,8 +291,10 @@ int main(void)
     printf(&quot;0x61fe00 + 1 :%x\n&quot;, (0x61fe00 + 1));//!
    /***   //!都是不规范的warning语句。不要那样写，我这下是做实验。***/
 </code></pre>
-<p>很明显的，如果变量没有初始化，它应该是没有被分配地址的,而未初始化的数组却拥有一个地址，和指针本身是一致的<br>
-这里的语句也很危险，因为%p更愿意接受一个 void*ptr，而不是这些返回基本类型的量</p>
+<p>很明显的，如果变量没有初始化，它应该是没有被分配地址的,而未初始化的数组却拥有一个地址，指向它的指针也有同样一个地址：</p>
+<p><a href="#p&amp;r&amp;&amp;r">详见</a></p>
+<div id = "back_declare_pointer"></div>
+<p>这里的语句也很危险，因为%p更愿意接受一个 void*ptr，而不是这些返回基本类型的量</p>
 <pre><code class="language-c">   for (index = 0; index &lt; SIZE; index++)
        printf(&quot;pointers + %d: %10p %10p\n&quot;, index, prd + index, ptb + index);
    printf(&quot;\nthe empty array dates is located at:%p\n&quot;, &amp;dates);
@@ -305,9 +314,16 @@ int main(void)
 <p><img src="https://www.log2base2.com/images/c/array-and-pointer-2.png" alt="比较准确的array,address,pointer关系" loading="lazy">,</p>
 <p>这是一个标准的解释。到了Linked List里面这一切就会更透彻了。<br>
 用一下<em>C Primer Pllus</em>的归纳。</p>
+<div id = "p&r&&r"></div>
+<p><a href="#back_declare_pointer">返回</a></p>
 <ul>
 <li>pointer的值是它所指向对象的地址。地址的表示方式依赖于计算机内部的硬件。<em>多数按照字节编址</em>，在RAM中每个字节都按照顺序编号。较大对象的地址通常是它的第一个字节的地址</li>
-<li>*ptr会得到所指对象的指，</li>
+<li>*ptr会得到所指对象的值， 让指向数组时*p = a默认指向a[0]<br>
+数组billy的地址是billy[0]元素的地址，指针指向billy实际上是指向billy[0]，在调用%p, r时，%p,r = %p,&amp;array但是二者并不同。一个是本身的地址，一个是所指的地址。<br>
+r的真正地址应该是%p, &amp;r，<br>
+<code>000000000061fe00--&gt;%p-&amp;arr</code><br>
+<code>000000000061fe00--&gt;%p-r</code><br>
+<code>000000000061fe18--&gt;%p-&amp;r</code></li>
 </ul>
 <p>我们详细看这一行</p>
 <pre><code class="language-c">int billy[4] = {[2] =3 };
@@ -320,8 +336,33 @@ Try:<br>
 poiner billy=000000000061fdb0<br>
 bare billy=0x61fdb0  =6421936,<br>
 call dilly by %d,=0<br>
-dilly[2]=3<br>
-详细的可以参看《深入理解计算机系统》</p>
+dilly[2]=3</p>
+<p><strong>命题：指针和数组并不等价，但他们具有统一性</strong></p>
+<ol>
+<li>多数数组的引用都会（转化）退化为数组第一个元素的指针。因为没有一各内存是专门说用来存储一个数组的，我认为这样的定义是非常合理的</li>
+<li>基于1.可知数组在C中永远都不能被<em>整体操作</em>， 不能直接复制数组，也不能直接将数组传入函数，也没法直接打印一整个数组——只要引用array，就是得到指针。</li>
+<li>基于1.数组下标操作符[]就同指针+-一样。a[i] &lt;=&gt; *(a+i)<br>
+看：</li>
+</ol>
+<pre><code class="language-c">char a[] = &quot;hello&quot;;
+char *p = &quot;world&quot;;
+</code></pre>
+<p>初始化如下：<br>
+a: [ h | e | l | l | o | \0 ]<br>
+p:[  ] <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> [ w  | o  | r  |  l  |  d  |  \0 ]<br>
+为了方便，我把字符内容改成destory the world:</p>
+<pre><code class="language-c">char *p = &quot;world&quot;;
+    char a[] = &quot;destory the&quot;;
+    printf(&quot;call x[3]   %%p-&amp;self,       %%d-self[3]    %%c-self[3]\n&quot;);
+    printf(&quot;    p    %p       %d         %c\n&quot;, &amp;p, p[3], p[3]);
+    printf(&quot;    a    %p       %d         %c\n&quot;, &amp;a, a[3], a[3]);
+</code></pre>
+<p>call x[3]   %p-&amp;self,       %d-self[3]    %c-self[3]<br>
+p    000000000061fe18       108         l<br>
+a    000000000061fe0c       116         t<br>
+p的地址61fe18就是前面那个初始化图中p的那个空格的地址，x[3]似乎都表示字符串的第四个数字。，但是compiler到达的路径不同，pointer多了一步：到&amp;p处取址，然后再跳转。</p>
+<div id="footer">继续</div>
+<p>详细的可以参看《深入理解计算机系统》</p>
 <hr>
 <h2 id="参考">参考</h2>
 <div id="refer-anchor-1">

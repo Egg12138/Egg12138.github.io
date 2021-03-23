@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>系统搭建记录 | Gridea</title>
+<title>Rust入门|| 几个简单语法 | Gridea</title>
 <meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,80 +80,57 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">系统搭建记录</h2>
+          <h2 class="post-title">Rust入门|| 几个简单语法</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2021-02-12</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://Egg12138.github.io/tag/linux/">
-                    linux
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/unix/">
-                    unix
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/windows/">
-                    windows
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/xue-xi/">
-                    学习
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/shi-jian/">
-                    实践
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/ji-lu/">
-                    记录
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2021-03-19</span>
             
           </div>
           <div class="post-content">
-            <h2 id="wsl-ubuntu">WSL ubuntu</h2>
-<p>vim editor中：</p>
+            <pre><code class="language-rust">use rand::Rng;
+use std::io::BufRead;
+
+
+fn main() {
+    let mut rng = rand::thread_rng();
+    let random = rng.gen_range(1..101);
+    println!(&quot;Guess a number between 1 and 100&quot;);
+    for line in std::io::stdin().lock().lines(){
+        let parsed = line.ok().as_deref().map(str::parse::&lt;i64&gt;);
+        if let Some(Ok(guess)) = parsed {
+            match guess {
+                _ if guess &lt; random =&gt; println!(&quot;Too low&quot;)，
+                _ if guess &gt; random =&gt; println!(&quot;Too high&quot;)，
+                _ =&gt; {
+                    println!(&quot;That's right&quot;);
+                    break;
+                    }
+                }
+            }
+        
+    }
+}
+
+</code></pre>
 <ul>
-<li>.以vi 或者是vim开头编辑文件,输入命令之后,进入到编辑状态了。</li>
-<li>.要退出,但是不保存,按esc先,然后输入【:q】,回车键即可退出,无法退出,则在【:q!...</li>
-<li>.要退出保存的 ,则~                    输入【:wq】,强制保存退出,则输入【:wq!】。</li>
-<li>.看到此时已经退出, 在等待命令状态。</li>
-<li>.以nano开头编辑文件的,则要退出,按【Ctrl+x】,回车键。如要保存的,则先按【Ctrl+o】,再按【x】退出</li>
+<li>两个<code>use</code>语句声明将要做的。。。<code>rand::Rng</code>生成随机值。 <code>std::io::BufRead</code> 显然是标准输入的读取。 依然由<code>main()</code>来作主函数</li>
+<li>let声明变量，默认不可变，mut(mutable)可以让其可变。（安全性挺好！）</li>
+<li><code>rand::thread_rng()</code>创建的是线程安全的Rng对象--&gt;rng变量。</li>
+<li>range的取址为[min, max_lim), 但也可以用<code>1... = 100</code>来让上界被包含。 这里的.就是类似省略号的语义</li>
 </ul>
-<h2 id="关于compiler">关于Compiler</h2>
-<p>再搭建编译环境中，要考虑到不同的标准下的情况<br>
-比如我写了ANSI风格的一个函数<br>
-报错=[Error] ld returned 1 exit status，<br>
-再编译器中勾选ANSI的标准就可以。</p>
+<pre><code class="language-rust">let parsed = line.ok().as_deref().map(str::parse::&lt;i64&gt;);
+       if let Some(OK(guess)) = parsed {  pass }
+</code></pre>
+<p><code>Result&lt;Option&lt;i64&gt;, ...&gt;</code>对象被创建了。  下一行只会在<code>let Some(OK(guess))</code>上匹配，每当一行的结果是一个不匹配的值时，它就会自动跳过<code>if</code><br>
+<code>if</code>包含<code>match</code>语句，有点像swich之case</p>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">
+            <a class="purple-link" href="https://Egg12138.github.io/post/cai-gou-suan-fa-or-qiu-quan-ti-yin-shu/">
               <h3 class="post-title">
-                下一篇：一些英语注释用的词，组，句
+                下一篇：菜狗算法|| 求全体因数
               </h3>
             </a>
           </div>

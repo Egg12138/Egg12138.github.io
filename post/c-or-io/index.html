@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>系统搭建记录 | Gridea</title>
+<title>C || IO | Gridea</title>
 <meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,80 +80,51 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">系统搭建记录</h2>
+          <h2 class="post-title">C || IO</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2021-02-12</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://Egg12138.github.io/tag/linux/">
-                    linux
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/unix/">
-                    unix
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/windows/">
-                    windows
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/xue-xi/">
-                    学习
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/shi-jian/">
-                    实践
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Egg12138.github.io/tag/ji-lu/">
-                    记录
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2021-03-22</span>
             
           </div>
           <div class="post-content">
-            <h2 id="wsl-ubuntu">WSL ubuntu</h2>
-<p>vim editor中：</p>
-<ul>
-<li>.以vi 或者是vim开头编辑文件,输入命令之后,进入到编辑状态了。</li>
-<li>.要退出,但是不保存,按esc先,然后输入【:q】,回车键即可退出,无法退出,则在【:q!...</li>
-<li>.要退出保存的 ,则~                    输入【:wq】,强制保存退出,则输入【:wq!】。</li>
-<li>.看到此时已经退出, 在等待命令状态。</li>
-<li>.以nano开头编辑文件的,则要退出,按【Ctrl+x】,回车键。如要保存的,则先按【Ctrl+o】,再按【x】退出</li>
-</ul>
-<h2 id="关于compiler">关于Compiler</h2>
-<p>再搭建编译环境中，要考虑到不同的标准下的情况<br>
-比如我写了ANSI风格的一个函数<br>
-报错=[Error] ld returned 1 exit status，<br>
-再编译器中勾选ANSI的标准就可以。</p>
-
+            <pre><code class="language-c">char side_a[] = &quot;Side A&quot;;
+char dont[] = { 'W', 'O', 'W', '!' };
+char side_b[] = &quot;Side B&quot;;
+puts(dont); /* dont 不是一个字符串，puts会一直输出直到遇到'\0' */
+</code></pre>
+<p><code>gets()</code>丢弃输入的换行符(已被弃用)<br>
+<code>puts()</code>输出附加换行符<br>
+<code>fgets()</code>保留输入的换行符<br>
+<code>gets_s()</code>丢弃输入的换行符，注意配对<code>fputs/puts--fgets</code>,<code>puts--gets</code><br>
+<code>printf(&quot;%s\n&quot;, string);</code> == <code>puts(string)</code></p>
+<blockquote><br />我们来比较一下 gets()、fgets()和 gets_s()的适用性。如果目标存储区
+装得下输入行，3 个函数都没问题。但是fgets()会保留输入末尾的换行符作
+为字符串的一部分，要编写额外的代码将其替换成空字符。
+如果输入行太长会怎样？使用gets()不安全，它会擦写现有数据，存在
+安全隐患。gets_s()函数很安全，但是，如果并不希望程序中止或退出，就
+要知道如何编写特殊的“处理函数”。另外，如果打算让程序继续运行，
+gets_s()会丢弃该输入行的其余字符，无论你是否需要。由此可见，当输入
+太长，超过数组可容纳的字符数时，fgets()函数最容易使用，而且可以选择
+不同的处理方式。</blockquote>
+仍然需要注意到字符串和字符数组的差别
+这是一段用putchar循环打印的一组输出：
+    HateyH0023
+    newHatey
+    H0023
+第一个输出了两次的Hatey其实就是因为变成了字符数组，
+```c
+        const char string[5] = "Hatey";
+        const char sss[12] = "newHatey";
+        const char zero[6] = "H0023";
+```
+如果sss是别的，string可能会先接到sss去，这跟编译器分配内存的先后顺序有关
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://Egg12138.github.io/post/yi-xie-ying-yu-zhu-shi-yong-de-ci-zu-ju/">
+            <a class="purple-link" href="https://Egg12138.github.io/post/rust-ru-men-or-ji-ge-jian-dan-yu-fa/">
               <h3 class="post-title">
-                下一篇：一些英语注释用的词，组，句
+                下一篇：Rust入门|| 几个简单语法
               </h3>
             </a>
           </div>

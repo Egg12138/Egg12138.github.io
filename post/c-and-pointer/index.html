@@ -5,14 +5,14 @@
     
 <meta charset="utf-8" >
 
-<title>C: Var and Pointer | Gridea</title>
+<title>C: Variables and Pointer | Gridea</title>
 <meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1615542425903">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1616482528619">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1615542425903" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1616482528619" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -80,7 +80,7 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">C: Var and Pointer</h2>
+          <h2 class="post-title">C: Variables and Pointer</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2021-03-07</span>
             
@@ -97,7 +97,11 @@
 *
 <ul>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E9%94%99%E8%AF%AF">数组声明错误</a></li>
-<li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%94%99%E8%AF%AF">数组分配、初始化错误</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%94%99%E8%AF%AF">数组分配、初始化错误</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%80%89%E7%89%B9%E6%80%A7variable-lenth-array">数组声明中的一个可选特性variable-lenth array</a></li>
+</ul>
+</li>
 <li><a href="#%E7%B1%BB%E5%9E%8B%E7%94%A8-%E5%8C%B9%E9%85%8D%E9%94%99">类型用、匹配错</a></li>
 <li><a href="#%E5%A3%B0%E6%98%8E%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">声明的优先级</a></li>
 </ul>
@@ -106,6 +110,7 @@
 </li>
 <li><a href="#%E6%8C%87%E9%92%88">指针</a>
 <ul>
+<li><a href="#%E4%B8%89%E4%B8%AA%E5%9C%B0%E5%9D%80%E4%B8%A4%E4%B8%AA%E5%9C%B0%E5%9D%80%E5%92%8C%E5%87%A0%E4%B8%AA%E5%80%BC">三个地址，两个地址和几个值</a></li>
 <li><a href="#%E5%8F%98%E9%87%8F%E4%BC%A0%E9%80%92">变量传递</a></li>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88">数组和指针</a></li>
 </ul>
@@ -159,6 +164,15 @@ double m = i;
 </code></pre>
 <p>以上三个初始化中的类型转换都是安全的<br>
 <code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
+<p>函数原型中参数名可以省略，但在函数定义中肯定不能省略！<br>
+以下几种原型声明等价：</p>
+<pre><code class="language-c">int f(int *, int);
+int f(int [], int);
+int f(int *a, int n);
+int f(int a[], int);
+</code></pre>
+<p><strong>注意int foo(int *a)传入的是a，声明a所指为整数。（因为在C中我们面向机器操作，不需要说明array是什么东西，只要告诉机器array的地址所指的东西的类型就好）<br>
+在函数中使用*a 才能是真正的a所指的值。</strong></p>
 <p><a href="#top">回到目录</a></p>
 <h5 id="数组分配-初始化错误">数组分配、初始化错误</h5>
 <p>这个声明的合法的： <code>char hello\[]={'a','b',0};printf(%s,hello)</code> ==<code>printf(&quot;ab&quot;);</code>这里的hello也是需要加上一个终止符0的，并且两个方式：1.<code>0</code>;2.<code>'\0'</code>;</p>
@@ -167,7 +181,7 @@ double m = i;
 <pre><code class="language-c">char a[3] = &quot;abc&quot;;
 char b[4] = &quot;abc&quot;;
 </code></pre>
-<p>它将a初始化为['a']['b']['c']了。没有了'\0'，所以它不是一个真正的C字符串，不能被printf %s等正常调用（但确实是符合ANSI C标准的语法的！）<br>
+<p>它将a初始化为['a']['b']['c']了。没有了'\0'，所以它不是一个真正的C字符串，而是一个字符数组。不能被printf %s等正常调用（但确实是符合ANSI C标准的语法的！）<br>
 我们分别输出a,b:<br>
 <img src="D:%5CImages%5CofLearn%5Cwrong_char%5B%5D_name_compare_a_b.png%22Powershell%22" alt="win10PS下" loading="lazy"><br>
 <img src="D:%5CImages%5CofLearn%5Cwrong_char%5B%5D_name_compare_a_b_uBuntu18.04.png%22WSLubunt%22" alt="ubuntu18.04_wsl下" loading="lazy"><br>
@@ -179,7 +193,15 @@ a<br>
 b<br>
 c<br>
 其中只有a是异常的，没有终止的。所以a=a+b的两个内容，如果b也没有终止，那就会是a = a+b+c,<br>
-b=b+c。</p>
+b=b+c。<br>
+以下是cpp的示例：</p>
+<pre><code class="language-c">const char m1[40] = { 'L','i', 'm', 'i', 't', ' ', 'y', 'o', 'u', 'r', 's', 'e', 'l',
+'f', ' ', 't', 'o', ' ', 'o', 'n', 'e', ' ','l', 'i', 'n', 'e',
+'\&quot;, 's', ' ', 'w', 'o', 'r','t', 'h', '.', '\0'
+};
+/*注意最后的空字符。没有这个空字符，这就不是一个字符串，而是一个
+字符数组*/
+</code></pre>
 <p>因为二维数组可以省略花括号，所以在方便之余还可能导致混乱：<br>
 初始化一个只读数组：</p>
 <pre><code class="language-c">const float rain[5][12] = 
@@ -202,6 +224,15 @@ const int lis[2][3]
 {1,3,4,4}//这个时候，还有两个位置是0，但是compiler是按顺序的，所以不会平均分配!即便你打了个空格试图表示这两个子数组各是两个非零元素。
 </code></pre>
 <p>在声明的时候，可能会有小错误：想要r的字符空间时Strlen(s)+strlen(t)，在声明的时候应该用s(s)+s(t) + 1！1不要漏加了，这是给'\0'的</p>
+<h6 id="数组声明中的一个可选特性variable-lenth-array">数组声明中的一个可选特性variable-lenth array</h6>
+<p>在创建的时候可以用变量带来指定维数。所以翻译成”变长数组“是容易让人误解的。我姑且叫它为VL array</p>
+<p>记得有时候用旧gcc的时候，就会出现我int array[lenth]错误，因为这里必须用常量来声明。现在C11的新特性（optional)可以这样做了<br>
+注意前两个形参（rows和cols）用作第3个形参二维数组ar的两个维<br>
+度。因为ar的声明要使用rows和cols，所以在形参列表中必须在声明ar之前<br>
+先声明这两个形参。因此，下面的原型是错误的：<br>
+~int sum2d(int ar[rows][cols], int rows, int cols);<code></code>// 无效的顺序<code>C99/C11标准规定，可以省略原型中的形参名，但是在这种情况下，必 须用星号来代替省略的维度：</code>int sum2d(int, int, int ar[<em>][</em>]); ``// ar是一个变长数组（VLA），省略了<br>
+维度形参名`<br>
+里面但凡不加星号，就会引起”传入的是第一个元素的地址“之歧义</p>
 <h5 id="类型用-匹配错">类型用、匹配错</h5>
 <pre><code class="language-c">if (expression, or a bool)，
     do something;
@@ -246,6 +277,12 @@ if (!expression or a bool)
 </blockquote>
 <p>一些人可能会把这个写成char* p1, p2以为*这个一元运算符对p1,p2都生效。但显然不是。p2在这里并不是指针，只有第一个是。</p>
 <h2 id="指针">指针</h2>
+<h3 id="三个地址两个地址和几个值">三个地址，两个地址和几个值</h3>
+<p>存储指针本身的地址addPtrSelf：%p, &amp;ptr<br>
+指针所指数据的地址addPtr：%p,  ptr<br>
+数据本身所在的地址add, add = &amp;ptr.</p>
+<p>数据本身的值:value<br>
+被指数据的值: *ptr = value</p>
 <h3 id="变量传递">变量传递</h3>
 <p>其实在两个作用域中，直接用变量名传递，对传递后的变量名进行操作不会影响原变量的机理很简单：<br>
 在C中，</p>
@@ -259,7 +296,14 @@ c = foo(a, b)
 </code></pre>
 <p>实参a, b只是把各自的value传递给了foo——因为foo的x, y已经各自构建好了，有不同的位置。</p>
 <h3 id="数组和指针">数组和指针</h3>
-<p>用一系列初级的代码，硬检验出来：</p>
+<p>比较简单的几行代码道出了很多：</p>
+<ul>
+<li><code>array = &amp;array[0]</code></li>
+<li>让array为{0,3,6,22,55,90}<code>*(array + 2)</code>为array的[0+2]的值,即第三个值6， != *array + 2`为array[0] + 2，即2</li>
+<li></li>
+</ul>
+<p>以下一段啰嗦话是我之前写的。。。留着纪念……<br>
+用一系列初级的代码，硬检验出来：</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;windows.h&gt;
 #define SIZE 4
@@ -360,9 +404,96 @@ p:[  ] <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo
 <p>call x[3]   %p-&amp;self,       %d-self[3]    %c-self[3]<br>
 p    000000000061fe18       108         l<br>
 a    000000000061fe0c       116         t<br>
-p的地址61fe18就是前面那个初始化图中p的那个空格的地址，x[3]似乎都表示字符串的第四个数字。，但是compiler到达的路径不同，pointer多了一步：到&amp;p处取址，然后再跳转。</p>
+p的地址61fe18就是前面那个初始化图中p的那个空格的地址，x[3]似乎都表示字符串的第四个数字。，但是compiler到达的路径不同，pointer多了一步：到&amp;p处取址，然后再跳转。<br>
+以下的例子：<br>
+<code>int a[10] = {20, 30, 40, 50}</code>,<br>
+<code>sizeof a = 4 * 4(int size) = 16</code><br>
+将其传入函数<code>foo(int *mm)``:</code><br>
+<code>total = sum(a) = 140</code><br>
+<code>sizeof mm = 8</code></p>
+<p>它说明了</p>
+<ul>
+<li>系统一般用8bytes存储地址,我们传入指针——数组的地址，用foo( type *array)比较不宜搞错。</li>
+<li>在跟声明数组同样的作用域中sizeof array的对象不是array的地址，而是array的实际大小</li>
+</ul>
+<pre><code class="language-c">{
+const char *mytalents[LIM] = { //一个包含5个指向值为char数组指针的数组
+&quot;Adding numbers swiftly&quot;, //mystalents[0]表示第一个字字符串字面量本体，而这个字符串不应该被视为数组，五个字符串长度都是字符串本身的长度+'\0'长度，而不是一个定长的数组的长度
+&quot;Multiplying accurately&quot;, &quot;Stashing data&quot;,
+&quot;Following instructions to the letter&quot;,
+&quot;Understanding the C language&quot;
+}; 
+char yourtalents[LIM][SLEN] = {// 一个二维矩形数组
+&quot;Walking in a straight line&quot;,
+&quot;Sleeping&quot;, &quot;Watching television&quot;,
+&quot;Mailing letters&quot;, &quot;Reading email&quot;
+};
+</code></pre>
 <div id="footer">继续</div>
-<p>详细的可以参看《深入理解计算机系统》</p>
+### 指针操作小结
+<p>array[5] ={100,200,300,400,500}<br>
+ptr1 = array; ptr + integer:</p>
+<table>
+<thead>
+<tr>
+<th>ptr value也就是被指对象的地址， 这个是需要初始化的</th>
+<th>dereferenced ptr</th>
+<th>pointer self address  声明后就被分配内存了的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ptr1 = 000000000061fdf0</td>
+<td>*ptr1 = 100</td>
+<td>&amp;ptr1 = 000000000061fde8指针自己存放在此。 这里的内容就是00..61fdf0.（地址%p类似于%x，指针本身要占用8bytes)</td>
+</tr>
+<tr>
+<td>ptr1 + 4 = 000000000061fe00,</td>
+<td>*(ptr1 + 4) = 500</td>
+<td>&amp;(ptr1 + 4)= 61fe00/&amp;（*ptr1)是常数，所以0000000000000000</td>
+</tr>
+<tr>
+<td>直接ptr+=4是对value+4:ptr1_new = 000000000061fe00</td>
+<td>*(ptr1_new) = 500</td>
+<td>&amp;(ptr1_new)= 61fde8(%x)/000000000061fde8(%p)</td>
+</tr>
+<tr>
+<td>指针value不变，自身地址递增不建议，不建议修改指针本身的地址。</td>
+<td>指针作差一般在同一个array中，表示指向元素的差（绝对值就是距离）ptr2 - ptr3 = -3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>after ptr1++:<br>
+ptr1 = 000000000061fdf4,  *ptr1 = 200, &amp;ptr1 = 000000000061fde8</p>
+<p>ptr2 = 000000000061fdf8, ptr1 = 000000000061fdf4,<br>
+ptr2 - ptr1 = 1<br>
+<code>total += *(*(array + i) + j) == total += array[i][j]</code></p>
+<p>ptr和数组完全不是一个东西。<br>
+static 字面量，传递给数组，编译器是又给数组分配了空间然后把字符串拷贝给数组。传递给指针，直接就是将字面量本身字符串的地址传递给指针。<br>
+ptr = array ,legal, ptr and point to any thing.<br>
+array = ptr, illegal!</p>
+<pre><code class="language-c">#define MSG &quot;I'm special&quot;
+char ar[] = MSG;
+const char *pt = MSG;
+</code></pre>
+<pre><code>address of &quot;I'm special&quot;: 0x100000f10
+address ar: 0x7fff5fbff858
+address pt: 0x100000f10
+address of MSG: 0x100000f10
+address of &quot;I'm special&quot;: 0x100000f10
+lenth ar = 12
+Traversal:    I,',m, ,s,p,e,c,i,a,l,, (the end is '\0'),not a space
+</code></pre>
+<p>这样的一个用处的差异是：<br>
+ptr直接指向字符串，所以对一个可变的字符串，fack, ptr[1]被修改为u后，同一个地址的所以有该string实例都成了fuck。<br>
+而数组则不会，它使用的时候副本，当然我们可以用const来限定指针所指对象。</p>
+<blockquote>
+<p>如果不修改字符串，不要用指针指向字符串字面量。<br>
+<strong>用指针来指向的一个好处是它可以减少内存使用</strong><br>
+ptr1 = ptr2的语义就是将ptr2所指传递给ptr1，被指量不拷贝，<br>
+详细的可以参看《深入理解计算机系统》</p>
+</blockquote>
 <hr>
 <h2 id="参考">参考</h2>
 <div id="refer-anchor-1">

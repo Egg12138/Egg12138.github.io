@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1616565292006">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1616688858333">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1616565292006" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1616688858333" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -86,7 +86,21 @@
             
           </div>
           <div class="post-content">
-            <pre><code class="language-c">char side_a[] = &quot;Side A&quot;;
+            <p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%87%A0%E4%B8%AA%E6%A0%87%E5%87%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0">几个标准字符串获取函数</a></li>
+<li><a href="#%E7%BB%86%E8%8A%82">细节</a>
+<ul>
+<li><a href="#getchar">getchar()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="几个标准字符串获取函数">几个标准字符串获取函数</h2>
+<pre><code class="language-c">char side_a[] = &quot;Side A&quot;;
 char dont[] = { 'W', 'O', 'W', '!' };
 char side_b[] = &quot;Side B&quot;;
 puts(dont); /* dont 不是一个字符串，puts会一直输出直到遇到'\0' */
@@ -116,7 +130,16 @@ gets_s()会丢弃该输入行的其余字符，无论你是否需要。由此可
         const char sss[12] = "newHatey";
         const char zero[6] = "H0023";
 ```
-如果sss是别的，string可能会先接到sss去，这跟编译器分配内存的先后顺序有关
+如果sss是别的，string可能会先接到sss去，这跟编译器分配内存的先后顺序有关。
+<h2 id="细节">细节</h2>
+<h3 id="getchar">getchar()</h3>
+<p>getchar其实范围的不是char类型。而是int(ASCII)<br>
+char [-127, 127]如果超过了，就会异常。而且这个显然不是编译的时候会进行的报错。</p>
+<pre><code class="language-c">if getchar() == EOF
+    {do something}
+</code></pre>
+<p>有可能报错。</p>
+
           </div>
         </div>
 
@@ -124,7 +147,7 @@ gets_s()会丢弃该输入行的其余字符，无论你是否需要。由此可
           <div class="next-post">
             <a class="purple-link" href="https://Egg12138.github.io/post/rust-ru-men-or-ji-ge-jian-dan-yu-fa/">
               <h3 class="post-title">
-                下一篇：Rust入门|| 几个简单语法
+                下一篇：Rust入门||（尚无法开发任何rust程序……）
               </h3>
             </a>
           </div>

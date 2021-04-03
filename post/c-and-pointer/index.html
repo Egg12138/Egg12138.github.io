@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1616688858333">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1616688858333" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -113,8 +113,12 @@
 <li><a href="#%E4%B8%89%E4%B8%AA%E5%9C%B0%E5%9D%80%E4%B8%A4%E4%B8%AA%E5%9C%B0%E5%9D%80%E5%92%8C%E5%87%A0%E4%B8%AA%E5%80%BC">三个地址，两个地址和几个值</a></li>
 <li><a href="#%E5%8F%98%E9%87%8F%E4%BC%A0%E9%80%92">变量传递</a></li>
 <li><a href="#%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88">数组和指针</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%87%E9%92%88%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84">字符（串）指针和字符数组</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8">引用</a></li>
+<li><a href="#%E6%8C%87%E9%92%88%E6%93%8D%E4%BD%9C%E5%B0%8F%E7%BB%93">指针操作小结</a></li>
 </ul>
 </li>
+<li><a href="#%E5%87%A0%E4%B8%AA%E5%A4%8D%E6%9D%82%E5%A3%B0%E6%98%8E">几个复杂声明</a></li>
 <li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
 </ul>
 </li>
@@ -430,7 +434,70 @@ char yourtalents[LIM][SLEN] = {// 一个二维矩形数组
 };
 </code></pre>
 <div id="footer">继续</div>
-### 指针操作小结
+<h3 id="字符串指针和字符数组">字符（串）指针和字符数组</h3>
+<p>这一块我数组和指针中x已经做过解释。现在再根据K&amp;B重新精简一下。</p>
+<p><strong><center >Terminated with the null character '\0' </center></strong><br>
+和数组一样的：<br>
+<strong><center>A string constant is accessed by a pointer to its first element</center></strong><br>
+<strong><center> C不提供任何针对整个字符串单元进行处理的操作符。</center></strong></p>
+<pre><code class="language-c">char *pstring = &quot;now is the time&quot;;
+char arraystring[] = &quot;now is the time&quot;;
+char arrstr[16]=&quot;now is the time&quot;;/*这种声明方式没有第二行的好，大小没必要这样分配*/
+</code></pre>
+<p>上面都不是copy，copy需要对两个指针操作<br>
+pstring: [ · ]--&gt;[ now is the time\0]<br>
+arraystring: ['n','o','w',....,'\0']这里arraystring足够大，能够容下字符串以及末尾的'\0'</p>
+<pre><code class="language-c">void strcopy_diy(char *dst, char *src)
+{
+    while ((*dst++ = *src++) != '\0' )/*简洁的表达*/
+        ;
+        //==&gt;
+    while((*dst++ = *src++))//最简洁：'\0'的判断并不需要，因为它本身就是终止符【
+        ;
+}
+</code></pre>
+<h3 id="引用">引用</h3>
+<p>array在expr中等效于指向第一个元素的指针，那array和&amp;array有什么区别？<br>
+<strong>&amp;array这种引用方式不安全，ANSI C之前这会引起warnign</strong><br>
+我在编译的时候，想要用格式化来调用引用值，发现易错。</p>
+<p>对数组的简单调用生成一个T型指针，指向数组的第一个元素。<br>
+<code>int [10]</code>, a<br>
+的引用就是int型指针，指向第一个元素，&amp;a是10个int型数组的指针。</p>
+<p><code>type 2darray[A][B]</code><br>
+2darray是指向2darray的第一个元素的指针，即指向一个 可容纳<code>[B]</code>个type型的数组。<br>
+&amp;2darray是指向这个2D数组本身。<br>
+在这个时候确实更有<s>面向对象的臭味</s><br>
+似乎数组能够被指向是一件好事？但在C中它真的没什么用。</p>
+<pre><code class="language-c">        int a1[3] = { 0, 1, 2 };
+        int a2[2][3] = {{3, 4, 5}, {6, 7, 8}};
+        int *ip;//simple pointer, pointing to a memory ,like the address of the first element in the array
+        int (*ap)[3];//a pointer pointing to a array with 3 spaces...pointing the entire array
+        ip = a1;//ip[s] &lt;=&gt; a1[s];pretty good!
+        ap = &amp;a1;
+
+        printf(&quot;%d&quot;, *ip);
+        ip++;
+        printf(&quot;--&gt;%d\n&quot;, *ip);
+        printf(&quot;%d\nEverything is good,right?\n&quot;, **ap);
+        ap++;
+        printf(&quot;%d\nLook what happened!&quot;, **ap);
+        ap = a2;
+        printf(&quot;\n2D-array, ap works well:%d&quot;, **ap);
+        ap++;
+        printf(&quot;\nafter ap++:**ap=%d&quot;, **ap);
+</code></pre>
+<p>输出：<br>
+0--&gt;1<br>
+0<br>
+Everything is good,right?<br>
+3//异常<br>
+Look what happened!<br>
+2D-array, ap works well:3<br>
+after ap++:**ap=6</p>
+<p>这种逻辑很好理解，<code>*ptr[]</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.48312em;vertical-align:0em;"></span><span class="mrel">≈</span></span></span></span> <code>**ptr</code>,需要在2Darray中解引用才能正确地整活。<br>
+刚刚ap=a1的时候，ap++之后应该是试图指向a1的另一行，但是a1只有一行，所以有异常。<br>
+输出是3，因为下面的a2是3. ap访问到内存在a1之后的a2 去了。</p>
+<h3 id="指针操作小结">指针操作小结</h3>
 <p>array[5] ={100,200,300,400,500}<br>
 ptr1 = array; ptr + integer:</p>
 <table>
@@ -469,6 +536,7 @@ ptr1 = 000000000061fdf4,  *ptr1 = 200, &amp;ptr1 = 000000000061fde8</p>
 <p>ptr2 = 000000000061fdf8, ptr1 = 000000000061fdf4,<br>
 ptr2 - ptr1 = 1<br>
 <code>total += *(*(array + i) + j) == total += array[i][j]</code></p>
+<div id='PointerNotEq2Array'></div>
 <p>ptr和数组完全不是一个东西。<br>
 static 字面量，传递给数组，编译器是又给数组分配了空间然后把字符串拷贝给数组。传递给指针，直接就是将字面量本身字符串的地址传递给指针。<br>
 ptr = array ,legal, ptr and point to any thing.<br>
@@ -476,25 +544,78 @@ array = ptr, illegal!</p>
 <pre><code class="language-c">#define MSG &quot;I'm special&quot;
 char ar[] = MSG;
 const char *pt = MSG;
-</code></pre>
-<pre><code>address of &quot;I'm special&quot;: 0x100000f10
-address ar: 0x7fff5fbff858
-address pt: 0x100000f10
-address of MSG: 0x100000f10
-address of &quot;I'm special&quot;: 0x100000f10
-lenth ar = 12
-Traversal:    I,',m, ,s,p,e,c,i,a,l,, (the end is '\0'),not a space
+```c
+    address of &quot;I'm special&quot;: 0x100000f10
+    address ar: 0x7fff5fbff858
+    address pt: 0x100000f10
+    address of MSG: 0x100000f10
+    address of &quot;I'm special&quot;: 0x100000f10
+    lenth ar = 12
+    Traversal:    I,',m, ,s,p,e,c,i,a,l,, (the end is '\0'),not a space
 </code></pre>
 <p>这样的一个用处的差异是：<br>
 ptr直接指向字符串，所以对一个可变的字符串，fack, ptr[1]被修改为u后，同一个地址的所以有该string实例都成了fuck。<br>
-而数组则不会，它使用的时候副本，当然我们可以用const来限定指针所指对象。</p>
+而数组则不会，它使用的时候副本，当然我们可以用const来限定指针所指对象。<br>
+在<em>Frequently asked questions C</em>中的问题<em>1.34</em>:</p>
+<pre><code>以下的初始化有什么区别？
+    char a[] = *string literal&quot;;
+    char *p = &quot;string literal&quot;;
+当我向p[i]赋值的时候，我的程序崩溃了
+</code></pre>
+<p><code>Segmentation fault (core dumped)</code><br>
+而对于数组，操作却无事。<br>
+如前面所说，数组已经赋值一块来了。<br>
+所以<code>char a[] = xxx</code>的初始化内容为:在地址a的这一系列内存单元被一次初始化为这个字符串。<br>
+而&quot;string literal&quot;本身时一个无名的static字符数组X，可能会存储在只读内存中，这就导致它不能被修改（是 <code>const</code>），我们又都知道，在expr中，数组等于对自身的引用（我还是那样认为：c根本没有数组这个概念，只有内存管理这个概念），所以无名数组X立即转化为一个指针，<br>
+有的编译器为了解决这个问题，特地将字面量转换成<code>const char</code>型数组。</p>
 <blockquote>
-<p>如果不修改字符串，不要用指针指向字符串字面量。<br>
+<pre><code>      如果不修改字符串，不要用指针指向字符串字面量。
+      用数组初始化字符串的话需要考虑到作用域 
+</code></pre>
+</blockquote>
+<p>如 <code>char string[] = &quot;abababa&quot;</code>在函数体结束时内存就会被释放<br>
 <strong>用指针来指向的一个好处是它可以减少内存使用</strong><br>
 ptr1 = ptr2的语义就是将ptr2所指传递给ptr1，被指量不拷贝，<br>
 详细的可以参看《深入理解计算机系统》</p>
-</blockquote>
 <hr>
+<h2 id="几个复杂声明">几个复杂声明</h2>
+<pre><code class="language-c">char **argv
+    argv:  pointer to pointer to char
+int (*daytab)[13]
+    daytab: a pointer  returning an array of int
+int *daytab[13]
+    daytab:  an array[13] of  pointers to int
+void *comp()
+    comp: function returning pointer to void
+void (*comp)()
+    comp: a pointer return a function returning void
+char (*(*x()))[])()
+    x: function returning pointer to array[] of pointers to function returning char.
+char (*(*x[3])())[]
+    x: a array[3] of pointers to function returning pointer to array[5] of char
+
+(*pfa[])()
+
+
+
+## 给自己的编程建议
+
+### 没必要声明一个数组的指针。
+因为人类提到数组，应该想的就是它的第一个元素的指针。
+一个指向数组的指针&amp;array并不好用。在[引用](#引用)里分析过了 
+### 函数入口处，保证非法参数不存在
+务必检查指针是否为空。
+引用虽然只能引用已存在的内存，更安全，但是效率不及指针。
+### 函数出口处，保证return的正确和有效性
+#### return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。
+```linux
+test.c:13:10: warning: assignment discards ‘const’ qualifier from pointer 
+
+target type [-Wdiscarded-qualifiers]
+  stringg = Func();
+</code></pre>
+<p>这里的<code>Func()</code>返回的是其作用域里面的一个字符串<code>char str[] = &quot;aaaa&quot;;</code>，这个变量只是存放在堆栈上。如果创建的是<code>const char *s = &quot;aaaa&quot;;</code>那就是存放在静态数据区，可以很好地返回这个地址。在linux gcc下编译都无法通过。<br>
+这是之前在<a href="#PointerNotEq2Array">数组和指针</a>里面讲到的。</p>
 <h2 id="参考">参考</h2>
 <div id="refer-anchor-1">
 -[1][C traps and pitfall](Andrew Koenig)</div>

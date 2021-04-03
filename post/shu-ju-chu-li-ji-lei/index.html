@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>数据处理积累 | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">数据处理积累</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-03-30</span>
+            
+          </div>
+          <div class="post-content">
+            <p>这篇博文我以Q&amp;A的方式来写。<br>
+<ul class="markdownIt-TOC">
+<li><a href="#%E5%9B%BE%E8%A1%A8%E8%AE%BE%E7%BD%AE">图表设置</a>
+<ul>
+<li>[[点]作图描点的样式如何调整、有哪些参数？](#点作图描点的样式如何调整-有哪些参数)</li>
+<li>[[图]pyplot成像尺寸设置？](#图pyplot成像尺寸设置)
+<ul>
+<li><a href="#%E5%9D%90%E6%A0%87%E5%A4%AA%E5%A4%9A%E4%BA%86%E6%95%B0%E5%80%BC%E9%87%8D%E5%8F%A0%E6%80%8E%E4%B9%88%E6%A0%B7%E6%8A%8A%E5%9B%BE%E6%A0%87%E5%B0%BA%E5%AF%B8%E8%B0%83%E5%A4%A7">坐标太多了，数值重叠，怎么样把图标尺寸调大</a></li>
+</ul>
+</li>
+<li>[[刻度] 坐标轴刻度设置](#刻度-坐标轴刻度设置)
+<ul>
+<li><a href="#%E6%80%8E%E4%B9%88%E6%8A%8A%E5%9D%90%E6%A0%87%E5%88%BB%E5%BA%A6%E8%BD%AC%E8%A7%92%E5%BA%A6%E6%98%BE%E7%A4%BA">怎么把坐标刻度转角度显示、</a></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE">数据</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6">数据文件</a>
+<ul>
+<li><a href="#csv%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%86%E9%9A%94%E7%AC%A6%E5%BC%82%E5%B8%B8%E5%8F%AF%E4%BB%A5%E6%80%8E%E4%B9%88%E6%93%8D%E4%BD%9C">csv文件的分隔符异常，可以怎么操作</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86">文件管理</a>
+<ul>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6">文件复制</a>
+<ul>
+<li><a href="#cp">cp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91">文本编辑</a>
+<ul>
+<li><a href="#%E6%97%B6%E9%97%B4%E5%A6%82%E4%BD%95%E8%BD%AC%E6%8D%A2%E6%88%90%E6%97%B6%E9%97%B4%E6%88%B3d%E6%88%96%E8%80%85%E8%BD%AC%E6%8D%A2%E6%88%90%E7%A7%92%E7%A4%BA%E6%95%B0">时间如何转换成时间戳，d或者转换成秒示数？</a></li>
+<li><a href="#%E6%95%B4%E5%88%97%E8%A1%8C%E8%BF%90%E7%AE%97">整列行运算</a></li>
+<li><a href="#%E6%83%B3%E8%A6%81%E5%B0%86%E6%95%B0%E4%B8%87%E4%B8%AAcsv%E6%95%B0%E6%8D%AE%E4%B8%AD%E9%80%89%E6%8B%A9%E4%B8%80%E4%BA%9B%E5%86%99%E5%85%A5%E5%88%B0%E5%8F%A6%E5%A4%96%E7%9A%84csv%E6%96%87%E4%BB%B6%E6%80%8E%E4%B9%88%E6%AF%94%E8%BE%83%E9%AB%98%E6%95%88%E5%9C%B0%E6%93%8D%E4%BD%9C">想要将数万个.csv数据中选择一些，写入到另外的.csv文件，怎么比较高效地操作？</a>
+<ul>
+<li><a href="#%E7%94%A8open">用open()</a></li>
+<li><a href="#%E7%94%A8pandas%E5%BA%93">用pandas库</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="图表设置">图表设置</h1>
+<h2 id="点作图描点的样式如何调整-有哪些参数">[点]作图描点的样式如何调整、有哪些参数？</h2>
+<p>不论是三点(scatter)还是线性的，都是可以通过同样的属性设置完成样式自定义的。<br>
+<code>plt.title()</code><br>
+<code>plt.xlabel</code><br>
+<code>plt.ylabel</code></p>
+<h2 id="图pyplot成像尺寸设置">[图]pyplot成像尺寸设置？</h2>
+<h3 id="坐标太多了数值重叠怎么样把图标尺寸调大">坐标太多了，数值重叠，怎么样把图标尺寸调大</h3>
+<p>可以选择<a href="#axismodify">调整坐标轴</a>，不必每个刻度都显示</p>
+</blockquote>
+## \[轴]pyplot坐标轴设置
+<div id='axismodify'></div>
+### 设定坐标范围
+`plt.xlim((a,b))` plt.xlim()receive a tuple
+<h2 id="刻度-坐标轴刻度设置">[刻度] 坐标轴刻度设置</h2>
+<h3 id="怎么把坐标刻度转角度显示">怎么把坐标刻度转角度显示、</h3>
+<p>比如把横坐标刻度改成竖直显示。<br>
+<code>plt.xticks(rotation = 270)</code><br>
+<code>plt.xticks(rotation = 90)</code><br>
+自动旋转<br>
+<code>fig.autofmt_xdate()</code></p>
+<h3 id=""></h3>
+<pre><code class="language-python"> xticks(np.arange(0, 1, step=0.2))  # Set label locations.
+ xticks([0, 1, 2], ['January', 'February', 'March'],
+    ...        rotation=20)  # Set text labels and properties.
+</code></pre>
+<h1 id="数据">数据</h1>
+<h2 id="数据文件">数据文件</h2>
+<h3 id="csv文件的分隔符异常可以怎么操作">csv文件的分隔符异常，可以怎么操作</h3>
+<p>甚至不需要用什么指令，直接记事本打开，替换空格，或者其他不好用的分隔符，然后替换成逗号就可</p>
+<h2 id="文件管理">文件管理</h2>
+<h3 id="文件复制">文件复制</h3>
+<h4 id="cp">cp</h4>
+<p><code>cat</code>是作为标准输出，<br>
+用<code>cp</code>复制源文件到目标文件中， 如果采用<code>cp filepath</code>file已经存在，则file的原本内容会被破坏重写为新的内容。<br>
+<code>cp</code>可以重命名<code>cp sourcefile path/newname</code>复制到path下并且重命名为newname<br>
+<code>cp</code>可以将目录也复制。其他更多的到时候现查即可。</p>
+<h2 id="文本编辑">文本编辑</h2>
+<h3 id="时间如何转换成时间戳d或者转换成秒示数">时间如何转换成时间戳，d或者转换成秒示数？</h3>
+<p>excel中自定义格式0[s]就可以了。</p>
+<h3 id="整列行运算">整列行运算</h3>
+<p>单个运算后<br>
+拖到其他行</p>
+<h3 id="想要将数万个csv数据中选择一些写入到另外的csv文件怎么比较高效地操作">想要将数万个.csv数据中选择一些，写入到另外的.csv文件，怎么比较高效地操作？</h3>
+<h4 id="用open">用open()</h4>
+<pre><code class="language-python">#用csv库
+#用argparse以便在命令行直接操作
+import csv
+import argparse
+
+parser = argparse.ArgumentParser(des.........)
+parser.add_argument('filepath', type=str, help='Enter the filepath to be dealt.')
+args = parser.parse_args()
+path_in = args.filepath#filepath是存储在对象args中的。所以不能直接先访问
+
+with open(path_in, mode = 'r') as file:
+    file_dealer = csv.reader(file, delimiter = ',')
+    &quot;&quot;&quot;因为csv文件可以用斜杠反斜杠等作区隔，所以这里参数要设置（我的文件是用','的）&quot;&quot;&quot;
+    line_count = 0
+    for row in file:
+        #逐行操作
+
+写入字典
+with open(path_out, mode ='w') as file:
+    file_dealer = 
+
+</code></pre>
+<h4 id="用pandas库">用pandas库</h4>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/python-shu-ju-mo-xing/">
+              <h3 class="post-title">
+                下一篇：Python魔术方法（待填坑）
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

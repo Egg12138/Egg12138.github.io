@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Py_collections||collections库继续 | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Py_collections||collections库继续</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-03-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#collectionsnamedtuple">collections.namedtuple()</a>
+<ul>
+<li><a href="#%E6%96%B9%E4%BE%BF%E6%9E%84%E5%BB%BA%E5%8F%AA%E6%9C%89%E5%B1%9E%E6%80%A7%E6%B2%A1%E6%9C%89%E6%96%B9%E6%B3%95%E7%9A%84%E5%AF%B9%E8%B1%A1-%E6%AF%94%E5%A6%82%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9D%A1%E7%9B%AE">方便构建只有属性没有方法的对象， 比如数据库条目</a></li>
+<li><a href="#%E5%8A%A0%E5%92%8C">加和</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="collectionsnamedtuple">collections.namedtuple()</h2>
+<p><code>namedtuple(typename, field_names, *, rename=False, defaults=None, module=None)</code></p>
+<blockquote>
+<pre><code>  Returns a new subclass of tuple with named fields.
+</code></pre>
+</blockquote>
+<h3 id="方便构建只有属性没有方法的对象-比如数据库条目">方便构建只有属性没有方法的对象， 比如数据库条目</h3>
+<p>注意到：</p>
+<p>对象定义 <code>Point = namedtuple('Point', ['x', 'y'])</code><br>
+之后直接用赋值方式构建实例<br>
+<code>&gt;&gt;&gt; a_p = p(11,2)</code><br>
+<code>&gt;&gt;&gt; type(a_p)</code><br>
+<code>&lt;class '__main__.Point'&gt;</code>这是Point类对象，</p>
+<h3 id="加和">加和</h3>
+<p>具体的加和方法是直接拼接。想要拓展则应该用在其他类中自己定义。</p>
+<pre><code class="language-python">&gt;&gt;&gt; b_p
+Point(x=1, y=8)
+&gt;&gt;&gt; a_p + b_p
+(11, 2, 1, 8)
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/c-or-io/">
+              <h3 class="post-title">
+                下一篇：C || IO&amp;strings
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

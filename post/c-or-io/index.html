@@ -5,14 +5,14 @@
     
 <meta charset="utf-8" >
 
-<title>C || IO | Gridea</title>
+<title>C || IO&amp;strings | Gridea</title>
 <meta name="description" content="&amp;&amp; Practice makes perfect">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1616688858333">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1616688858333" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -80,7 +80,7 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">C || IO</h2>
+          <h2 class="post-title">C || IO&amp;strings</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2021-03-22</span>
             
@@ -90,9 +90,14 @@
 <li>
 <ul>
 <li><a href="#%E5%87%A0%E4%B8%AA%E6%A0%87%E5%87%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0">几个标准字符串获取函数</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2">输出字符串</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0">命令行参数</a></li>
 <li><a href="#%E7%BB%86%E8%8A%82">细节</a>
 <ul>
+<li><a href="#source-and-destinationbuffer">Source and Destination/buffer</a></li>
 <li><a href="#getchar">getchar()</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B">参数类型,返回类型</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E8%AF%AD%E4%B9%89">参数语义</a></li>
 </ul>
 </li>
 </ul>
@@ -131,14 +136,79 @@ gets_s()会丢弃该输入行的其余字符，无论你是否需要。由此可
         const char zero[6] = "H0023";
 ```
 如果sss是别的，string可能会先接到sss去，这跟编译器分配内存的先后顺序有关。
+<p>puts(array || string),我们应该传入的是字符串&quot;A&quot;而不是字符'A',应该传入数组q而不是数组值q[i]（假设值不是数组）</p>
+<h2 id="输出字符串">输出字符串</h2>
+<p>直接引用字符串时不要用*来取值。直接传递指针就可以。 说实话，格式化引用也是引用地址</p>
+<pre><code class="language-c">char *ptr = &quot;literal strings&quot;;
+puts(ptr);
+printf(&quot;%s&quot;, ptr);
+</code></pre>
+<h2 id="命令行参数">命令行参数</h2>
+<pre><code class="language-c">int main(int argc, char *argv[])//argc表示参数数量，用来遍历打印输入参数的。
+/*.....*/
+printf(&quot;The command line has %d arguments:\n&quot;, argc - 1);
+
+    for (count = 0; count &lt; argc; count++)
+        printf(&quot;%d: %s\n&quot;, count, argv[count]);
+while (argv + count)//隐患
+    {
+        printf(&quot;count=%d\n&quot;, count); 
+        printf(&quot;c--&gt;%c &quot;, *(argv[count]));
+        printf(&quot;s--&gt;%s\n&quot;, argv[count]);
+        count++;
+    }
+</code></pre>
+<p>再命令行输入<br>
+<code>d@xjz-egg:/mnt/c/Users/Shaw/documents/cprojects/learningc$ ./eg-11-31.exe 5 -as tab dick soft &quot;ass hole&quot;</code><br>
+OUTPUT:<br>
+The command line has 6 arguments:(数组有7个元素，包括了filename)<br>
+说明这个main()获取的参数并不是传统的positional parameter   argv数组(argv : an array of pointers to char) 获取了所有输入的参数。<br>
+0: eg-11-31.exe<br>
+1: 5<br>
+2: -as<br>
+3: tab<br>
+4: dick<br>
+5: soft<br>
+6: ass<br>
+count=0<br>
+c--&gt;e s--&gt;eg-11-31.exe<br>
+count=1<br>
+c--&gt;5 s--&gt;5<br>
+count=2<br>
+c--&gt;- s--&gt;-as<br>
+count=3<br>
+c--&gt;t s--&gt;tab<br>
+count=4<br>
+c--&gt;d s--&gt;dick<br>
+count=5<br>
+c--&gt;s s--&gt;soft<br>
+count=6<br>
+c--&gt;a s--&gt;ass hole<br>
+count=7<br>
+<code>%c</code>引用时，指针所指的字面量只有第一个char被引用。如果想要继续，应该要遍历打印<code>*(argv[]+sub_index)</code><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span>  <code>argv[count][sub_index]</code></p>
+<p>结尾count=7这一行应该时遍历了非常久，内存溢出或者是找到下一个EOF之类的，才停止。所以while那句隐患expr需要管控！</p>
 <h2 id="细节">细节</h2>
+<h3 id="source-and-destinationbuffer">Source and Destination/buffer</h3>
+<p>我们看：<br>
+<code>int __cdecl sprintf(char *_Buffer, const char *_Format, ...)</code><br>
+更明显的是<code>strcpy</code>:<br>
+<code>char *__cdecl strcpy(char *_Destination, const char *_Source)</code><br>
+<code>fgets(destination, source)</code><br>
+都是destination类的数据放在第一个参数。</p>
 <h3 id="getchar">getchar()</h3>
-<p>getchar其实范围的不是char类型。而是int(ASCII)<br>
+<p>getchar其实返回的不是char类型。而是int(ASCII)<br>
 char [-127, 127]如果超过了，就会异常。而且这个显然不是编译的时候会进行的报错。</p>
 <pre><code class="language-c">if getchar() == EOF
     {do something}
 </code></pre>
 <p>有可能报错。</p>
+<h3 id="参数类型返回类型">参数类型,返回类型</h3>
+<p>string.h的函数主要对字符串操作<br>
+如<code>strncmp('A', &quot;B&quot;, 3)</code>就会在运行时出错。会报pointer to a integer without a cast.错。<br>
+但是有些针对字符：<br>
+<code>strchr(const char *string, char target)</code>且** 返回NULL指针 **， 所以这个函数的结果也不要随便引用，用来判断元素是否存在即可<code>if strchar(....)</code>而不要随便用output: %c *strchr</p>
+<h3 id="参数语义">参数语义</h3>
+<p>gets族函数接受string,其实接受的就是ptr，所以判断空字符串使用get族（） =?= NULL会很好。</p>
 
           </div>
         </div>

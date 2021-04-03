@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>C||存储管理 | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">C||存储管理</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-04-02</span>
+            
+          </div>
+          <div class="post-content">
+            <p><ul class="markdownIt-TOC">
+<li><a href="#%E8%AF%AD%E6%B3%95%E5%A4%8D%E4%B9%A0">语法复习</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%A7%84%E5%88%99">作用域规则</a>
+<ul>
+<li><a href="#%E7%A4%BA%E6%84%8F">示意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B">存储类型</a>
+<ul>
+<li><a href="#%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B">四种类型</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="语法复习">语法复习</h1>
+<p>带类型声明就已经分配内存了。</p>
+<pre><code class="language-c">int i;
+printf(&quot;%ld&quot;, sizeof i);
+</code></pre>
+<p>output: 4<br>
+而extern int i;就没有分配内存，其实原因也很易懂，i可能会是外部文件的变量</p>
+<p>前者是&quot;定义性声明(defining declaration)&quot;或者称为&quot;定义(definition)&quot;,而后者是&quot;引用性声明(referncing declaration)&quot; 。从广义的角度来讲 声明中包含着定义，但是并非所有的声明都是定义，例如：int a 它既是声明，同时又是定义。然而对于 extern a 来讲它只是声明不是定义。它可以在同一源程序或不同的源程序中重复声明。一般的情况下我们常常这样叙述，把建立空间的声明称之为&quot;定义&quot;，而把不需要建立存储空间称之为&quot;声明&quot;。很明显我们在这里指的声明是范围比较窄的，也就是说非定义性质的声明。</p>
+<pre><code class="language-c">extern int a;//声明一个全局变量a
+int a; //定义一个全局变量a
+extern int a =0 ;//定义一个全局变量a 并给初值。
+int a =0;//定义一个全局变量a,并给初值，
+</code></pre>
+<h1 id="作用域规则">作用域规则</h1>
+<h2 id="示意">示意</h2>
+<pre><code class="language-c">int var1 = 5; /*全局作用域，外部链接，可以被同一个程序的所有文件访问*/
+static var2 = 3;/*局部作用域，内部连接，只能再这个文件内的函数里被访问*/
+int main()
+{
+    int var3 = 4;/*只再main()能被访问*/
+}
+</code></pre>
+<h1 id="存储类型">存储类型</h1>
+<p>具有作用域和连接类型的标识符不一定具有存储类型。<br>
+Indentifier可以designate特定object的内容。<br>
+复习一下熟悉的内容：</p>
+<pre><code>变量名不是指定对象的唯一途径。考虑下面的声明：
+int * pt = &amp;entity;
+int ranks[10];
+第1行声明中，pt是一个标识符，它指定了一个储存地址的对象。但
+是，表达式*pt不是标识符，因为它不是一个名称。然而，它确实指定了一
+个对象，在这种情况下，它与 entity 指定的对象相同。一般而言，那些指定
+对象的表达式被称为左值（第5章介绍过）。所以，entity既是标识符也是左
+值；*pt既是表达式也是左值。按照这个思路，ranks + 2 * entity既不是标
+识符（不是名称），也不是左值（它不指定内存位置上的内容）。但是表达
+式*(ranks + 2 * entity)是一个左值，因为它的确指定了特定内存位置的
+值，即ranks数组的第7个元素。顺带一提，ranks的声明创建了一个可容纳
+10个int类型元素的对象，该数组的每个元素也是一个对象。
+所有这些示例中，如果可以使用左值改变对象中的值，该左值就是一个
+可修改的左值（modifiable lvalue）。
+</code></pre>
+<p>现在，考虑下面的定义,<br>
+字符串字面量是&quot;Behold a string literal!&quot;，从基本逻辑来说，改变pc确实是只改变指向的地址，</p>
+<pre><code>
+const char * pc = &quot;Behold a string literal!&quot;;
+程序根据该声明把相应的字符串字面量储存在内存中，内含这些字符值
+的数组就是一个对象。由于数组中的每个字符都能被单独访问，所以每个字
+符也是一个对象。该声明还创建了一个标识符为pc的对象，储存着字符串的
+地址。由于可以设置pc重新指向其他字符串，所以标识符pc是一个可修改的
+左值。const只能保证被pc指向的字符串内容不被修改，但是无法保证pc不
+指向别的字符串。由于*pc指定了储存'B'字符的数据对象，所以*pc 是一个
+左值，但不是一个可修改的左值。与此类似，因为字符串字面量本身指定了
+储存字符串的对象，所以它也是一个左值，但不是可修改的左值。
+</code></pre>
+<p>字符串指针</p>
+<pre><code class="language-c">        char *ptr = &quot;HelloWorld!&quot;;
+        char str[10] = &quot;HateYou!&quot;;
+        char north[10] = &quot;Beyong!&quot;;
+        fputs(ptr, stdout);
+        fputs(str, stdout);
+        ptr = &quot;Li Pu!&quot;; /*&quot;Li Pu!&quot;是一个无名数组, 数组再被引用时又表现为指针。所以这个语句时合法的*/
+        fputs(&quot;\n&quot;, stdout);
+        fputs(ptr, stdout);
+        ptr = north;
+        fputs(&quot;\n&quot;, stdout);
+        puts(ptr);
+        *ptr = &quot;Come on&quot;;/*错误！*/
+</code></pre>
+<p>永久类型<br>
+临时类型【stack,heap,register】里面，在作用域被调用时被创建，结束时被销毁。</p>
+<h2 id="四种类型">四种类型</h2>
+<ul>
+<li>static</li>
+<li>auto</li>
+<li>extern<br>
+全局变量、函数的存储类型试试默认extern。<br>
+不能修饰局部变量,必须是全局的！所以不能再某个函数体内部被使用<pre><code class="language-c">int main(void)
+{
+    int dig = 7;
+    extern  int dia;
+    //OR extern in dia =99;
+
+}
+</code></pre>
+</li>
+</ul>
+<p>void Foo(void)<br>
+{<br>
+dia = 99;<br>
+//OR in main(extern in dia = 99)</p>
+<pre><code>printf(&quot;\nVar = %d&quot;, dig);
+//OR
+printf(&quot;\nVar  =%d&quot;, dia);
+</code></pre>
+<p>}</p>
+<pre><code>有相关报错：
+1. dia undeclared
+2. ‘dia’ has both ‘extern’ and initializer
+extern type var = value!最好分两个语句进行！
+extern type var;是一个声明，
+var =value是一个定义
+我们改到预处理下面声明`extern ida`
+报错
+3. undefined reference to `dia'
+4. type defaults to ‘int’ in declaration of ‘dia’即便使用了`extern int dia;  dia = 182;`仍然如此
+&lt;center&gt;小结&lt;/center&gt;
+Extern的问题在于不知道这个关键词出现的时候到底是声明还是定义。
+谨记：声明可以多次，定义只能一次。
+函数的声明extern关键词是可有可无的，因为函数本身不加修饰的话就是extern的。但是引用的时候一样是需要声明的。   
+先预声明`extern type var`
+然后再作用域内再用`type var`便可正常了。
+
+
+* register
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/py_collectionsoryu-yan-te-xing/">
+              <h3 class="post-title">
+                下一篇：Py_collections||语言特性
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

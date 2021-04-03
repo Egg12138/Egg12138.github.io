@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Python魔术方法（待填坑） | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Python魔术方法（待填坑）</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-03-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#magic-methods%E5%88%9D%E6%AD%A5">magic methods初步</a>
+<ul>
+<li><a href="#newinit__del__%E7%AD%89"><strong>new</strong>,<strong>init</strong>,__del__等</a></li>
+<li><a href="#__call-them">__Call them!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h3 id="magic-methods初步">magic methods初步</h3>
+<p>自定义对象类型可以表现得像内置类型一样。在</p>
+<p><a href="#__call-them">在这一块看实例，体会magic methods的更多优点</a></p>
+<h4 id="newinit__del__等"><strong>new</strong>,<strong>init</strong>,__del__等</h4>
+<blockquote><br />每个人都知道一个最基本的魔术方法， __init__ 。<br />通过此方法我们可以定义一个对象的初始操作。然而，当我调用 x = SomeClass() 的时候，__init__ 并不是第一个被调用的方法。<br />实际上，还有一个叫做 __new__ 的方法，来构造这个实例。<br />然后给在开始创建时候的初始化函数来传递参数。在对象生命周期的另一端，也有一个 __del__ 方法。</blockquote>
+```python
+from os.path import join
+class FileProcessor:
+    def __init__(self, filepath = '~', filename = '...txt):
+        self.file = open(join(filepath, filename), 'r+')
+    def __del__(self):
+        self.file.clos()
+        delself.file
+```
+python内置了几十个魔术方法
+<pre><code class="language-python">__contains__(self, key, /)
+ |      True if the dictionary has the specified key, else False.
+ |#有__contains__，用in就方便了。
+ |  __delitem__(self, key, /)
+ |      Delete self[key].
+ |
+ |  __eq__(self, value, /)
+ |      Return self==value.
+
+</code></pre>
+<h4 id="__call-them">__Call them!</h4>
+<pre><code class="language-python">def __len__(self):
+        return len(self._cards)
+    #should I call this method using&quot; Eg.__len__()? or len(Eg)?
+</code></pre>
+<p>这段类定义的一个类方法 <code>__len__()</code>可以有两种方式调用：</p>
+<pre><code class="language-python">deck = FrechDeck()
+print(&quot;*&quot;*10)
+print(len(deck))
+deck.__len__()
+</code></pre>
+<p>输出很显然：（terminal中）<br>
+**********<br>
+52<br>
+52</p>
+<p>把len()的调用后置了</p>
+<pre><code class="language-python">deck = FrechDeck()
+deck.__len__()
+print(&quot;*&quot;*10)
+print(len(deck))
+</code></pre>
+<p>输出只有<br>
+**********<br>
+52<br>
+在jupyter逐行调试,加了一个变量tmp = deck.<strong>len</strong>()但是并不是一个活跃变量</p>
+<p>继续看下一个例子</p>
+<pre><code class="language-python">deck = FrenchCard()
+print(deck[-1])#我们了牌堆类里面定义过__getitem__魔术方法
+deck.__getitem__(-1)#The last car
+</code></pre>
+<p>如果我们将魔术方法改成没有dunder的方法，看下如何<br>
+previous code:<br>
+<code>__getitem__(self, position) return self.cards[position]</code><br>
+-&gt;<br>
+<code>getitem(...)</code><br>
+结果是混乱的<br>
+__这种写法主要是给解释器用的。<br>
+以上不是想分析其中的原因（没必要）<br>
+只是想说明，自定义对象类型可以表现得像内置类型一样。我们就用内置的方式来引用，<br>
+<code>__getitem__()</code>直接用脚标方式引用就可以了,当然也可以用麻烦的dunder引用方式，不过要注意的是：虽然我们用内置方法len(obj)，但是用dunder引用的时候，它的全程仍然是<code>__len__()</code><br>
+<code>for i in iterable:</code>其实仍然是调用了我们熟悉的<code>x.__iter__()</code>,这是python的一个特性（确实每次都能少写不少字符）</p>
+<ul>
+<li>用户没必要去了解这些封装的函数怎么使用，直接用一些内置函数就可以调用他们了，多好！</li>
+<li>它们的执行更快（当然我们自己乱写的魔术方法不算）</li>
+<li>调用写法简洁，可读性强</li>
+<li>函数功能不固定<br>
+关于第四点<br>
+我们为了用<code>abs(V)</code>来获取一个向量类型对象模长，定义了<code>__abs__(self)</code>方法， return的值显然不可以用绝对值来直接解释——我们自定义了<code>return hypot(x,y)</code>或者<code>return sqrt(x**2 + y**2)</code><br>
+<code>__getitem__()</code>直接让类变成iterable object,</li>
+</ul>
+<pre><code class="language-python">for i in reversed(deck):
+    print(i)
+</code></pre>
+<p>这段代码里面的reversed反的是Deck__init__中的属性列表：<br>
+deck._cards，解释器将其传入了。<br>
+反向迭代，BIF<code>reversed()</code>和<code>sorted()</code>都是直接return一个可迭代对象,</p>
+<blockquote>
+<pre><code>  sorted(iterable, /, *, key=None, reverse=False)
+</code></pre>
+</blockquote>
+<pre><code>Return a new list containing all items from the iterable in ascending order.
+
+A custom key function can be supplied to customize the sort order, and the
+reverse flag can be set to request the result in descending order.
+</code></pre>
+<p>key是很灵活的一个参数。</p>
+<pre><code class="language-python">&quot;&quot;&quot;仍然是FrechDeck牌堆类，
+Frechdeck.ranks属性为list(range(2,11))+list('JQKA')
+Frechdeck.suits属性为四种花色&quot;&quot;&quot;
+
+def sorted_high(card):
+    rank_value = Frechdeck.ranks.index(card)#return the index of the rank of 'card',  是diamond, 3牌，这里card
+#ranks,suits为Frechdeck定义里面的量，不是变量， 所以没必要用一个实例来引用这些值
+    return rank_value * len(suit_value) + suit_values[card.suit]
+
+deck = Frechdeck()
+for i in sorted(deck, key =sorted_high)
+    do something
+</code></pre>
+<p>这里key只成为了方法本身，并不是该方法的返回值，所以key继承这个函数，deck这个可迭代对象传递<br>
+所有卡给这个函数，然后依次返回ranks，在sorted内部，进行排序。然后排序完成再被for迭代。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/py_collectionsorcollections-ku-ji-xu/">
+              <h3 class="post-title">
+                下一篇：Py_collections||collections库继续
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

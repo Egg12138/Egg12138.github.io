@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1616688858333">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1616688858333" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -95,10 +95,14 @@
 </code></pre>
 </blockquote>
 <p>在Pythoncookbook4.3中，作者给出了比较好的机制展示：</p>
-<p><code>def c(n):</code>while n &gt; 0:<br>
-<code>print(&quot;Count from:&quot;,n)</code>n -= 1<br>
-<code>print('Done')</code>c(5)<br>
-这是定义一个常规的函数，当然用for最快，此处是为了对比<br>
+<pre><code class="language-python">def c(n):
+ pwhile n &gt; 0:
+        print(&quot;Count from:&quot;,n)
+        n -= 1
+        print('Done')
+c(5)
+</code></pre>
+<p>这是定义一个常规的函数，当然用for最快，此处是为了对比<br>
 现在：</p>
 <p><code>def countdown(n):</code>        print(&quot;Countfrom:&quot;, n)<br>
 <code>while n&gt;0:</code>            yield n<br>
@@ -106,27 +110,48 @@
 <h2 id="sys-module">sys module</h2>
 <p>常用单元<br>
 sys.argv：以列表的方式获取运行 Python 程序的命令行参数存放其中。其中 sys.argv[0] 通常就是指该 Python程序本身，sys.argv[1] 代表第一个参数，sys.argv[2] 代表第二个参数，以此类推。类似于 Shell 中的 $0、$1、$2</p>
-<p>import sys<br>
-print('程序名称为：{}，第一个参数为：{}，第二个参数为：{}'.format(sys.argv[0], sys.argv[1], sys.argv[2]))<br>
-sys.byteorder：显示本地字节序的指示符。如果本地字节序的大端模式，则该属性返回big，否则返回little</p>
-<p>sys.copyright：该属性返回与 Python 解释器有关的版权信息</p>
-<p>sys.executable：该属性返回 Python 解释器在磁盘上的存储路径</p>
-<p>sys.exit()：通过引发SystemExit异常来退出程序，将其放在try块中不能阻止finally块的执行。</p>
-<p>sys.flags：该只读属性返回运行Python命令时指定的旗标</p>
-<p>sys.getfilesystemencodiing()：返回在当前系统中保存文件所用的字符集</p>
-<p>sys.getrefcount()：返回指定对象的引用计数。</p>
-<p>sys.getrecursionlimit()：返回Python解释器当前支持的递归深度。该属性可通过setrecursionlimit()方法重新设置</p>
-<p>sys.getswitchinterval()：返回在当前Python解释器中线程切换的时间间隔。该属性可通过setswitchinterval()函数改变</p>
-<p>sys.implementation：返回当前Python解释器的实现</p>
-<p>sys.maxsize：返回Python整数支持的最大值。在32位平台上，该属性值为 2 ×× 31-1；在64位平台上，该属性值为 2 ×× 63-1</p>
-<p>sys.path：该属性指定Python查找模块的路径列表。程序可通过修改该属性来动态增加Python加载模块的路径</p>
-<p>sys.platfrom：返回Python解释器所在的平台的标识符</p>
-<p>sys.stdin：返回系统的标准输入流——一个类文件对象</p>
-<p>sys.stdout：返回系统的标准输出流——一个类文件对象</p>
-<p>sys.stderr：返回系统的错误输出流——一个类文件对象</p>
-<p>sys.version：返回当前Python解释器的版本信息</p>
-<p>sys.winver：返回当前Python解释器的主版本号</p>
-<p>sys.copyright：返回当前Python解释器的版权信息</p>
+<pre><code class="language-python">import sys
+print('程序名称为：{}，第一个参数为：{}，第二个参数为：{}'.format(sys.argv[0], sys.argv[1], sys.argv[2]))
+&quot;&quot;&quot;
+sys.byteorder：显示本地字节序的指示符。如果本地字节序的大端模式，则该属性返回big，否则返回little
+
+sys.copyright：该属性返回与 Python 解释器有关的版权信息
+
+sys.executable：该属性返回 Python 解释器在磁盘上的存储路径
+
+sys.exit()：通过引发SystemExit异常来退出程序，将其放在try块中不能阻止finally块的执行。
+
+sys.flags：该只读属性返回运行Python命令时指定的旗标
+
+sys.getfilesystemencodiing()：返回在当前系统中保存文件所用的字符集
+
+sys.getrefcount()：返回指定对象的引用计数。
+
+sys.getrecursionlimit()：返回Python解释器当前支持的递归深度。该属性可通过setrecursionlimit()方法重新设置
+
+sys.getswitchinterval()：返回在当前Python解释器中线程切换的时间间隔。该属性可通过setswitchinterval()函数改变
+
+sys.implementation：返回当前Python解释器的实现
+
+sys.maxsize：返回Python整数支持的最大值。在32位平台上，该属性值为 2 ×× 31-1；在64位平台上，该属性值为 2 ×× 63-1
+
+sys.path：该属性指定Python查找模块的路径列表。程序可通过修改该属性来动态增加Python加载模块的路径
+
+sys.platfrom：返回Python解释器所在的平台的标识符
+
+sys.stdin：返回系统的标准输入流——一个类文件对象
+
+sys.stdout：返回系统的标准输出流——一个类文件对象
+
+sys.stderr：返回系统的错误输出流——一个类文件对象
+
+sys.version：返回当前Python解释器的版本信息
+
+sys.winver：返回当前Python解释器的主版本号
+
+sys.copyright：返回当前Python解释器的版权信息
+&quot;&quot;&quot;
+</code></pre>
 
           </div>
         </div>

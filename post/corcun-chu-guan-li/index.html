@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617595847038">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617595847038" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -95,6 +95,7 @@
 </li>
 <li><a href="#%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B">存储类型</a>
 <ul>
+<li><a href="#%E5%87%A0%E7%A7%8D%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB%E6%B5%8F%E8%A7%88">几种存储类别浏览</a></li>
 <li><a href="#%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B">四种类型</a></li>
 </ul>
 </li>
@@ -170,7 +171,87 @@ const char * pc = &quot;Behold a string literal!&quot;;
 </code></pre>
 <p>永久类型<br>
 临时类型【stack,heap,register】里面，在作用域被调用时被创建，结束时被销毁。</p>
+<h2 id="几种存储类别浏览">几种存储类别浏览</h2>
 <h2 id="四种类型">四种类型</h2>
+<table>
+<thead>
+<tr>
+<th>存储类型</th>
+<th>生存期</th>
+<th>声明</th>
+<th>链接</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>static</td>
+<td>块内总是存在</td>
+<td></td>
+<td></td>
+<td>这种存储类别被称为内部静态存储类别</td>
+</tr>
+<tr>
+<td>（internal static storage class）。这里的内部指的是函数内部</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>register</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>这些设定都非常通俗易懂，不需要记忆，所以我表格都没写完……<br>
+需要注意的是， 如果不声明，想局部创建一个临时变量可能会沿用外部的变量。</p>
+<pre><code class="language-c">int x = 30;
+    {
+        x = 70;
+        puts(&quot;A new block\n&quot;);
+        printf(&quot;x in inner block0: x_val = %d, x@%p\n&quot;, x, &amp;x);
+    }
+    {
+        int x = 123;
+        puts(&quot;A new block\n&quot;);
+        printf(&quot;x in inner block1: x_val = %d, x@%p\n&quot;, x, &amp;x);
+    }
+    printf(&quot;x in outer block ,x_val = %d, x@%p&quot;, x, &amp;x);
+</code></pre>
+<pre><code>x in inner block0: x_val = 70, x@000000000061fe1c
+A new block
+x in inner block1: x_val = 123, x@000000000061fe18
+x in outer block ,x_val = 70, x@000000000061fe1c
+</code></pre>
+<p><code>while</code>有点不一样</p>
+<pre><code class="language-c">int x = 35; 
+while (x++ &lt;40)
+        {
+            float x = 39.0;
+            x -= 1;
+            printf(&quot;--%f--\n&quot;, x);
+            x++; 
+        }
+</code></pre>
+<pre><code>--38.000000--
+--38.000000--
+--38.000000--
+--38.000000--
+41
+</code></pre>
+<p>x必须要链接外部，所以不可能是用inner x。很显然<br>
+在那个block里面给x赋值也是没用的。</p>
 <ul>
 <li>static</li>
 <li>auto</li>

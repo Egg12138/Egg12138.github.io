@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617595847038">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617595847038" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -134,6 +134,18 @@
 </li>
 </ul>
 </li>
+<li><a href="#pandas">pandas</a>
+<ul>
+<li><a href="#df-dataframe">df DataFrame</a>
+<ul>
+<li><a href="#%E7%94%9F%E6%88%90df">生成DF</a></li>
+<li><a href="#%E8%B0%83%E6%95%99df">调教DF</a></li>
+<li><a href="#%E8%AF%BB%E5%8F%96%E8%AE%BF%E9%97%AEdf">读取，访问DF</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%B0%83%E6%95%B4">数据调整</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </p>
 <h1 id="图表设置">图表设置</h1>
@@ -204,6 +216,95 @@ with open(path_out, mode ='w') as file:
 
 </code></pre>
 <h4 id="用pandas库">用pandas库</h4>
+<h1 id="pandas">pandas</h1>
+<p>具体方法实例，用时查文档即可，这里放几个实验数据处理会用到的。</p>
+<h2 id="df-dataframe">df DataFrame</h2>
+<h3 id="生成df">生成DF</h3>
+<p>这个生成表格还是比较方便的，不过数据集仅仅是成为df是没有意义的。所以DF生成只是第一步。<br>
+录入手抄数据<br>
+col1 = list1 []<br>
+col2 = lsit2[]....<br>
+col0(raw_index) = list3[]<br>
+<code>df = pd.DataFrame({dic})</code>传递字典比较适合这种情况。pd可以接受python内置的列表类型。</p>
+<pre><code class="language-python">df = pd.DataFrame({
+                'Volt':col1,
+                'I', col2}, 
+                index = col0)
+                )
+</code></pre>
+<p><code>pd.DataFrame(np.random.randn(5, 3), index = list(range(5)), columns = list('ABC'))</code> 生成一个5x3DF，values参数用<code>np.random.randn(5,3)</code>可以在各位置生成随机数。</p>
+<h3 id="调教df">调教DF</h3>
+<p><code>df.T</code>转置<br>
+<code>df.describe()</code>可以查看统计。</p>
+<h3 id="读取访问df">读取，访问DF</h3>
+<p><code>df[str(COL)]</code>读取列，或者<code>df.COL</code><br>
+切片是少不了 的</p>
+<pre><code class="language-python"> &gt;&gt;&gt;df[0:]
+    vot     I
+2  1.23  0.23
+3  2.32  0.44
+4  3.45  0.67
+5  4.11  0.89
+6  5.23  0.10
+</code></pre>
+<p><code>df[1:1]</code>读取单行返回的是信息</p>
+<pre><code class="language-python">&gt;&gt;&gt; df[1:1]
+Empty DataFrame
+Columns: [vot, I]
+Index: []
+</code></pre>
+<p>位置索引（推荐）</p>
+<pre><code class="language-python">&gt;&gt;&gt;df.iloc[2]
+df.iloc[2]
+vot    3.45
+I      0.67#为第三行内容。访问和lsit等都是一样 -1为最后一行。如此。
+</code></pre>
+<h3 id="数据调整">数据调整</h3>
+<p>加入</p>
+<pre><code class="language-python">&gt;&gt;&gt; df['Esp'] = [random.randint(0,8) for i in range(5)]#加入新的一列。和字典语法基本一致。
+&gt;&gt;&gt; df
+    vot     I  Esp
+2  1.23  0.23    2
+3  2.32  0.44    2
+4  3.45  0.67    2
+5  4.11  0.89    5
+6  5.23  0.10    1
+</code></pre>
+<p>修改</p>
+<pre><code class="language-python">&gt;&gt;&gt; df.at[3, 'I'] = 0.68#注意如果用at[raw,col]访问并修改， 就不能用纯粹坐标的方法，而必须要指定行列。
+&gt;&gt;&gt; df
+    vot     I  Esp
+2  1.23  0.23    2
+3  2.32  0.68    2
+4  3.45  0.67    2
+5  4.11  0.89    5
+6  5.23  0.10    1
+</code></pre>
+<p>如果错误地用纯粹坐标来访问at，会出现如下情况：</p>
+<pre><code class="language-python">&gt;&gt;&gt; df.at[3, 2] = 0.68
+&gt;&gt;&gt; df
+    vot     I  Esp     2
+2  1.23  0.23    2   NaN
+3  2.32  0.68    2  0.68
+4  3.45  0.67    2   NaN
+5  4.11  0.89    5   NaN
+6  5.23  0.10    1   NaN
+</code></pre>
+<p>对……用at添加元素就是这种语法。<br>
+用<code>df.at[2, 2].dtype</code>可以得到（3，2）nage 0.68的类型。<br>
+如果访问到<code>df.at[2, 1].dtype</code>就会报错<code>KeyError:1</code><br>
+这时候至少做点弥补啊，<br>
+可以备份一下然后把有NaN（无数据）行删除,那不如用pop的思路，直接弹出数据完整的行吗<br>
+<code>valid_df = df.dropna(how='any')</code><br>
+可以填充这些地方</p>
+<pre><code class="language-python">&gt;&gt;&gt; df.fillna(value = 'Empty!')
+    vot     I  Esp       2
+2  1.23  0.23    2  Empty!
+3  2.32  0.68    2    0.68
+4  3.45  0.67    2  Empty!
+5  4.11  0.89    5  Empty!
+6  5.23  0.10    1  Empty!
+</code></pre>
 
           </div>
         </div>

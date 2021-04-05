@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>电子学粗读的收获集锦 | Gridea</title>
+<meta name="description" content="&amp;&amp; Practice makes perfect">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617595847038">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Egg12138.github.io">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617595847038" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Egg12138.github.io">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://https://github.com/Egg12138" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">电子学粗读的收获集锦</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-04-05</span>
+            
+          </div>
+          <div class="post-content">
+            <p>只读了部分章节，没有读多少晶体管的相关内容<br>
+<ul class="markdownIt-TOC">
+<li><a href="#%E5%9F%BA%E6%9C%AC">基本</a>
+<ul>
+<li><a href="#%E6%99%BA%E6%85%A7%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%95%8F%E6%84%9F">智慧设计与敏感</a></li>
+<li><a href="#%E5%B0%8F%E4%BF%A1%E5%8F%B7%E7%94%B5%E9%98%BB%E5%8A%A8%E6%80%81%E7%94%B5%E9%98%BB%E4%B9%8B%E4%BA%8C%E6%9E%81%E7%AE%A1">小信号电阻（动态电阻）之二极管</a>
+<ul>
+<li><a href="#%E7%89%B9%E6%80%A7">特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8F%8D%E9%A6%88%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8">反馈和放大器</a></li>
+<li><a href="#%E6%9C%89%E6%BA%90%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8C%E6%8C%AF%E8%8D%A1%E5%99%A8">有源滤波器和振荡器</a></li>
+</ul>
+</p>
+<h1 id="基本">基本</h1>
+<h2 id="智慧设计与敏感">智慧设计与敏感</h2>
+<p>物理专业有很多的近似，心算，估算。这是非常高效的思维方式<br>
+只需少许计算的分析设计，可以得到电路分析的灵感，不会陷到计算里面。<br>
+5kO,10kO电阻并联，我们直接把5kO的电阻视为两个10kO的电阻并联，这样等效为三个10kO电阻并联，所以总电阻就是3.33kO, 不应该总依赖计算器取计算葛总可以算的电阻。<br>
+我们应回避这种习惯</p>
+<ul>
+<li>元件精度本身是有限的(典型电阻5%)</li>
+<li>最佳电路设计的标准是，已完成的电路对电路元件的精度变化一般不敏感。</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>线性总是受人青睐的。</mtext><mspace linebreak="newline"></mspace><mtext>工程师定义导纳</mtext><mrow><mo fence="true">(</mo><mi mathvariant="normal">℧</mi><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\text{线性总是受人青睐的。}
+\\
+\text{工程师定义导纳}\left( \mho \right) 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord cjk_fallback">线性总是受人青睐的。</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord cjk_fallback">工程师定义导纳</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord amsrm">℧</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></span></p>
+<h2 id="小信号电阻动态电阻之二极管">小信号电阻（动态电阻）之二极管</h2>
+<h3 id="特性">特性</h3>
+<p>实际上不具有电流。正向I-V时是指数关系。</p>
+<ul>
+<li>运算电路</li>
+<li>整流</li>
+</ul>
+<h1 id="反馈和放大器">反馈和放大器</h1>
+<h1 id="有源滤波器和振荡器">有源滤波器和振荡器</h1>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Egg12138.github.io/post/corcun-chu-guan-li/">
+              <h3 class="post-title">
+                下一篇：C||存储管理
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">&& Practice makes perfect</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Egg12138.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

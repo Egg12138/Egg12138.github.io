@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617449147017">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617595847038">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617449147017" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617595847038" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -603,8 +603,10 @@ char (*(*x[3])())[]
 ### 没必要声明一个数组的指针。
 因为人类提到数组，应该想的就是它的第一个元素的指针。
 一个指向数组的指针&amp;array并不好用。在[引用](#引用)里分析过了 
-### 函数入口处，保证非法参数不存在
+### 函数入口处，必须检查参数，保证非法参数不存在
 务必检查指针是否为空。
+用`assert`
+
 引用虽然只能引用已存在的内存，更安全，但是效率不及指针。
 ### 函数出口处，保证return的正确和有效性
 #### return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。

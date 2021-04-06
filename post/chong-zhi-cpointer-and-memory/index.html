@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617691246276">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617699096533">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617691246276" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617699096533" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -119,6 +119,17 @@
 </ul>
 </li>
 <li><a href="#%E5%87%A0%E4%B8%AA%E5%A4%8D%E6%9D%82%E5%A3%B0%E6%98%8E">几个复杂声明</a></li>
+<li><a href="#%E7%BB%99%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%96%E7%A8%8B%E5%BB%BA%E8%AE%AE">给自己的编程建议</a>
+<ul>
+<li><a href="#%E6%B2%A1%E5%BF%85%E8%A6%81%E5%A3%B0%E6%98%8E%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88">没必要声明一个数组的指针。</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%85%A5%E5%8F%A3%E5%A4%84%E5%BF%85%E9%A1%BB%E6%A3%80%E6%9F%A5%E5%8F%82%E6%95%B0%E4%BF%9D%E8%AF%81%E9%9D%9E%E6%B3%95%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8">函数入口处，必须检查参数，保证非法参数不存在</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%87%BA%E5%8F%A3%E5%A4%84%E4%BF%9D%E8%AF%81return%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%92%8C%E6%9C%89%E6%95%88%E6%80%A7">函数出口处，保证return的正确和有效性</a>
+<ul>
+<li><a href="#return%E4%B8%8D%E5%8F%AF%E8%BF%94%E5%9B%9E%E6%8C%87%E5%90%91%E5%A0%86%E6%A0%88%E5%86%85%E5%AD%98%E7%9A%84%E6%8C%87%E9%92%88%E6%88%96%E8%80%85%E5%BC%95%E7%94%A8%E5%9B%A0%E4%B8%BA%E8%AF%A5%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E5%9C%A8%E5%87%BD%E6%95%B0%E4%BD%93%E7%BB%93%E6%9D%9F%E6%97%B6%E8%A2%AB%E8%87%AA%E5%8A%A8%E9%87%8A%E6%94%BE">return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
 </ul>
 </li>
@@ -167,7 +178,10 @@ int i = 100;
 double m = i;
 </code></pre>
 <p>以上三个初始化中的类型转换都是安全的<br>
-<code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
+<code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。<br>
+可以是可以……<br>
+但是在用ptr指向<code>malloc</code>请求的内存空间时，务必加上强制转换（C可以接受无强制转换的，但是C++不行，加了便于移植）<br>
+<code>(int *)malloc(size_t)</code></p>
 <p>函数原型中参数名可以省略，但在函数定义中肯定不能省略！<br>
 以下几种原型声明等价：</p>
 <pre><code class="language-c">int f(int *, int);
@@ -595,23 +609,18 @@ char (*(*x[3])())[]
     x: a array[3] of pointers to function returning pointer to array[5] of char
 
 (*pfa[])()
-
-
-
-## 给自己的编程建议
-
-### 没必要声明一个数组的指针。
-因为人类提到数组，应该想的就是它的第一个元素的指针。
-一个指向数组的指针&amp;array并不好用。在[引用](#引用)里分析过了 
-### 函数入口处，必须检查参数，保证非法参数不存在
-务必检查指针是否为空。
-用`assert`
-
-引用虽然只能引用已存在的内存，更安全，但是效率不及指针。
-### 函数出口处，保证return的正确和有效性
-#### return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。
-```linux
-test.c:13:10: warning: assignment discards ‘const’ qualifier from pointer 
+</code></pre>
+<h2 id="给自己的编程建议">给自己的编程建议</h2>
+<h3 id="没必要声明一个数组的指针">没必要声明一个数组的指针。</h3>
+<p>因为人类提到数组，应该想的就是它的第一个元素的指针。<br>
+一个指向数组的指针&amp;array并不好用。在<a href="#%E5%BC%95%E7%94%A8">引用</a>里分析过了</p>
+<h3 id="函数入口处必须检查参数保证非法参数不存在">函数入口处，必须检查参数，保证非法参数不存在</h3>
+<p>务必检查指针是否为空。<br>
+用<code>assert</code></p>
+<p>引用虽然只能引用已存在的内存，更安全，但是效率不及指针。</p>
+<h3 id="函数出口处保证return的正确和有效性">函数出口处，保证return的正确和有效性</h3>
+<h4 id="return不可返回指向堆栈内存的指针或者引用因为该内存单元在函数体结束时被自动释放">return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。</h4>
+<pre><code class="language-linux">test.c:13:10: warning: assignment discards ‘const’ qualifier from pointer 
 
 target type [-Wdiscarded-qualifiers]
   stringg = Func();

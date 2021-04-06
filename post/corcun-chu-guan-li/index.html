@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617691246276">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617699096533">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617691246276" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617699096533" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -97,6 +97,13 @@
 <ul>
 <li><a href="#%E5%87%A0%E7%A7%8D%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB%E6%B5%8F%E8%A7%88">几种存储类别浏览</a></li>
 <li><a href="#%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B">四种类型</a></li>
+</ul>
+</li>
+<li><a href="#alloc">alloc()</a>
+<ul>
+<li><a href="#realloc">realloc()</a></li>
+<li><a href="#calloc">calloc()</a></li>
+<li><a href="#malloc">malloc()</a></li>
 </ul>
 </li>
 </ul>
@@ -253,54 +260,82 @@ while (x++ &lt;40)
 <p>x必须要链接外部，所以不可能是用inner x。很显然<br>
 在那个block里面给x赋值也是没用的。</p>
 <ul>
+<li>register</li>
 <li>static</li>
 <li>auto</li>
 <li>extern<br>
 全局变量、函数的存储类型试试默认extern。<br>
-不能修饰局部变量,必须是全局的！所以不能再某个函数体内部被使用<pre><code class="language-c">int main(void)
+不能修饰局部变量,必须是全局的！所以不能再某个函数体内部被使用</li>
+</ul>
+<pre><code class="language-c">  int main(void)
+  {
+      int dig = 7;
+      extern  int dia;
+      //OR extern in dia =99;
+
+  }
+void Foo(void)
 {
-    int dig = 7;
-    extern  int dia;
-    //OR extern in dia =99;
+    dia = 99;
+    //OR in main(extern in dia = 99)
+
+    printf(&quot;\nVar = %d&quot;, dig);
+    //OR
+    printf(&quot;\nVar  =%d&quot;, dia);
 
 }
 </code></pre>
-</li>
-</ul>
-<p>void Foo(void)<br>
-{<br>
-dia = 99;<br>
-//OR in main(extern in dia = 99)</p>
-<pre><code>printf(&quot;\nVar = %d&quot;, dig);
-//OR
-printf(&quot;\nVar  =%d&quot;, dia);
-</code></pre>
-<p>}</p>
-<pre><code>有相关报错：
-1. dia undeclared
-2. ‘dia’ has both ‘extern’ and initializer
-extern type var = value!最好分两个语句进行！
-extern type var;是一个声明，
-var =value是一个定义
-我们改到预处理下面声明`extern ida`
-报错
-3. undefined reference to `dia'
-4. type defaults to ‘int’ in declaration of ‘dia’即便使用了`extern int dia;  dia = 182;`仍然如此
-&lt;center&gt;小结&lt;/center&gt;
+<p>有相关报错：</p>
+<ol>
+<li>dia undeclared</li>
+<li>‘dia’ has both ‘extern’ and initializer<br>
+extern type var = value!最好分两个语句进行！<br>
+extern type var;是一个声明，<br>
+var =value是一个定义<br>
+我们改到预处理下面声明<code>extern ida</code><br>
+报错</li>
+<li>undefined reference to `dia'</li>
+<li>type defaults to ‘int’ in declaration of ‘dia’即便使用了<code>extern int dia; dia = 182;</code>仍然如此</li>
+</ol>
+<center>小结</center>
 Extern的问题在于不知道这个关键词出现的时候到底是声明还是定义。
 谨记：声明可以多次，定义只能一次。
 函数的声明extern关键词是可有可无的，因为函数本身不加修饰的话就是extern的。但是引用的时候一样是需要声明的。   
 先预声明`extern type var`
 然后再作用域内再用`type var`便可正常了。
-
-
-* register
-
-
-# malloc(), free()
-malloc可以再运行时确定内存分配的大小，而不是预先分配，它返回匿名内存地址。这个地址可以被指针接受。
-分配失败返回NULL。
-
+<h1 id="alloc">alloc()</h1>
+<h2 id="realloc">realloc()</h2>
+<h2 id="calloc">calloc()</h2>
+<h2 id="malloc">malloc()</h2>
+<p>malloc可以再运行时确定内存分配的大小，而不是预先分配，它返回匿名内存地址。这个地址可以被指针接受。<br>
+分配失败返回NULL。<br>
+有如下需要注意的<br>
+<strong>free</strong><br>
+<strong>强制Pause或者free之后，malloc申请的内存不会被销毁</strong><br>
+在Linux下pause，进程并不会被killed.<br>
+free之后，这些内存也会留下来，给接下来的malloc使用。</p>
+<p><strong>free后尽量把临时指针设置为NULL</strong><br>
+大家都在强调free()之必要，但是临时指针也需要重置道NULL，否则一旦这个内存被释放了，而这个块没有结束，ptr还在，其指向地址仍然不变（仍然是那个已经被销毁了的内存），这时候对其不小心解引用就会很糟糕。<br>
+<strong>不要随意设置分配的大小！</strong><br>
+<code>malloc(0)</code>的结果时不确定的。ANSI/ISO表示它可能范围</p>
+<ol>
+<li>空指针</li>
+<li>指向0字节的指针。<br>
+如果是空指针，就很麻烦，所以最好不要这样写。</li>
+</ol>
+<p>它时返回匿名内存地址，所以肯定也是能访问的……<br>
+free()</p>
+<pre><code class="language-c">    size_t large_var = 100010000;
+    int *pti;
+    ...
+    pti = (int *)malloc(large_var);
+    ptd = (double *)malloc(max * sizeof(double));
+    printf(&quot;anonymous malloe is at %p\n&quot;, (int *)malloc(large_var));
+    printf(&quot;pti(--&gt;int) is at:%p \n&quot;, pti);
+</code></pre>
+<pre><code>output:
+anonymous malloc is at 00000000069f3040
+pti(--&gt;int) is at:0000000000a6c040
 </code></pre>
 
           </div>

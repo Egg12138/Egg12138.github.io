@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Egg12138.github.io</id>
     <title>Gridea</title>
-    <updated>2021-04-06T06:40:50.304Z</updated>
+    <updated>2021-04-06T08:51:43.773Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Egg12138.github.io"/>
     <link rel="self" href="https://Egg12138.github.io/atom.xml"/>
@@ -49,6 +49,17 @@
 </ul>
 </li>
 <li><a href="#%E5%87%A0%E4%B8%AA%E5%A4%8D%E6%9D%82%E5%A3%B0%E6%98%8E">几个复杂声明</a></li>
+<li><a href="#%E7%BB%99%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%96%E7%A8%8B%E5%BB%BA%E8%AE%AE">给自己的编程建议</a>
+<ul>
+<li><a href="#%E6%B2%A1%E5%BF%85%E8%A6%81%E5%A3%B0%E6%98%8E%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88">没必要声明一个数组的指针。</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%85%A5%E5%8F%A3%E5%A4%84%E5%BF%85%E9%A1%BB%E6%A3%80%E6%9F%A5%E5%8F%82%E6%95%B0%E4%BF%9D%E8%AF%81%E9%9D%9E%E6%B3%95%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AD%98%E5%9C%A8">函数入口处，必须检查参数，保证非法参数不存在</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%87%BA%E5%8F%A3%E5%A4%84%E4%BF%9D%E8%AF%81return%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%92%8C%E6%9C%89%E6%95%88%E6%80%A7">函数出口处，保证return的正确和有效性</a>
+<ul>
+<li><a href="#return%E4%B8%8D%E5%8F%AF%E8%BF%94%E5%9B%9E%E6%8C%87%E5%90%91%E5%A0%86%E6%A0%88%E5%86%85%E5%AD%98%E7%9A%84%E6%8C%87%E9%92%88%E6%88%96%E8%80%85%E5%BC%95%E7%94%A8%E5%9B%A0%E4%B8%BA%E8%AF%A5%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E5%9C%A8%E5%87%BD%E6%95%B0%E4%BD%93%E7%BB%93%E6%9D%9F%E6%97%B6%E8%A2%AB%E8%87%AA%E5%8A%A8%E9%87%8A%E6%94%BE">return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
 </ul>
 </li>
@@ -97,7 +108,10 @@ int i = 100;
 double m = i;
 </code></pre>
 <p>以上三个初始化中的类型转换都是安全的<br>
-<code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
+<code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。<br>
+可以是可以……<br>
+但是在用ptr指向<code>malloc</code>请求的内存空间时，务必加上强制转换（C可以接受无强制转换的，但是C++不行，加了便于移植）<br>
+<code>(int *)malloc(size_t)</code></p>
 <p>函数原型中参数名可以省略，但在函数定义中肯定不能省略！<br>
 以下几种原型声明等价：</p>
 <pre><code class="language-c">int f(int *, int);
@@ -525,23 +539,18 @@ char (*(*x[3])())[]
     x: a array[3] of pointers to function returning pointer to array[5] of char
 
 (*pfa[])()
-
-
-
-## 给自己的编程建议
-
-### 没必要声明一个数组的指针。
-因为人类提到数组，应该想的就是它的第一个元素的指针。
-一个指向数组的指针&amp;array并不好用。在[引用](#引用)里分析过了 
-### 函数入口处，必须检查参数，保证非法参数不存在
-务必检查指针是否为空。
-用`assert`
-
-引用虽然只能引用已存在的内存，更安全，但是效率不及指针。
-### 函数出口处，保证return的正确和有效性
-#### return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。
-```linux
-test.c:13:10: warning: assignment discards ‘const’ qualifier from pointer 
+</code></pre>
+<h2 id="给自己的编程建议">给自己的编程建议</h2>
+<h3 id="没必要声明一个数组的指针">没必要声明一个数组的指针。</h3>
+<p>因为人类提到数组，应该想的就是它的第一个元素的指针。<br>
+一个指向数组的指针&amp;array并不好用。在<a href="#%E5%BC%95%E7%94%A8">引用</a>里分析过了</p>
+<h3 id="函数入口处必须检查参数保证非法参数不存在">函数入口处，必须检查参数，保证非法参数不存在</h3>
+<p>务必检查指针是否为空。<br>
+用<code>assert</code></p>
+<p>引用虽然只能引用已存在的内存，更安全，但是效率不及指针。</p>
+<h3 id="函数出口处保证return的正确和有效性">函数出口处，保证return的正确和有效性</h3>
+<h4 id="return不可返回指向堆栈内存的指针或者引用因为该内存单元在函数体结束时被自动释放">return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。</h4>
+<pre><code class="language-linux">test.c:13:10: warning: assignment discards ‘const’ qualifier from pointer 
 
 target type [-Wdiscarded-qualifiers]
   stringg = Func();
@@ -619,6 +628,13 @@ target type [-Wdiscarded-qualifiers]
 <ul>
 <li><a href="#%E5%87%A0%E7%A7%8D%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB%E6%B5%8F%E8%A7%88">几种存储类别浏览</a></li>
 <li><a href="#%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B">四种类型</a></li>
+</ul>
+</li>
+<li><a href="#alloc">alloc()</a>
+<ul>
+<li><a href="#realloc">realloc()</a></li>
+<li><a href="#calloc">calloc()</a></li>
+<li><a href="#malloc">malloc()</a></li>
 </ul>
 </li>
 </ul>
@@ -775,54 +791,82 @@ while (x++ &lt;40)
 <p>x必须要链接外部，所以不可能是用inner x。很显然<br>
 在那个block里面给x赋值也是没用的。</p>
 <ul>
+<li>register</li>
 <li>static</li>
 <li>auto</li>
 <li>extern<br>
 全局变量、函数的存储类型试试默认extern。<br>
-不能修饰局部变量,必须是全局的！所以不能再某个函数体内部被使用<pre><code class="language-c">int main(void)
+不能修饰局部变量,必须是全局的！所以不能再某个函数体内部被使用</li>
+</ul>
+<pre><code class="language-c">  int main(void)
+  {
+      int dig = 7;
+      extern  int dia;
+      //OR extern in dia =99;
+
+  }
+void Foo(void)
 {
-    int dig = 7;
-    extern  int dia;
-    //OR extern in dia =99;
+    dia = 99;
+    //OR in main(extern in dia = 99)
+
+    printf(&quot;\nVar = %d&quot;, dig);
+    //OR
+    printf(&quot;\nVar  =%d&quot;, dia);
 
 }
 </code></pre>
-</li>
-</ul>
-<p>void Foo(void)<br>
-{<br>
-dia = 99;<br>
-//OR in main(extern in dia = 99)</p>
-<pre><code>printf(&quot;\nVar = %d&quot;, dig);
-//OR
-printf(&quot;\nVar  =%d&quot;, dia);
-</code></pre>
-<p>}</p>
-<pre><code>有相关报错：
-1. dia undeclared
-2. ‘dia’ has both ‘extern’ and initializer
-extern type var = value!最好分两个语句进行！
-extern type var;是一个声明，
-var =value是一个定义
-我们改到预处理下面声明`extern ida`
-报错
-3. undefined reference to `dia'
-4. type defaults to ‘int’ in declaration of ‘dia’即便使用了`extern int dia;  dia = 182;`仍然如此
-&lt;center&gt;小结&lt;/center&gt;
+<p>有相关报错：</p>
+<ol>
+<li>dia undeclared</li>
+<li>‘dia’ has both ‘extern’ and initializer<br>
+extern type var = value!最好分两个语句进行！<br>
+extern type var;是一个声明，<br>
+var =value是一个定义<br>
+我们改到预处理下面声明<code>extern ida</code><br>
+报错</li>
+<li>undefined reference to `dia'</li>
+<li>type defaults to ‘int’ in declaration of ‘dia’即便使用了<code>extern int dia; dia = 182;</code>仍然如此</li>
+</ol>
+<center>小结</center>
 Extern的问题在于不知道这个关键词出现的时候到底是声明还是定义。
 谨记：声明可以多次，定义只能一次。
 函数的声明extern关键词是可有可无的，因为函数本身不加修饰的话就是extern的。但是引用的时候一样是需要声明的。   
 先预声明`extern type var`
 然后再作用域内再用`type var`便可正常了。
-
-
-* register
-
-
-# malloc(), free()
-malloc可以再运行时确定内存分配的大小，而不是预先分配，它返回匿名内存地址。这个地址可以被指针接受。
-分配失败返回NULL。
-
+<h1 id="alloc">alloc()</h1>
+<h2 id="realloc">realloc()</h2>
+<h2 id="calloc">calloc()</h2>
+<h2 id="malloc">malloc()</h2>
+<p>malloc可以再运行时确定内存分配的大小，而不是预先分配，它返回匿名内存地址。这个地址可以被指针接受。<br>
+分配失败返回NULL。<br>
+有如下需要注意的<br>
+<strong>free</strong><br>
+<strong>强制Pause或者free之后，malloc申请的内存不会被销毁</strong><br>
+在Linux下pause，进程并不会被killed.<br>
+free之后，这些内存也会留下来，给接下来的malloc使用。</p>
+<p><strong>free后尽量把临时指针设置为NULL</strong><br>
+大家都在强调free()之必要，但是临时指针也需要重置道NULL，否则一旦这个内存被释放了，而这个块没有结束，ptr还在，其指向地址仍然不变（仍然是那个已经被销毁了的内存），这时候对其不小心解引用就会很糟糕。<br>
+<strong>不要随意设置分配的大小！</strong><br>
+<code>malloc(0)</code>的结果时不确定的。ANSI/ISO表示它可能范围</p>
+<ol>
+<li>空指针</li>
+<li>指向0字节的指针。<br>
+如果是空指针，就很麻烦，所以最好不要这样写。</li>
+</ol>
+<p>它时返回匿名内存地址，所以肯定也是能访问的……<br>
+free()</p>
+<pre><code class="language-c">    size_t large_var = 100010000;
+    int *pti;
+    ...
+    pti = (int *)malloc(large_var);
+    ptd = (double *)malloc(max * sizeof(double));
+    printf(&quot;anonymous malloe is at %p\n&quot;, (int *)malloc(large_var));
+    printf(&quot;pti(--&gt;int) is at:%p \n&quot;, pti);
+</code></pre>
+<pre><code>output:
+anonymous malloc is at 00000000069f3040
+pti(--&gt;int) is at:0000000000a6c040
 </code></pre>
 ]]></content>
     </entry>

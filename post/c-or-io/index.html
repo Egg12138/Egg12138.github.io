@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617595847038">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617691011723">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617595847038" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617691011723" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -144,10 +144,32 @@ puts(ptr);
 printf(&quot;%s&quot;, ptr);
 </code></pre>
 <h2 id="命令行参数">命令行参数</h2>
+<p>当main被调用时，两个参数被传入：</p>
+<ul>
+<li><code>int argc</code> 表示命令行参数数量</li>
+<li><code>*char argv[]</code>,argument vector，an array of character strings that contain the arguments, <strong>one per string</strong><br>
+<code>argv[0]</code> is the name by which the prog was invoked, so the argc is at least 1.<br>
+argv: [ echo.exe  | hello | world | -p | -t | '\0'  ]</li>
+</ul>
 <pre><code class="language-c">int main(int argc, char *argv[])//argc表示参数数量，用来遍历打印输入参数的。
 /*.....*/
 printf(&quot;The command line has %d arguments:\n&quot;, argc - 1);
 
+遍历打印参数：
+int main(int argc, char *argv[])
+{
+    while (--argc &gt; 0)
+    {
+        printf(&quot;%s %s&quot;, *++argv, (argv &gt; 1) ? &quot; &quot;:&quot;&quot;);
+        /*可以简化成：*/
+        printf((argv &gt; 1) ? &quot;%s &quot; : &quot;%s&quot;, *++argv);
+    }
+
+}
+
+
+
+下面用一些简单的实例再看一下
     for (count = 0; count &lt; argc; count++)
         printf(&quot;%d: %s\n&quot;, count, argv[count]);
 while (argv + count)//隐患

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Egg12138.github.io</id>
     <title>Gridea</title>
-    <updated>2021-04-06T06:36:57.048Z</updated>
+    <updated>2021-04-06T06:40:50.304Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Egg12138.github.io"/>
     <link rel="self" href="https://Egg12138.github.io/atom.xml"/>
@@ -10,6 +10,551 @@
     <logo>https://Egg12138.github.io/images/avatar.png</logo>
     <icon>https://Egg12138.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[重置C:Pointer and Memory]]></title>
+        <id>https://Egg12138.github.io/post/chong-zhi-cpointer-and-memory/</id>
+        <link href="https://Egg12138.github.io/post/chong-zhi-cpointer-and-memory/">
+        </link>
+        <updated>2021-04-06T06:40:20.000Z</updated>
+        <content type="html"><![CDATA[<div id="top"></div>
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F-%E7%B1%BB%E5%9E%8B-%E8%AF%AD%E6%B3%95">变量、类型、语法</a>
+<ul>
+<li><a href="#%E5%BC%95%E5%85%A5">引入</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E5%8F%AF%E8%83%BD%E5%87%BA%E9%94%99%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-%E5%A3%B0%E6%98%8E%E4%B8%8E%E8%AF%AD%E5%8F%A5">错误/可能出错的初始化、声明与语句</a><br>
+*
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E9%94%99%E8%AF%AF">数组声明错误</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%88%86%E9%85%8D-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%94%99%E8%AF%AF">数组分配、初始化错误</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%A3%B0%E6%98%8E%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8F%AF%E9%80%89%E7%89%B9%E6%80%A7variable-lenth-array">数组声明中的一个可选特性variable-lenth array</a></li>
+</ul>
+</li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E7%94%A8-%E5%8C%B9%E9%85%8D%E9%94%99">类型用、匹配错</a></li>
+<li><a href="#%E5%A3%B0%E6%98%8E%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">声明的优先级</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8C%87%E9%92%88">指针</a>
+<ul>
+<li><a href="#%E4%B8%89%E4%B8%AA%E5%9C%B0%E5%9D%80%E4%B8%A4%E4%B8%AA%E5%9C%B0%E5%9D%80%E5%92%8C%E5%87%A0%E4%B8%AA%E5%80%BC">三个地址，两个地址和几个值</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E4%BC%A0%E9%80%92">变量传递</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88">数组和指针</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%87%E9%92%88%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84">字符（串）指针和字符数组</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8">引用</a></li>
+<li><a href="#%E6%8C%87%E9%92%88%E6%93%8D%E4%BD%9C%E5%B0%8F%E7%BB%93">指针操作小结</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%A0%E4%B8%AA%E5%A4%8D%E6%9D%82%E5%A3%B0%E6%98%8E">几个复杂声明</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="变量-类型-语法">变量、类型、语法</h2>
+<h3 id="引入">引入</h3>
+<p>同学分享了一个问题，我顺便写一篇blog<br>
+我们从这个情景开始：</p>
+<pre><code class="language-c">/*在VS2019环境下，将scanf替换成scanf_s， 应该挺多的函数都被vs替换了，_s表示_security,往往通过参数的输入数量的改变，让不安全代码在编译之前就得到报错。*/
+char c1 ;
+char c2[10];//做一个对比,  c2这个数组其实是 = [][][][][] [][][][]['\0']
+/*只有9个位可以输入字符，剩下一个必须要留给'\0'，*/
+  printf(&quot;Starting...\n&quot;);
+  printf(&quot;We declared the var c1 is a charactor,USING scanf_s(&quot; 
+         %%c1 &quot;, &amp;c1) to get it.\n&quot;);
+  
+  printf(&quot;Enter c1, Notice that it is only a char:\n&quot;);
+  scanf_s(&quot;%c&quot;, &amp;c1, 2);
+  printf(&quot;Enter c2[10]= [][][][][] [][][][]['\\0'] now.\n&quot;);
+  printf(
+      &quot;In scanf_s, %%s==&gt; a string c2 with 10 bits,(9 for chars, 1 for '\\0',You can enter no more than 9 chars. &quot;);
+  scanf_s(&quot;%s&quot;, c2, 10);
+  printf(&quot;c1 = %c; c2 = %s&quot;, c1, c2);
+</code></pre>
+<p><a href="#top">回到目录</a></p>
+<h3 id="错误可能出错的初始化-声明与语句">错误/可能出错的初始化、声明与语句</h3>
+<p><strong>声明在C中的语法是：</strong><br>
+<strong>基本类型 生成基本类型的东西</strong><br>
+所以这也是为什么我们不需要专门建一个指针基本类（它确实是一个特殊的类型，但不是声明的基本类型）:<br>
+<code>double *which( double d, int *x)</code> 这个声明表面， which是一个指向（生成）的double类型量内存的指针。which所指的值double类的，至于double是多少，要看函数定义和传入实参。<br>
+如果理解声明为：  基本类型 是该类型的量 ， 那可能就会认为c应该多加一个指针量，pointer which。这就很憨批了。<br>
+####数据错误</p>
+<h5 id="数组声明错误">数组声明错误</h5>
+<p><code>char end = 'x'</code><br>
+prinf%s将报错。%s和char *para是不兼容的！<br>
+<code>%c</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> %d,由单引号引起的一个字符代表的是一个整数，其值对应于该字符在compiler的字符集中的序列位置** 多数编译器默认是ASCII，但不总是，而且这个可以更改 **<br>
+ASCII码对不同进制下 编码会兼容： 0o（八进制） 0141 = 97<br>
+<code>char end[1] = 'x'</code><br>
+声明报错<br>
+所以<code>char end = 'x'</code>就得老老实实的</p>
+<p>但是并不是类型不一致就会出错。我们都知道compiler有责任进行<q>隐式转换</q>,程序员可以作合理的<q>显式转换</q></p>
+<pre><code class="language-c">/*隐式转换*/
+double d = 100;
+int i = 100;
+double m = i;
+</code></pre>
+<p>以上三个初始化中的类型转换都是安全的<br>
+<code>void *</code>,表示未确定类型的指针。C，C++规定，<code>void *</code>类型可以强转为任何其他类型的的指针。</p>
+<p>函数原型中参数名可以省略，但在函数定义中肯定不能省略！<br>
+以下几种原型声明等价：</p>
+<pre><code class="language-c">int f(int *, int);
+int f(int [], int);
+int f(int *a, int n);
+int f(int a[], int);
+</code></pre>
+<p><strong>注意int foo(int *a)传入的是a，声明a所指为整数。（因为在C中我们面向机器操作，不需要说明array是什么东西，只要告诉机器array的地址所指的东西的类型就好）<br>
+在函数中使用*a 才能是真正的a所指的值。</strong></p>
+<p><a href="#top">回到目录</a></p>
+<h5 id="数组分配-初始化错误">数组分配、初始化错误</h5>
+<p>这个声明的合法的： <code>char hello\[]={'a','b',0};printf(%s,hello)</code> ==<code>printf(&quot;ab&quot;);</code>这里的hello也是需要加上一个终止符0的，并且两个方式：1.<code>0</code>;2.<code>'\0'</code>;</p>
+<p>在上面及“引入”的数组声明中，我们看到string的尾部有一个终止字符'\0',这主要是跟编译器交互的。没有它会有一场<br>
+现在看一个ANSI C下合法，但是实际却没有什么意义的声明方式：</p>
+<pre><code class="language-c">char a[3] = &quot;abc&quot;;
+char b[4] = &quot;abc&quot;;
+</code></pre>
+<p>它将a初始化为['a']['b']['c']了。没有了'\0'，所以它不是一个真正的C字符串，而是一个字符数组。不能被printf %s等正常调用（但确实是符合ANSI C标准的语法的！）<br>
+我们分别输出a,b:<br>
+<img src="D:%5CImages%5CofLearn%5Cwrong_char%5B%5D_name_compare_a_b.png%22Powershell%22" alt="win10PS下" loading="lazy"><br>
+<img src="D:%5CImages%5CofLearn%5Cwrong_char%5B%5D_name_compare_a_b_uBuntu18.04.png%22WSLubunt%22" alt="ubuntu18.04_wsl下" loading="lazy"><br>
+这里b变量名取得不好，其实在linux下已经很明显了：a读到b的值了<code>a[3]=&quot;abc&quot;b[4]=&quot;def&quot;</code><br>
+因为没有终止。printf(%s  a) &gt;&gt; abcdef'\0'用了b的终止符<br>
+而且可以看到，在声明的时候，就已经确定了。我们可以由地址来获悉相关的信息<br>
+声明顺序<br>
+a<br>
+b<br>
+c<br>
+其中只有a是异常的，没有终止的。所以a=a+b的两个内容，如果b也没有终止，那就会是a = a+b+c,<br>
+b=b+c。<br>
+以下是cpp的示例：</p>
+<pre><code class="language-c">const char m1[40] = { 'L','i', 'm', 'i', 't', ' ', 'y', 'o', 'u', 'r', 's', 'e', 'l',
+'f', ' ', 't', 'o', ' ', 'o', 'n', 'e', ' ','l', 'i', 'n', 'e',
+'\&quot;, 's', ' ', 'w', 'o', 'r','t', 'h', '.', '\0'
+};
+/*注意最后的空字符。没有这个空字符，这就不是一个字符串，而是一个
+字符数组*/
+</code></pre>
+<p>因为二维数组可以省略花括号，所以在方便之余还可能导致混乱：<br>
+初始化一个只读数组：</p>
+<pre><code class="language-c">const float rain[5][12] = 
+{
+    {a1,...,a12},
+    {b2,...,b12},
+...
+}
+写作
+{
+    a1,a2,...a12,
+    b1,b2,...b12,
+    ...
+}//也可以写作一行
+const int lis[2][3]
+{ {1,3,4},{4,1,8}
+/*因为这个是自动匹配的：
+所以可以写成*/
+{1,3,4,4,1,8}
+{1,3,4,4}//这个时候，还有两个位置是0，但是compiler是按顺序的，所以不会平均分配!即便你打了个空格试图表示这两个子数组各是两个非零元素。
+</code></pre>
+<p>在声明的时候，可能会有小错误：想要r的字符空间时Strlen(s)+strlen(t)，在声明的时候应该用s(s)+s(t) + 1！1不要漏加了，这是给'\0'的</p>
+<h6 id="数组声明中的一个可选特性variable-lenth-array">数组声明中的一个可选特性variable-lenth array</h6>
+<p>在创建的时候可以用变量带来指定维数。所以翻译成”变长数组“是容易让人误解的。我姑且叫它为VL array</p>
+<p>记得有时候用旧gcc的时候，就会出现我int array[lenth]错误，因为这里必须用常量来声明。现在C11的新特性（optional)可以这样做了<br>
+注意前两个形参（rows和cols）用作第3个形参二维数组ar的两个维<br>
+度。因为ar的声明要使用rows和cols，所以在形参列表中必须在声明ar之前<br>
+先声明这两个形参。因此，下面的原型是错误的：<br>
+~int sum2d(int ar[rows][cols], int rows, int cols);<code></code>// 无效的顺序<code>C99/C11标准规定，可以省略原型中的形参名，但是在这种情况下，必 须用星号来代替省略的维度：</code>int sum2d(int, int, int ar[<em>][</em>]); ``// ar是一个变长数组（VLA），省略了<br>
+维度形参名`<br>
+里面但凡不加星号，就会引起”传入的是第一个元素的地址“之歧义</p>
+<h5 id="类型用-匹配错">类型用、匹配错</h5>
+<pre><code class="language-c">if (expression, or a bool)，
+    do something;
+if (!expression or a bool)
+    do something;
+</code></pre>
+<p>What if:</p>
+<ul>
+<li>这里的expr是一个整型变量！与0比较，最好是写成if//(value == 0)，否则会被误认为是bool变量</li>
+<li>expr是是一个ptr！要防止p被误解为一个整型、bool变量：<s><code>if (p == 0)</code></s>，应该<code>if (p == NULL)</code></li>
+<li>expr是一个float....！精度是一个问题，精度太高，有可能10.222225 = 10.222229了<br>
+下面一个情况，<br>
+再次强调，变量声明 xxx var总是代表var返回/指向xxx类型的值，类型不同，不应该互相赋值。<br>
+<code>int a[3];</code><br>
+<code>p = a</code>合法，<code>p = &amp;a</code>不合法。因为&amp;a是一个指向数组的指针（指向a的地址），而p应该是一个指向整型的指针。按照这个逻辑，我们的标准规定道：p指向array时，p = a即为指向数组，实际为指向a[0],具体见<a href="#footer">指向</a></li>
+</ul>
+<h4 id="声明的优先级">声明的优先级</h4>
+<p>()的优先级高于*<br>
+<code>float *g(), (*h)()</code>中<br>
+*g() == *(g()),  其中<strong>g为一个函数，返回一个指针</strong>，<strong>该ptr指向一个浮点数</strong>。  g()--return--&gt; (g())为返回值，该范围值是一个ptr,于是用*标记。该ptr又指向float.<br>
+(*h)()  中，*h是先声明的，<strong>表示h是一个ptr，指向一个函数，返回一个浮点数</strong></p>
+<blockquote>
+<pre><code>    右至左,  优先级一定是括号优先。
+</code></pre>
+</blockquote>
+<p>我们将上面的情况去掉变量名：<br>
+<code>float (*h)()</code><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span><code>float (*)()</code><br>
+<code>float *g()</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span><code>float *()</code></p>
+<blockquote>
+<pre><code>  (*(void(*)())0)()如何解析？ 
+</code></pre>
+</blockquote>
+<p>( <em>C traps and pitfalls</em>)</p>
+<p>(void(*p)())=void (*p)()， p不是函数，而是一个指向函数的指针。该被指向的函数返回值为void类，<br>
+(* (void (*p)())0)()， 记作(* (ptr)   0)就是指向 指向返回void的函数的指针<br>
+0呢？<br>
+我们来看(int) a_float可以相知转换类型。0在这里就是被转换成了指针类<br>
+0是一个“指向‘指向返回值为void的函数的指针’的指针”</p>
+<blockquote>
+<pre><code>  char *p1, p2如何解析
+</code></pre>
+</blockquote>
+<p>一些人可能会把这个写成char* p1, p2以为*这个一元运算符对p1,p2都生效。但显然不是。p2在这里并不是指针，只有第一个是。</p>
+<h2 id="指针">指针</h2>
+<h3 id="三个地址两个地址和几个值">三个地址，两个地址和几个值</h3>
+<p>存储指针本身的地址addPtrSelf：%p, &amp;ptr<br>
+指针所指数据的地址addPtr：%p,  ptr<br>
+数据本身所在的地址add, add = &amp;ptr.</p>
+<p>数据本身的值:value<br>
+被指数据的值: *ptr = value</p>
+<h3 id="变量传递">变量传递</h3>
+<p>其实在两个作用域中，直接用变量名传递，对传递后的变量名进行操作不会影响原变量的机理很简单：<br>
+在C中，</p>
+<pre><code class="language-c">foo (int x, int y)
+{
+    do something,
+    change x, y 
+    return x+y
+}
+c = foo(a, b)
+</code></pre>
+<p>实参a, b只是把各自的value传递给了foo——因为foo的x, y已经各自构建好了，有不同的位置。</p>
+<h3 id="数组和指针">数组和指针</h3>
+<p>比较简单的几行代码道出了很多：</p>
+<ul>
+<li><code>array = &amp;array[0]</code></li>
+<li>让array为{0,3,6,22,55,90}<code>*(array + 2)</code>为array的[0+2]的值,即第三个值6， != *array + 2`为array[0] + 2，即2</li>
+<li></li>
+</ul>
+<p>以下一段啰嗦话是我之前写的。。。留着纪念……<br>
+用一系列初级的代码，硬检验出来：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+#define SIZE 4
+
+
+int main(void)
+{
+    int dates[SIZE];
+    int *prd;
+    short index;
+    double bills[SIZE];
+    double *ptb;
+    int billy[SIZE] = {[2] = 3};
+    int i, j;
+
+    prd = dates;
+    ptb = bills;
+    /*i = *dates*If dates can be a pointer*/
+
+    /*ptd = billy[2]
+    ptd...try ...billy,if self..*/
+    printf(&quot;%23s %12s\n&quot;, &quot;short&quot;, &quot;double&quot;);
+
+
+    //printf(&quot;\n Directly print the locateion of the var i,j:%p,%p &quot;, i, j);
+    i = 293;
+    j = 19239;
+    printf(&quot;\nLet i = 293,j = 19239,i,j is at:%p %p\n&quot;, i, j);//!
+    printf(&quot;0x61fe00 + 1 :%x\n&quot;, (0x61fe00 + 1));//!
+   /***   //!都是不规范的warning语句。不要那样写，我这下是做实验。***/
+</code></pre>
+<p>很明显的，如果变量没有初始化，它应该是没有被分配地址的,而未初始化的数组却拥有一个地址，指向它的指针也有同样一个地址：</p>
+<p><a href="#p&amp;r&amp;&amp;r">详见</a></p>
+<div id = "back_declare_pointer"></div>
+<p>这里的语句也很危险，因为%p更愿意接受一个 void*ptr，而不是这些返回基本类型的量</p>
+<pre><code class="language-c">   for (index = 0; index &lt; SIZE; index++)
+       printf(&quot;pointers + %d: %10p %10p\n&quot;, index, prd + index, ptb + index);
+   printf(&quot;\nthe empty array dates is located at:%p\n&quot;, &amp;dates);
+   printf(&quot;\nthe empty array dates is located at:%p\n&quot;, &amp;bills);
+   printf(&quot;\nDirectly print the empty arry dates:%d&quot;, dates);//!
+   printf(&quot;\nDirectly print the arry billy{0,0,2,0}:%d&quot;, billy);//!
+</code></pre>
+<p>于是我们可以看到，数组不可以当作基本数据类型int,float,double来引用。完全不可，因为这会在内存里面随意找一个值<br>
+又可以看到，十六进制+1也是正常的，但是在输出prd+index,ptb+index之类的，地址却+2/+8了<br>
+因为指针并不能和机器地址对等。short:[ | ]一个占俩字节，double:[ | | | | | | | ]一个占8字节</p>
+<blockquote>
+<pre><code>  这里又可以复习一下类型转换中的向下地兼容：
+  short dates可以被float ptd正常指向，但是存址+4(float的)。
+  inpompitate总是不好的，要注意！
+</code></pre>
+</blockquote>
+<p><img src="https://www.log2base2.com/images/c/array-and-pointer-2.png" alt="比较准确的array,address,pointer关系" loading="lazy">,</p>
+<p>这是一个标准的解释。到了Linked List里面这一切就会更透彻了。<br>
+用一下<em>C Primer Pllus</em>的归纳。</p>
+<div id = "p&r&&r"></div>
+<p><a href="#back_declare_pointer">返回</a></p>
+<ul>
+<li>pointer的值是它所指向对象的地址。地址的表示方式依赖于计算机内部的硬件。<em>多数按照字节编址</em>，在RAM中每个字节都按照顺序编号。较大对象的地址通常是它的第一个字节的地址</li>
+<li>*ptr会得到所指对象的值， 让指向数组时*p = a默认指向a[0]<br>
+数组billy的地址是billy[0]元素的地址，指针指向billy实际上是指向billy[0]，在调用%p, r时，%p,r = %p,&amp;array但是二者并不同。一个是本身的地址，一个是所指的地址。<br>
+r的真正地址应该是%p, &amp;r，<br>
+<code>000000000061fe00--&gt;%p-&amp;arr</code><br>
+<code>000000000061fe00--&gt;%p-r</code><br>
+<code>000000000061fe18--&gt;%p-&amp;r</code></li>
+</ul>
+<p>我们详细看这一行</p>
+<pre><code class="language-c">int billy[4] = {[2] =3 };
+int *pbb = billy;
+...
+printf(&quot;\nTry: pointer billy,bare billy=0x%x=%d,call dilly by %%d, %d,dilly[2]=%d\n&quot;,,&amp;pbb,&amp;billy,billy,billy,*billy,billy[2]);
+</code></pre>
+<p>得到输出：<br>
+Try:<br>
+poiner billy=000000000061fdb0<br>
+bare billy=0x61fdb0  =6421936,<br>
+call dilly by %d,=0<br>
+dilly[2]=3</p>
+<p><strong>命题：指针和数组并不等价，但他们具有统一性</strong></p>
+<ol>
+<li>多数数组的引用都会（转化）退化为数组第一个元素的指针。因为没有一各内存是专门说用来存储一个数组的，我认为这样的定义是非常合理的</li>
+<li>基于1.可知数组在C中永远都不能被<em>整体操作</em>， 不能直接复制数组，也不能直接将数组传入函数，也没法直接打印一整个数组——只要引用array，就是得到指针。</li>
+<li>基于1.数组下标操作符[]就同指针+-一样。a[i] &lt;=&gt; *(a+i)<br>
+看：</li>
+</ol>
+<pre><code class="language-c">char a[] = &quot;hello&quot;;
+char *p = &quot;world&quot;;
+</code></pre>
+<p>初始化如下：<br>
+a: [ h | e | l | l | o | \0 ]<br>
+p:[  ] <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> [ w  | o  | r  |  l  |  d  |  \0 ]<br>
+为了方便，我把字符内容改成destory the world:</p>
+<pre><code class="language-c">char *p = &quot;world&quot;;
+    char a[] = &quot;destory the&quot;;
+    printf(&quot;call x[3]   %%p-&amp;self,       %%d-self[3]    %%c-self[3]\n&quot;);
+    printf(&quot;    p    %p       %d         %c\n&quot;, &amp;p, p[3], p[3]);
+    printf(&quot;    a    %p       %d         %c\n&quot;, &amp;a, a[3], a[3]);
+</code></pre>
+<p>call x[3]   %p-&amp;self,       %d-self[3]    %c-self[3]<br>
+p    000000000061fe18       108         l<br>
+a    000000000061fe0c       116         t<br>
+p的地址61fe18就是前面那个初始化图中p的那个空格的地址，x[3]似乎都表示字符串的第四个数字。，但是compiler到达的路径不同，pointer多了一步：到&amp;p处取址，然后再跳转。<br>
+以下的例子：<br>
+<code>int a[10] = {20, 30, 40, 50}</code>,<br>
+<code>sizeof a = 4 * 4(int size) = 16</code><br>
+将其传入函数<code>foo(int *mm)``:</code><br>
+<code>total = sum(a) = 140</code><br>
+<code>sizeof mm = 8</code></p>
+<p>它说明了</p>
+<ul>
+<li>系统一般用8bytes存储地址,我们传入指针——数组的地址，用foo( type *array)比较不宜搞错。</li>
+<li>在跟声明数组同样的作用域中sizeof array的对象不是array的地址，而是array的实际大小</li>
+</ul>
+<pre><code class="language-c">{
+const char *mytalents[LIM] = { //一个包含5个指向值为char数组指针的数组
+&quot;Adding numbers swiftly&quot;, //mystalents[0]表示第一个字字符串字面量本体，而这个字符串不应该被视为数组，五个字符串长度都是字符串本身的长度+'\0'长度，而不是一个定长的数组的长度
+&quot;Multiplying accurately&quot;, &quot;Stashing data&quot;,
+&quot;Following instructions to the letter&quot;,
+&quot;Understanding the C language&quot;
+}; 
+char yourtalents[LIM][SLEN] = {// 一个二维矩形数组
+&quot;Walking in a straight line&quot;,
+&quot;Sleeping&quot;, &quot;Watching television&quot;,
+&quot;Mailing letters&quot;, &quot;Reading email&quot;
+};
+</code></pre>
+<div id="footer">继续</div>
+<h3 id="字符串指针和字符数组">字符（串）指针和字符数组</h3>
+<p>这一块我数组和指针中x已经做过解释。现在再根据K&amp;B重新精简一下。</p>
+<p><strong><center >Terminated with the null character '\0' </center></strong><br>
+和数组一样的：<br>
+<strong><center>A string constant is accessed by a pointer to its first element</center></strong><br>
+<strong><center> C不提供任何针对整个字符串单元进行处理的操作符。</center></strong></p>
+<pre><code class="language-c">char *pstring = &quot;now is the time&quot;;
+char arraystring[] = &quot;now is the time&quot;;
+char arrstr[16]=&quot;now is the time&quot;;/*这种声明方式没有第二行的好，大小没必要这样分配*/
+</code></pre>
+<p>上面都不是copy，copy需要对两个指针操作<br>
+pstring: [ · ]--&gt;[ now is the time\0]<br>
+arraystring: ['n','o','w',....,'\0']这里arraystring足够大，能够容下字符串以及末尾的'\0'</p>
+<pre><code class="language-c">void strcopy_diy(char *dst, char *src)
+{
+    while ((*dst++ = *src++) != '\0' )/*简洁的表达*/
+        ;
+        //==&gt;
+    while((*dst++ = *src++))//最简洁：'\0'的判断并不需要，因为它本身就是终止符【
+        ;
+}
+</code></pre>
+<h3 id="引用">引用</h3>
+<p>array在expr中等效于指向第一个元素的指针，那array和&amp;array有什么区别？<br>
+<strong>&amp;array这种引用方式不安全，ANSI C之前这会引起warnign</strong><br>
+我在编译的时候，想要用格式化来调用引用值，发现易错。</p>
+<p>对数组的简单调用生成一个T型指针，指向数组的第一个元素。<br>
+<code>int [10]</code>, a<br>
+的引用就是int型指针，指向第一个元素，&amp;a是10个int型数组的指针。</p>
+<p><code>type 2darray[A][B]</code><br>
+2darray是指向2darray的第一个元素的指针，即指向一个 可容纳<code>[B]</code>个type型的数组。<br>
+&amp;2darray是指向这个2D数组本身。<br>
+在这个时候确实更有<s>面向对象的臭味</s><br>
+似乎数组能够被指向是一件好事？但在C中它真的没什么用。</p>
+<pre><code class="language-c">        int a1[3] = { 0, 1, 2 };
+        int a2[2][3] = {{3, 4, 5}, {6, 7, 8}};
+        int *ip;//simple pointer, pointing to a memory ,like the address of the first element in the array
+        int (*ap)[3];//a pointer pointing to a array with 3 spaces...pointing the entire array
+        ip = a1;//ip[s] &lt;=&gt; a1[s];pretty good!
+        ap = &amp;a1;
+
+        printf(&quot;%d&quot;, *ip);
+        ip++;
+        printf(&quot;--&gt;%d\n&quot;, *ip);
+        printf(&quot;%d\nEverything is good,right?\n&quot;, **ap);
+        ap++;
+        printf(&quot;%d\nLook what happened!&quot;, **ap);
+        ap = a2;
+        printf(&quot;\n2D-array, ap works well:%d&quot;, **ap);
+        ap++;
+        printf(&quot;\nafter ap++:**ap=%d&quot;, **ap);
+</code></pre>
+<p>输出：<br>
+0--&gt;1<br>
+0<br>
+Everything is good,right?<br>
+3//异常<br>
+Look what happened!<br>
+2D-array, ap works well:3<br>
+after ap++:**ap=6</p>
+<p>这种逻辑很好理解，<code>*ptr[]</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.48312em;vertical-align:0em;"></span><span class="mrel">≈</span></span></span></span> <code>**ptr</code>,需要在2Darray中解引用才能正确地整活。<br>
+刚刚ap=a1的时候，ap++之后应该是试图指向a1的另一行，但是a1只有一行，所以有异常。<br>
+输出是3，因为下面的a2是3. ap访问到内存在a1之后的a2 去了。</p>
+<h3 id="指针操作小结">指针操作小结</h3>
+<p>array[5] ={100,200,300,400,500}<br>
+ptr1 = array; ptr + integer:</p>
+<table>
+<thead>
+<tr>
+<th>ptr value也就是被指对象的地址， 这个是需要初始化的</th>
+<th>dereferenced ptr</th>
+<th>pointer self address  声明后就被分配内存了的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ptr1 = 000000000061fdf0</td>
+<td>*ptr1 = 100</td>
+<td>&amp;ptr1 = 000000000061fde8指针自己存放在此。 这里的内容就是00..61fdf0.（地址%p类似于%x，指针本身要占用8bytes)</td>
+</tr>
+<tr>
+<td>ptr1 + 4 = 000000000061fe00,</td>
+<td>*(ptr1 + 4) = 500</td>
+<td>&amp;(ptr1 + 4)= 61fe00/&amp;（*ptr1)是常数，所以0000000000000000</td>
+</tr>
+<tr>
+<td>直接ptr+=4是对value+4:ptr1_new = 000000000061fe00</td>
+<td>*(ptr1_new) = 500</td>
+<td>&amp;(ptr1_new)= 61fde8(%x)/000000000061fde8(%p)</td>
+</tr>
+<tr>
+<td>指针value不变，自身地址递增不建议，不建议修改指针本身的地址。</td>
+<td>指针作差一般在同一个array中，表示指向元素的差（绝对值就是距离）ptr2 - ptr3 = -3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>after ptr1++:<br>
+ptr1 = 000000000061fdf4,  *ptr1 = 200, &amp;ptr1 = 000000000061fde8</p>
+<p>ptr2 = 000000000061fdf8, ptr1 = 000000000061fdf4,<br>
+ptr2 - ptr1 = 1<br>
+<code>total += *(*(array + i) + j) == total += array[i][j]</code></p>
+<div id='PointerNotEq2Array'></div>
+<p>ptr和数组完全不是一个东西。<br>
+static 字面量，传递给数组，编译器是又给数组分配了空间然后把字符串拷贝给数组。传递给指针，直接就是将字面量本身字符串的地址传递给指针。<br>
+ptr = array ,legal, ptr and point to any thing.<br>
+array = ptr, illegal!</p>
+<pre><code class="language-c">#define MSG &quot;I'm special&quot;
+char ar[] = MSG;
+const char *pt = MSG;
+```c
+    address of &quot;I'm special&quot;: 0x100000f10
+    address ar: 0x7fff5fbff858
+    address pt: 0x100000f10
+    address of MSG: 0x100000f10
+    address of &quot;I'm special&quot;: 0x100000f10
+    lenth ar = 12
+    Traversal:    I,',m, ,s,p,e,c,i,a,l,, (the end is '\0'),not a space
+</code></pre>
+<p>这样的一个用处的差异是：<br>
+ptr直接指向字符串，所以对一个可变的字符串，fack, ptr[1]被修改为u后，同一个地址的所以有该string实例都成了fuck。<br>
+而数组则不会，它使用的时候副本，当然我们可以用const来限定指针所指对象。<br>
+在<em>Frequently asked questions C</em>中的问题<em>1.34</em>:</p>
+<pre><code>以下的初始化有什么区别？
+    char a[] = *string literal&quot;;
+    char *p = &quot;string literal&quot;;
+当我向p[i]赋值的时候，我的程序崩溃了
+</code></pre>
+<p><code>Segmentation fault (core dumped)</code><br>
+而对于数组，操作却无事。<br>
+如前面所说，数组已经赋值一块来了。<br>
+所以<code>char a[] = xxx</code>的初始化内容为:在地址a的这一系列内存单元被一次初始化为这个字符串。<br>
+而&quot;string literal&quot;本身时一个无名的static字符数组X，可能会存储在只读内存中，这就导致它不能被修改（是 <code>const</code>），我们又都知道，在expr中，数组等于对自身的引用（我还是那样认为：c根本没有数组这个概念，只有内存管理这个概念），所以无名数组X立即转化为一个指针，<br>
+有的编译器为了解决这个问题，特地将字面量转换成<code>const char</code>型数组。</p>
+<blockquote>
+<pre><code>      如果不修改字符串，不要用指针指向字符串字面量。
+      用数组初始化字符串的话需要考虑到作用域 
+</code></pre>
+</blockquote>
+<p>如 <code>char string[] = &quot;abababa&quot;</code>在函数体结束时内存就会被释放<br>
+<strong>用指针来指向的一个好处是它可以减少内存使用</strong><br>
+ptr1 = ptr2的语义就是将ptr2所指传递给ptr1，被指量不拷贝，<br>
+详细的可以参看《深入理解计算机系统》</p>
+<hr>
+<h2 id="几个复杂声明">几个复杂声明</h2>
+<pre><code class="language-c">char **argv
+    argv:  pointer to pointer to char
+int (*daytab)[13]
+    daytab: a pointer  returning an array of int
+int *daytab[13]
+    daytab:  an array[13] of  pointers to int
+void *comp()
+    comp: function returning pointer to void
+void (*comp)()
+    comp: a pointer return a function returning void
+char (*(*x()))[])()
+    x: function returning pointer to array[] of pointers to function returning char.
+char (*(*x[3])())[]
+    x: a array[3] of pointers to function returning pointer to array[5] of char
+
+(*pfa[])()
+
+
+
+## 给自己的编程建议
+
+### 没必要声明一个数组的指针。
+因为人类提到数组，应该想的就是它的第一个元素的指针。
+一个指向数组的指针&amp;array并不好用。在[引用](#引用)里分析过了 
+### 函数入口处，必须检查参数，保证非法参数不存在
+务必检查指针是否为空。
+用`assert`
+
+引用虽然只能引用已存在的内存，更安全，但是效率不及指针。
+### 函数出口处，保证return的正确和有效性
+#### return不可返回指向“堆栈内存”的指针或者“引用”，因为该内存单元在函数体结束时被自动释放。
+```linux
+test.c:13:10: warning: assignment discards ‘const’ qualifier from pointer 
+
+target type [-Wdiscarded-qualifiers]
+  stringg = Func();
+</code></pre>
+<p>这里的<code>Func()</code>返回的是其作用域里面的一个字符串<code>char str[] = &quot;aaaa&quot;;</code>，这个变量只是存放在堆栈上。如果创建的是<code>const char *s = &quot;aaaa&quot;;</code>那就是存放在静态数据区，可以很好地返回这个地址。在linux gcc下编译都无法通过。<br>
+这是之前在<a href="#PointerNotEq2Array">数组和指针</a>里面讲到的。</p>
+<h2 id="参考">参考</h2>
+<div id="refer-anchor-1">
+-[1][C traps and pitfall](Andrew Koenig)</div>
+<div id="refer-anchor-2">
+-[2][CPP reference](https://en.cppreference.com/w/)</div>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[电子学粗读的收获集锦]]></title>
         <id>https://Egg12138.github.io/post/dian-zi-xue-cu-du-de-shou-huo-ji-jin/</id>
@@ -997,62 +1542,6 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>于是我用这种方法：<br>
 [  |  |  |  | '\0' |]我们只要判断结束元素'\0'的位置就可以了。<br>
 lenth  &lt;-- for (idx=0;idx &lt; (sizeof array)/(sizeof type);idx++&gt;){if *(a+i)=='\0', return i;}</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[20210314 外卖骑手被困在系统里主要责任在/不再平台]]></title>
-        <id>https://Egg12138.github.io/post/20210314-wai-mai-qi-shou-bei-kun-zai-xi-tong-li-zhu-yao-ze-ren-zai-bu-zai-ping-tai/</id>
-        <link href="https://Egg12138.github.io/post/20210314-wai-mai-qi-shou-bei-kun-zai-xi-tong-li-zhu-yao-ze-ren-zai-bu-zai-ping-tai/">
-        </link>
-        <updated>2021-03-14T06:42:36.000Z</updated>
-        <content type="html"><![CDATA[<p>|正方</p>
-<h2 id="定义">定义</h2>
-<p>主要责任： 有能力解决才负主要责任。</p>
-<h2 id="论">论</h2>
-<h3 id="惩罚考核机制的标准">惩罚考核机制的标准。</h3>
-<h3 id="评价指标没有考量一般骑手权益">评价指标没有考量一般骑手权益。</h3>
-<h3 id="品牌要追求利益最大化所以给出那些制度和算法">品牌要追求利益最大化，所以给出那些制度和算法……？</h3>
-<p>? 减少福利，就会导致被困吗？</p>
-<h2 id="4-1">4-1</h2>
-<ul>
-<li>996现象的产生和法律打掉了法律解决力这一点——如果法律承担主要责任，那把这个窟窿补掉，似乎也不能解决问题。那它就不是主要责任方——没有规范清楚，法律只承担了部分原因。</li>
-</ul>
-<h2 id="3-2">3-2</h2>
-<ul>
-<li>还在打法律</li>
-</ul>
-<h1 id="反方">反方</h1>
-<h2 id="论没有接收的很清楚">论，没有接收的很清楚。</h2>
-<h3 id="利益最大化本身无罪但是我们探讨的从来也不是出发点-而是手段你的第一个论点意义其实不大">利益最大化本身无罪，【但是我们探讨的从来也不是出发点。而是手段，你的第一个论点意义其实不大】</h3>
-<h3 id="内卷是个人选择的问题">内卷是个人选择的问题</h3>
-<h3 id="外卖平台没有能力解决问题">外卖平台没有能力解决问题。</h3>
-<p>低能力企业自己扩大规模，它就没有责任吗？</p>
-<h3 id="真正解法是-让骑手有更多选择权-用法律解决-法律缺失才是主要责任">真正解法是 让骑手有更多选择权。用法律解决。法律缺失才是主要责任</h3>
-<p>##打：</p>
-<h3 id="直接原因造成者未必">直接原因造成者，未必</h3>
-<h3 id="削弱外卖平台没有那么严苛的事件评断标准">【削弱】外卖平台没有那么严苛的事件评断标准</h3>
-<h2 id="3-2-2">3-2</h2>
-<ul>
-<li>打掉对方数据——外卖平台无法承担骑手五险一金保障（但是不会在论证清楚自己</li>
-<li></li>
-</ul>
-<h2 id="3结">3结</h2>
-<h1 id="自由辩">自由辩</h1>
-<p>主要打谈论反方的法律。<br>
-以及平台有没有能力，然后问数据和解决方法。</p>
-<h1 id="不解">不解：</h1>
-<h3 id="给正方">给正方：</h3>
-<p>后期已经逐渐偏到反方那边去了。</p>
-<h3 id="给反方">给反方：</h3>
-<ul>
-<li>利益最大化本身无罪，但是我们探讨的从来也不是出发点。而是手段，你的第一个论点应该只是一个小前提】</li>
-<li>你认为外卖骑手有选择权，那存在被困在系统中这个命题吗？</li>
-<li>你也承认有责任。哪些责任？如何判断这些责任是外卖平台的责任？同样的责任不能</li>
-<li>内卷是个人选择的问题吗？在激流之中如果我逆流而上我就无异于自取灭亡，这是有得选吗？<br>
-到底是环境的问题还是……你们提了内卷，那就拿高校内卷来看嘛，主要责任是这个资源不足剧场竞争流量巨大，并且技术不会再领域内突破的环境， 还是这个没有做相关规定的教育部？</li>
-<li>你说，要让骑手有更多选择权，同时你也说了骑手加入内卷，那么在现状下，是不是就是平台给了骑手更少的选择？</li>
-<li>法律空缺和空白有什么区别吗？外卖行业真的行业空白吗？我们只是没有外卖法吧。教唆他人超速没有犯法这个我真的不懂。  对于一个企业有什么区别？他们哪里不知道往哪走？法律没规定那就做嘛。正方其实有打这个点。但按反方逻辑，认为面向市场的没有违法的让大众批判的行为和现象主要责任都在法律罗？</li>
-</ul>
 ]]></content>
     </entry>
 </feed>

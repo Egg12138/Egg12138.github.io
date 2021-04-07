@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617699096533">
+<link rel="shortcut icon" href="https://Egg12138.github.io/favicon.ico?v=1617757433309">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Egg12138.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://Egg12138.github.io">
-        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617699096533" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://Egg12138.github.io/images/avatar.png?v=1617757433309" alt="" width="32px" height="32px">
       </a>
       <a href="https://Egg12138.github.io">
         <h1 class="site-title">Gridea</h1>
@@ -142,6 +142,25 @@ grep: ntuser.dat.LOG1: Permission denied</p>
 <ul>
 <li>-c 计算匹配的行数</li>
 </ul>
+<hr>
+<h1 id="一些实际问题">一些实际问题</h1>
+<p>##特性字符匹配<br>
+\d,\D相反，很多元字符通过对字母的大小达到取补集的效果</p>
+<h3 id="区间挖点搜索如1-9挖5-7">区间挖点搜索如：1-9,挖5-7</h3>
+<p><code>[12349]</code>是最直接的。<br>
+大写到小写的区间匹配可用，但是不建议，因为会包含ASCII码大小写之间的的符号们<br>
+多个区间合并<code>[1-48-9]</code><br>
+因为这是单字符匹配，所以48肯定被识别为两个东西</p>
+<h3 id="空白字符匹配">空白字符匹配</h3>
+<p>比较多，经典的正则式都很熟悉了</p>
+<pre><code>[\b]  backward
+\f   page feed
+\n  line feed
+\r  carriage return Enter
+\t tab
+
+</code></pre>
+<h2 id=""></h2>
 
           </div>
         </div>
